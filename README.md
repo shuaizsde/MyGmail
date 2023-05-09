@@ -2,8 +2,15 @@
 
 This is Simon Zhang's Gmail Inbox prototype
 
-![Screenshot 2023-05-09 at 12 14 34 AM](https://user-images.githubusercontent.com/77553874/237003572-a937fff8-efa0-4136-9add-e1f1201017e2.png)
- 
-
+Milestone 1(03/09/2023)
+- Implemented Inbox tableView V1 
+- Created InboxMails(Model), MailViewMidel, MailInboxTableView(View) and build connections as fundamental MVVM structure implements
+- Created fake inbox mails for preview
+- implemented starring mails, 
+- Implemented searching emails by sender's name
+- Clicking on email will redirect to email body session 
 https://user-images.githubusercontent.com/77553874/237003653-1afb6cc1-f9c7-4de8-9cab-33c376624287.mov
 
+
+// TODO: update email body view to match Gmail UI
+// TODO: update buttons to match GMAIL UI
