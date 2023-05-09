@@ -34,24 +34,34 @@ struct MailInboxTableView: View {
     }
     
     var body: some View {
+        
         NavigationView {
             List{
                 ForEach(searchResults) {createInboxMailCell(for: $0)}
+                    .swipeActions(edge: .trailing) {
+                        Button {
+                            
+                        } label: {
+                            Image(systemName: "square.and.arrow.down")
+                        }.tint(.green)
+                    }
             }
             .listStyle(.inset)
-            .searchable(text: $searchString, prompt: searchbarPrompt)
             .toolbar {
-                ToolbarItem(placement: .primaryAction) {
+                ToolbarItem(placement: .navigationBarLeading) {
                     Button {
                         didTapMenuButton()
                     } label: {
-                        Image(systemName: "filemenu.and.selection")
+                        Image(systemName: "chevron.right.2")
+                            .foregroundColor(.gray)
+                            .font(.custom( "default", size: unreadBubbleFontSize))
                     }
                 }
                 ToolbarItemGroup(placement: .bottomBar) {
                     createToolBarButtons()
                 }
             }
+            .searchable(text: $searchString, prompt: searchbarPrompt)
         }
     }
     
@@ -96,69 +106,7 @@ struct MailInboxTableView: View {
     private func didTapMenuButton() {
         slideInMenuService.isPresented.toggle()
     }
-}
-
-
-struct tableItemView :View {
     
-    public let mail: InboxMails.Mail
-    private let profilePictureFrameWidth: CGFloat = 50.0
-    private let profilePictureThumbnailPlaceHolder = "person.fill"
-    
-    // @Binding var incomingMails: MailViewModel
-    var body: some View {
-        HStack{
-            profilePictureThumbnail(with: mail.profilePicture)
-            Spacer()
-            
-            HStack {
-                VStack(alignment: .leading) {
-                    Text(mail.sender)
-                    Spacer(minLength: 5)
-                    Text(mail.subject)
-                        .font(.caption)
-                    Spacer(minLength: 0)
-                    Text(mail.content)
-                        .font(.caption)
-                        .lineLimit(1)
-                        .fontWeight(.light)
-                        .foregroundColor(.gray)
-                }
-                
-                VStack(alignment: .trailing){
-                    Text(mail.time)
-                        .foregroundColor(.gray)
-                    Spacer()
-                    Image(systemName: mail.isStarred ? "star" : "star.fill")
-                        .foregroundColor(mail.isStarred ? Color.gray : Color.yellow)
-                        //.onTapGesture {  mail.isStarred }
-                }.font(.custom( "default", size: 14))
-    
-            }
-        }
-    }
-    
-    @ViewBuilder func profilePictureThumbnail(with profilePictureName: String?)  -> some View {
-        if let profilePictureName  {
-            Image(profilePictureName)
-                .resizable()
-                .scaledToFill()
-                .cornerRadius(profilePictureFrameWidth)
-                .frame(width: profilePictureFrameWidth, height: profilePictureFrameWidth)
-                .cornerRadius(profilePictureFrameWidth)
-                .frame(width: 55)
-        } else {
-            Circle()
-                .fill(Color.gray)
-                .frame(width: profilePictureFrameWidth, height: profilePictureFrameWidth)
-                .overlay() {
-                    Image(systemName: "person.fill")
-                        .font(.largeTitle)
-                        .foregroundColor(.white)
-                }.frame(width: 60)
-        }
-    }
-
 }
 
 struct MailInboxTableView_Previews: PreviewProvider {
