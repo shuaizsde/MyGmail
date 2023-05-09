@@ -9,7 +9,9 @@ import Foundation
 
 class MailViewModel: ObservableObject {
     
-    private static let preview: [Mail] = [
+    typealias Mail = InboxMails.Mail
+    
+    private static let preview: [InboxMails.Mail] = [
         Mail(
             profilePicture: "person1", 
             sender: "Simon Zhang", 
@@ -101,7 +103,17 @@ class MailViewModel: ObservableObject {
         ),
     ]
     
-    func starred(){
-        
+    private static func createInboxMails() -> InboxMails {
+        return InboxMails(preview)
+    }
+    
+    @Published private var model = createInboxMails()
+    
+    var mails: Array<Mail> {
+        return model.mails
+    }
+    
+    func star(_ mail: Mail) {
+        model.star(mail)
     }
 }

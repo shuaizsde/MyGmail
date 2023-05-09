@@ -11,7 +11,7 @@
 		1C2AC3482A09E6AE004C0777 /* MailInboxTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2AC3472A09E6AE004C0777 /* MailInboxTableView.swift */; };
 		1C2AC34A2A09E6B0004C0777 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C2AC3492A09E6B0004C0777 /* Assets.xcassets */; };
 		1C2AC34D2A09E6B0004C0777 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C2AC34C2A09E6B0004C0777 /* Preview Assets.xcassets */; };
-		1C2AC3542A09E70E004C0777 /* Mail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2AC3532A09E70E004C0777 /* Mail.swift */; };
+		1C2AC3542A09E70E004C0777 /* InboxMails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2AC3532A09E70E004C0777 /* InboxMails.swift */; };
 		1C2AC3562A09EFEC004C0777 /* MailInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2AC3552A09EFEC004C0777 /* MailInfoView.swift */; };
 		1C2AC3582A09F807004C0777 /* MailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2AC3572A09F807004C0777 /* MailViewModel.swift */; };
 /* End PBXBuildFile section */
@@ -22,7 +22,7 @@
 		1C2AC3472A09E6AE004C0777 /* MailInboxTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailInboxTableView.swift; sourceTree = "<group>"; };
 		1C2AC3492A09E6B0004C0777 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1C2AC34C2A09E6B0004C0777 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		1C2AC3532A09E70E004C0777 /* Mail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mail.swift; sourceTree = "<group>"; };
+		1C2AC3532A09E70E004C0777 /* InboxMails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxMails.swift; sourceTree = "<group>"; };
 		1C2AC3552A09EFEC004C0777 /* MailInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailInfoView.swift; sourceTree = "<group>"; };
 		1C2AC3572A09F807004C0777 /* MailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -57,7 +57,7 @@
 		1C2AC3442A09E6AE004C0777 /* MyGmail */ = {
 			isa = PBXGroup;
 			children = (
-				1C2AC3532A09E70E004C0777 /* Mail.swift */,
+				1C2AC3532A09E70E004C0777 /* InboxMails.swift */,
 				1C2AC3572A09F807004C0777 /* MailViewModel.swift */,
 				1C2AC3472A09E6AE004C0777 /* MailInboxTableView.swift */,
 				1C2AC3552A09EFEC004C0777 /* MailInfoView.swift */,
@@ -146,7 +146,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1C2AC3542A09E70E004C0777 /* Mail.swift in Sources */,
+				1C2AC3542A09E70E004C0777 /* InboxMails.swift in Sources */,
 				1C2AC3482A09E6AE004C0777 /* MailInboxTableView.swift in Sources */,
 				1C2AC3462A09E6AE004C0777 /* MyGmailApp.swift in Sources */,
 				1C2AC3582A09F807004C0777 /* MailViewModel.swift in Sources */,

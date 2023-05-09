@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MailInfoView: View {
-    let mail: Mail
+    let mail: InboxMails.Mail
     var body: some View {
         Text(mail.content).padding(15)
     }
@@ -16,6 +16,6 @@ struct MailInfoView: View {
 
 struct EmailContentView_Previews: PreviewProvider {
     static var previews: some View {
-        MailInfoView(mail: Mail.preview[0])
+        MailInfoView(mail: MailViewModel().mails[0])
     }
 }

@@ -9,23 +9,42 @@ import SwiftUI
 
 struct MailInboxTableView: View {
     
-    private let mails = Mail.preview
+    @ObservedObject var incomingMails: MailViewModel
+    
+    //private let mails = incomingMails.mails
+    
     @State var searchString = ""
     
+    var searchResults: [MailViewModel.Mail] {
+        if searchString.isEmpty {
+            return incomingMails.mails
+        } else {
+            return incomingMails.mails.filter { $0.sender.contains(searchString) }
+        }
+    }
+    
     var body: some View {
-        NavigationView{
-            List(mails) { mail in
-                NavigationLink(destination: MailInfoView(mail: mail)) {
-                    tableItemView(mail: mail)
+        NavigationView {
+            List{
+                ForEach(searchResults) { mail in
+                    NavigationLink(destination: MailInfoView(mail: mail)) {
+                        HStack{
+                            tableItemView(mail: mail)
+                            Image(systemName: mail.isStarred ? "star": "star.fill")
+                                .font(.custom( "default", size: 15))
+                                .foregroundColor(mail.isStarred ? Color.gray : Color.yellow)
+                                .onTapGesture {
+                                    incomingMails.star(mail)
+                                }
+                            
+                        }
+                    }
                 }
             }
             .listStyle(.inset)
             .searchable(text: $searchString, prompt: "Search in mail")
             .navigationTitle("Inbox")
             .toolbar {
-//                ToolbarItem(placement: .primaryAction){
-//                    EditButton()
-//                }
                 ToolbarItemGroup(placement: .bottomBar) {
                     Image(systemName: "line.3.horizontal.decrease.circle")
                     Spacer()
@@ -36,13 +55,14 @@ struct MailInboxTableView: View {
                         .foregroundColor(.blue)
                 }
             }
+            
         }
     }
 }
 
 struct tableItemView :View {
-    public let mail: Mail
-    
+    public let mail: InboxMails.Mail
+    let profilePictureFrameWidth: CGFloat = 50
     var body: some View {
         
         HStack{
@@ -50,13 +70,13 @@ struct tableItemView :View {
                 Image(image)
                     .resizable()
                     .scaledToFill()
-                    .frame(width: 50, height: 50)
-                    .cornerRadius(50)
+                    .frame(width: profilePictureFrameWidth, height: profilePictureFrameWidth)
+                    .cornerRadius(profilePictureFrameWidth)
                     
             }else{
                 Circle()
                     .fill(Color.gray)
-                    .frame(width: 50, height: 50)
+                    .frame(width: profilePictureFrameWidth, height: profilePictureFrameWidth)
                     .overlay() {
                         Image(systemName: "person.fill")
                             .font(.largeTitle)
@@ -67,24 +87,21 @@ struct tableItemView :View {
             VStack(alignment: .leading) {
                 HStack {
                     Text(mail.sender)
-                        .font(.title2)
-                        .fontWeight(.medium)
+                        .font( .custom( "default", size: 16))
+                        .fontWeight(.bold)
                     Spacer()
                     Text(mail.time)
                         .font(.subheadline)
                         .foregroundColor(.gray)
                 }
                 Text(mail.subject)
-                    .font(.body)
+                    .font(.caption)
                 Text(mail.content)
                     .font(.caption)
                     .lineLimit(1)
                     .fontWeight(.light)
                     .foregroundColor(.gray)
             }
-            Image(systemName: "star")
-                .font(.custom( "default", size: 15))
-                .foregroundColor(.gray)
         }
     }
 
@@ -92,6 +109,6 @@ struct tableItemView :View {
 
 struct MailInboxTableView_Previews: PreviewProvider {
     static var previews: some View {
-        MailInboxTableView()
+        MailInboxTableView(incomingMails: MailViewModel())
     }
 }
