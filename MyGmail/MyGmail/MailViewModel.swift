@@ -27,7 +27,7 @@ class MailViewModel: ObservableObject {
         Mail(
             profilePicture: "person2", 
             sender: "Cecilia D'Costa", 
-            time: "10:28 AM", 
+            time: "10:15 AM", 
             subject: "Re: Google Team Match Update",
             content: """
                      Thanks, Simon. I have your call scheduled for Wednesday. Doc is updated with the details. Please be sure to take some time to review the Team Match Call Prep Resource
@@ -37,7 +37,7 @@ class MailViewModel: ObservableObject {
         Mail(
             profilePicture: "person3", 
             sender: "Jessica Lu", 
-            time: "10:28 AM", 
+            time: "06:11 AM", 
             subject: "Good luck on your interview",
             content: """
                      Good luck baby, you are my best bae!!! Love you (heart)
@@ -46,7 +46,7 @@ class MailViewModel: ObservableObject {
         Mail(
             profilePicture: nil, 
             sender: "SPAM", 
-            time: "11:24 AM", 
+            time: "02:48 AM", 
             subject: "from unknown sender",
             content: """
                      put me into spam,put me into spam,put me into spam,put me into spam,put me into spam,put me into spam,put me into spam,put me into spam,put me into spam,put me into spam,
@@ -55,12 +55,10 @@ class MailViewModel: ObservableObject {
         Mail(
             profilePicture: nil, 
             sender: "Google", 
-            time: "10:28 AM", 
-            subject: "Re: Google Team Match Update",
+            time: "May 04", 
+            subject: "Google Team Match Update",
             content: """
-                     Hi Simon Zhang,
-                     Thanks for your interest in a role at Google! We received your application and will be in touch soon about next steps.
-
+                     Hi Simon Zhang,Thanks for your interest in a role at Google! We received your application and will be in touch soon about next steps.
                      Thanks,
                      Google Recruiting
                      """
@@ -68,7 +66,7 @@ class MailViewModel: ObservableObject {
         Mail(
             profilePicture: "person5", 
             sender: "John Smith", 
-            time: "10:28 AM", 
+            time: "May 02", 
             subject: "Test Test",
             content: """
                      To have this test, you swallow a string with a weighted gelatin capsule on the end. The string is pulled out 4 hours later. Any bile, blood, or mucus attached to the string is examined under the microscope. This is done to look for cells and parasites or parasite eggs.
@@ -77,7 +75,7 @@ class MailViewModel: ObservableObject {
         Mail(
             profilePicture: "person6", 
             sender: "John Smith2", 
-            time: "10:28 AM", 
+            time: "April 28", 
             subject: "Test Test",
             content: """
                      To have this test, you swallow a string with a weighted gelatin capsule on the end. The string is pulled out 4 hours later. Any bile, blood, or mucus attached to the string is examined under the microscope. This is done to look for cells and parasites or parasite eggs.
@@ -86,7 +84,7 @@ class MailViewModel: ObservableObject {
         Mail(
             profilePicture: "person7", 
             sender: "John Smith3", 
-            time: "10:28 AM", 
+            time: "April 26", 
             subject: "Test Test",
             content: """
                      To have this test, you swallow a string with a weighted gelatin capsule on the end. The string is pulled out 4 hours later. Any bile, blood, or mucus attached to the string is examined under the microscope. This is done to look for cells and parasites or parasite eggs.
@@ -95,7 +93,7 @@ class MailViewModel: ObservableObject {
         Mail(
             profilePicture: "person8", 
             sender: "John Smith4", 
-            time: "10:28 AM", 
+            time: "April 24", 
             subject: "Test Test",
             content: """
                      To have this test, you swallow a string with a weighted gelatin capsule on the end. The string is pulled out 4 hours later. Any bile, blood, or mucus attached to the string is examined under the microscope. This is done to look for cells and parasites or parasite eggs.
