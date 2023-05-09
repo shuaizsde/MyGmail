@@ -1,5 +1,5 @@
 //
-//  MenuView.swift
+//  MyGmailSideMenuView.swift
 //  MyGmail
 //
 //  Created by Shuai Zhang on 5/9/23.
@@ -7,7 +7,9 @@
 
 import SwiftUI
 
-struct MenuView: View {
+struct MyGmailSideMenuView: View {
+    
+    //MARK: Static fake iconItems and names
     private static var section1:[IconItem] {
         var previews = [IconItem]()
         previews.append(IconItem(profilePicture:"tray",title: "All Inboxes", count: 5))
@@ -40,39 +42,52 @@ struct MenuView: View {
         return previews
     }
     
+    // MARK: private static values for pictures and strings
+    private static let gmailIcon = "gmail"
+    private static let gmailText = "Gmail"
+    private static let defaultFontType = "default"
+    private let gmailIconWidth: CGFloat = 25.0
+    private static let iconFontSize: CGFloat = 14.0
+    
+    // MARK: Body
     var body: some View {
         VStack {
             Spacer()
             NavigationView {
                 List{
                     HStack {
-                        Image("gmail").resizable().scaledToFit().frame(width: 25, height: 25)
-                        Text("Gmail").font(.custom("default", size: 25)).foregroundColor(.gray)
+                        Image(MyGmailSideMenuView.gmailIcon).resizable().scaledToFit().frame(width: gmailIconWidth, height: gmailIconWidth)
+                        Text(MyGmailSideMenuView.gmailText).font(.custom(MyGmailSideMenuView.defaultFontType, size: gmailIconWidth)).foregroundColor(.gray)
                     }
+                    
                     Section {
-                        ForEach(MenuView.section1) { createIconCell(for: $0)}
+                        ForEach(MyGmailSideMenuView.section1) { iconCell(for: $0)}
                             .listRowSeparator(.hidden)
                     }
-                    seperator()
+                    
+                    menuSeperator()
+                    
                     Section {
-                        ForEach(MenuView.section2) { createIconCell(for: $0)}
+                        ForEach(MyGmailSideMenuView.section2) { iconCell(for: $0)}
                             .listRowSeparator(.hidden)
                     }
-                    seperator()
+                    
+                    menuSeperator()
+                    
                     Section {
-                        ForEach(MenuView.section3) { createIconCell(for: $0)}
+                        ForEach(MyGmailSideMenuView.section3) { iconCell(for: $0)}
                             .listRowSeparator(.hidden)
                     }
 
-                } .scrollIndicators(.hidden)
+                }.scrollIndicators(.hidden)
                 
             }.listStyle(.inset)
-            
             Spacer()
+            
         }.ignoresSafeArea(.all)
     }
     
-    @ViewBuilder private func seperator() -> some View {
+    @ViewBuilder private func menuSeperator() -> some View {
         Rectangle()
             .frame(height: 0.2)
             .foregroundColor(.gray)
@@ -80,16 +95,19 @@ struct MenuView: View {
             .listRowSeparator(.hidden)
     }
     
-    @ViewBuilder func createIconCell(for item: IconItem) -> some View {
+    @ViewBuilder func iconCell(for item: IconItem) -> some View {
         HStack {
             Image(systemName: item.profilePicture)
             Spacer().frame(width: 35)
+            
             Text(item.title)
             Spacer()
             if let count = item.count {
                 Text("\(count)")
             }
-        }.font(.custom("default", size: 14))
+        }.font(
+            .custom(MyGmailSideMenuView.defaultFontType, size: MyGmailSideMenuView.iconFontSize)
+        )
     }   
 }
 
@@ -100,8 +118,8 @@ struct IconItem: Identifiable {
     var count: Int?
 } 
 
-struct MenuView_Previews: PreviewProvider {
+struct MyGmailSideMenuView_Previews: PreviewProvider {
     static var previews: some View {
-        MenuView()
+        MyGmailSideMenuView()
     }
 }

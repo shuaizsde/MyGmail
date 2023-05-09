@@ -1,5 +1,5 @@
 //
-//  MailViewModel.swift
+//  MyGailViewModel.swift
 //  MyGmail
 //
 //  Created by Shuai Zhang on 5/8/23.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-class MailViewModel: ObservableObject {
+class MyGailViewModel: ObservableObject {
     
     typealias Mail = InboxMails.Mail
     

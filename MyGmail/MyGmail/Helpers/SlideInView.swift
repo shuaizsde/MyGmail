@@ -31,7 +31,7 @@ public struct SlideInView<Content: View, Container: View>: View {
     /// Use it:
     /// ```
     /// SlideInView(isActive: $slideInViewManager.isActive) {
-    ///     MenuView()
+    ///     MyGmailSideMenuView()
     ///         .edgesIgnoringSafeArea(.bottom)
     /// } container: {
     ///     NavigationView {
@@ -186,7 +186,7 @@ public extension View {
     /// }
     /// .navigationViewStyle(.stack)
     /// .slideInView(isActive: $slideInViewManager.isActive) {
-    ///     MenuView()
+    ///     MyGmailSideMenuView()
     ///         .edgesIgnoringSafeArea(.bottom)
     /// }
     /// .environmentObject(slideInViewManager)

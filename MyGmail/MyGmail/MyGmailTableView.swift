@@ -1,5 +1,5 @@
 //
-//  MailInboxTableView.swift
+//  MyGmailTableView.swift
 //  MyGmail
 //
 //  Created by Shuai Zhang on 5/8/23.
@@ -7,25 +7,28 @@
 
 import SwiftUI
 
-struct MailInboxTableView: View {
+struct MyGmailTableView: View {
     
-    @EnvironmentObject private var slideInMenuService: SlideInMenuService
-    
-    @ObservedObject var incomingMails: MailViewModel
-    
+    // MARK: Static strings
     private let searchbarPrompt = "Search in mail"
+    private let envelopeButtonImageName = "envelope"
+    private let videoButtonImageName = "video"
+    private let swipeArrowDownImage = "square.and.arrow.down"
+    private let menuButtonImage = "chevron.right.2"
     
+    
+    // MARK: Static values
     private let unreadBubbleSize: CGFloat = 16.0
     private let unreadBubbleFontSize: CGFloat = 12.0
     private let unreadBubbleOffset = CGSize(width: 10.0, height: -8)
     
-    private let envelopeButtonImageName = "envelope"
-    private let videoButtonImageName = "video"
-    
+    @EnvironmentObject private var slideInMenuService: SlideInMenuService
+    @ObservedObject var incomingMails: MyGailViewModel
+  
     // MARK: search bar
     @State var searchString = ""
     
-    private var searchResults: [MailViewModel.Mail] {
+    private var searchResults: [MyGailViewModel.Mail] {
         guard !searchString.isEmpty else {
             return incomingMails.mails
         }
@@ -33,16 +36,16 @@ struct MailInboxTableView: View {
         return incomingMails.mails.filter { $0.sender.contains(searchString) }
     }
     
+    // MARK: View Body
     var body: some View {
-        
         NavigationView {
             List{
                 ForEach(searchResults) {createInboxMailCell(for: $0)}
                     .swipeActions(edge: .trailing) {
                         Button {
-                            
+                            // TODO
                         } label: {
-                            Image(systemName: "square.and.arrow.down")
+                            Image(systemName: swipeArrowDownImage)
                         }.tint(.green)
                     }
             }
@@ -52,7 +55,7 @@ struct MailInboxTableView: View {
                     Button {
                         didTapMenuButton()
                     } label: {
-                        Image(systemName: "chevron.right.2")
+                        Image(systemName: menuButtonImage)
                             .foregroundColor(.gray)
                             .font(.custom( "default", size: unreadBubbleFontSize))
                     }
@@ -74,7 +77,7 @@ struct MailInboxTableView: View {
                     .fill(.red)
                     .frame(width: unreadBubbleSize, height: unreadBubbleSize)
                     .overlay(
-                        Text("5")
+                        Text("5") // TODO: unread placeholder 
                             .fontWeight(.bold)
                             .foregroundColor(.white)
                             .font(.custom( "default", size: unreadBubbleFontSize))
@@ -89,28 +92,26 @@ struct MailInboxTableView: View {
     }
     
     // MARK: Inbox Mail Cell
-    @ViewBuilder func createInboxMailCell(for cell: MailViewModel.Mail)  -> some View {
+    @ViewBuilder func createInboxMailCell(for cell: MyGailViewModel.Mail)  -> some View {
         ZStack {
-            NavigationLink(destination: MailInfoView(mail: cell)) { EmptyView() }
+            // Hide right chevron visibility
+            NavigationLink(destination: MyGmailBodyView(mail: cell)) { EmptyView() }
                 .opacity(0.0)
             HStack {
-                tableItemView(mail: cell)
-//                Image(systemName: cell.isStarred ? "star" : "star.fill")
-//                    .font(.custom( "default", size: 16))
-//                    .foregroundColor(cell.isStarred ? Color.gray : Color.yellow)
-//                    .onTapGesture { incomingMails.star(cell) }
+                MyGmailTableItemView(mail: cell)
             }.frame(height: 50)
         }
 
     }
+    
     private func didTapMenuButton() {
         slideInMenuService.isPresented.toggle()
     }
     
 }
 
-struct MailInboxTableView_Previews: PreviewProvider {
+struct MyGmailTableView_Previews: PreviewProvider {
     static var previews: some View {
-        MailInboxTableView(incomingMails: MailViewModel())
+        MyGmailTableView(incomingMails: MyGailViewModel())
     }
 }

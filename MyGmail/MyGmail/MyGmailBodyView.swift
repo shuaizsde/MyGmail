@@ -1,5 +1,5 @@
 //
-//  MailInfoView.swift
+//  MyGmailBodyView.swift
 //  MyGmail
 //
 //  Created by Shuai Zhang on 5/8/23.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MailInfoView: View {
+struct MyGmailBodyView: View {
     let mail: InboxMails.Mail
     var body: some View {
       VStack(alignment: .leading) {
@@ -24,8 +24,8 @@ struct MailInfoView: View {
     }
 }
 
-struct EmailContentView_Previews: PreviewProvider {
+struct MyGmailBodyView_Previews: PreviewProvider {
     static var previews: some View {
-        MailInfoView(mail: MailViewModel().mails[0])
+        MyGmailBodyView(mail: MyGailViewModel().mails[0])
     }
 }

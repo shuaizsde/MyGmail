@@ -1,5 +1,5 @@
 //
-//  tableItemView.swift
+//  MyGmailTableItemView.swift
 //  MyGmail
 //
 //  Created by Shuai Zhang on 5/9/23.
@@ -8,7 +8,7 @@
 import SwiftUI
 
 
-struct tableItemView :View {
+struct MyGmailTableItemView :View {
     
     public let mail: InboxMails.Mail
     private let profilePictureFrameWidth: CGFloat = 50.0

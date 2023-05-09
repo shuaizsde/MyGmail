@@ -14,14 +14,14 @@ struct MyGmailApp: App {
     var body: some Scene {
         WindowGroup {
             Group{
-                MailInboxTableView(incomingMails: MailViewModel())
+                MyGmailTableView(incomingMails: MyGailViewModel())
             }.environmentObject(slideInMenuService)
              .slideInView(
                 isActive: $slideInMenuService.isPresented, 
                 edge:.leading, 
                 paddingPercentage: 0.3, 
                 options: SlideInViewOptions(paddingColor: .gray, paddingColorOpacity: 0.8)) {
-                    MenuView()
+                    MyGmailSideMenuView()
                 }
         }
     }
@@ -29,7 +29,7 @@ struct MyGmailApp: App {
 
 //TabView {
 //    NavigationView {
-//        MailInboxTableView(incomingMails: MailViewModel())
+//        MyGmailTableView(incomingMails: MyGailViewModel())
 //    }.tabItem {
 //        Image(systemName: "envelope")
 //            .imageScale(.medium)
