@@ -1,5 +1,5 @@
 //
-//  emailContentView.swift
+//  MailInfoView.swift
 //  MyGmail
 //
 //  Created by Shuai Zhang on 5/8/23.

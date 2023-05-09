@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  MailInboxTableView.swift
 //  MyGmail
 //
 //  Created by Shuai Zhang on 5/8/23.
@@ -43,16 +43,26 @@ struct MailInboxTableView: View {
             }
             .listStyle(.inset)
             .searchable(text: $searchString, prompt: "Search in mail")
-            .navigationTitle("Inbox")
             .toolbar {
                 ToolbarItemGroup(placement: .bottomBar) {
-                    Image(systemName: "line.3.horizontal.decrease.circle")
-                    Spacer()
-                    Text("Updated Just now")
-                        .font(.footnote)
-                    Spacer()
-                    Image(systemName: "square.and.pencil")
-                        .foregroundColor(.blue)
+                    HStack{
+                        ZStack {
+                            Image(systemName: "envelope")
+                            Circle()
+                                .fill(.red)
+                                .frame(width: 16, height: 16)
+                                .overlay(
+                                    Text("5")
+                                        .fontWeight(.bold)
+                                        .foregroundColor(.white)
+                                        .font(.custom( "default", size: 12))
+                                )
+                                .offset(x: 10, y: -8)
+                        }
+                
+                        Spacer()
+                        Image(systemName: "video")
+                    }.padding(80)
                 }
             }
             
@@ -87,8 +97,8 @@ struct tableItemView :View {
             VStack(alignment: .leading) {
                 HStack {
                     Text(mail.sender)
-                        .font( .custom( "default", size: 16))
-                        .fontWeight(.bold)
+                        .bold()
+                        .font( .custom( "default", size: 14))
                     Spacer()
                     Text(mail.time)
                         .font(.subheadline)
