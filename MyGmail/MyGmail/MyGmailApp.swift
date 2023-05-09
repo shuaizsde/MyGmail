@@ -11,7 +11,7 @@ import SwiftUI
 struct MyGmailApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MailInboxTableView()
         }
     }
 }

@@ -1,22 +1,15 @@
 //
-//  Mail.swift
+//  MailViewModel.swift
 //  MyGmail
 //
 //  Created by Shuai Zhang on 5/8/23.
 //
 
 import Foundation
-struct Mail: Identifiable {
-    let id = UUID()
-    var profilePicture: String?
-    let sender: String
-    let time: String
-    let subject: String
-    let content: String
+
+class MailViewModel: ObservableObject {
     
-    var isStarred = false
-    
-    static let preview: [Mail] = [
+    private static let preview: [Mail] = [
         Mail(
             profilePicture: "person1", 
             sender: "Simon Zhang", 
@@ -108,5 +101,7 @@ struct Mail: Identifiable {
         ),
     ]
     
-    
+    func starred(){
+        
+    }
 }
