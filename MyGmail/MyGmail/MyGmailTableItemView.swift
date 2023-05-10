@@ -13,6 +13,8 @@ struct MyGmailTableItemView :View {
     public let mail: InboxMails.Mail
     private let profilePictureFrameWidth: CGFloat = 50.0
     private let profilePictureThumbnailPlaceHolder = "person.fill"
+    private let senderFontWidth: CGFloat = 14.0
+
     
     var body: some View {
         HStack{
@@ -22,9 +24,13 @@ struct MyGmailTableItemView :View {
             HStack {
                 VStack(alignment: .leading) {
                     Text(mail.sender)
+                        .font(.custom( "default", size: senderFontWidth))
+                        .fontWeight(.light)
+                        .foregroundColor(Color("gmailGray"))
                     Spacer(minLength: 5)
                     Text(mail.subject)
                         .font(.caption)
+                        .foregroundColor(.gray)
                     Spacer(minLength: 0)
                     Text(mail.content)
                         .font(.caption)
@@ -36,11 +42,13 @@ struct MyGmailTableItemView :View {
                 VStack(alignment: .trailing){
                     Text(mail.time)
                         .foregroundColor(.gray)
+                        .font(.custom( "default", size: 12))
                     Spacer()
                     Image(systemName: mail.isStarred ? "star" : "star.fill")
                         .foregroundColor(mail.isStarred ? Color.gray : Color.yellow)
+                        .font(.custom( "default", size: 14))
                         //.onTapGesture {  mail.isStarred }
-                }.font(.custom( "default", size: 14))
+                }
     
             }
         }
@@ -68,3 +76,11 @@ struct MyGmailTableItemView :View {
     }
 
 }
+
+
+struct MyGmailTableItemView_Previews: PreviewProvider {
+    static var previews: some View {
+        MyGmailTableItemView(mail: MyGailViewModel().mails[0]).frame(height: 50)
+    }
+}
+

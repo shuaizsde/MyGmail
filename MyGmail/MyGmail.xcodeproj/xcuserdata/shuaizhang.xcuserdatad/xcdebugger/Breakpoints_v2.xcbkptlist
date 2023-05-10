@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "8D378639-3EA5-4901-99C1-9A01323B2F8D"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8D73F309-3444-4E7E-9DC2-EB48773DAE9C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MyGmail/MyGmailSideMenuView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
+            landmarkName = "body"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "8D73F309-3444-4E7E-9DC2-EB48773DAE9C - 149c80954802a44d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; SwiftUI.TupleView&lt;(SwiftUI.HStack&lt;SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.frame(width: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, height: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, alignment: SwiftUI.Alignment) -&gt; some&gt;&gt;.0, SwiftUI.Text)&gt;&gt;, SwiftUI.Section&lt;SwiftUI.EmptyView, &lt;&lt;opaque return type of SwiftUI.View.onTapGesture(count: Swift.Int, perform: () -&gt; ()) -&gt; some&gt;&gt;.0, SwiftUI.EmptyView&gt;, &lt;&lt;opaque return type of MyGmail.MyGmailSideMenuView.menuSeperator() -&gt; some&gt;&gt;.0, SwiftUI.Section&lt;SwiftUI.EmptyView, &lt;&lt;opaque return type of SwiftUI.View.onTapGesture(count: Swift.Int, perform: () -&gt; ()) -&gt; some&gt;&gt;.0, SwiftUI.EmptyView&gt;, &lt;&lt;opaque return type of MyGmail.MyGmailSideMenuView.menuSeperator() -&gt; some&gt;&gt;.0, SwiftUI.Section&lt;SwiftUI.EmptyView, &lt;&lt;opaque return type of SwiftUI.View.onTapGesture(count: Swift.Int, perform: () -&gt; ()) -&gt; some&gt;&gt;.0, SwiftUI.EmptyView&gt;)&gt; in closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.scrollIndicators(_: SwiftUI.ScrollIndicatorVisibility, axes: SwiftUI.Axis.Set) -&gt; some&gt;&gt;.0 in closure #1 () -&gt; SwiftUI.TupleView&lt;(SwiftUI.Spacer, &lt;&lt;opaque return type of SwiftUI.View.foregroundColor(Swift.Optional&lt;SwiftUI.Color&gt;) -&gt; some&gt;&gt;.0, SwiftUI.Spacer)&gt; in MyGmail.MyGmailSideMenuView.body.getter : some"
+                  moduleName = "MyGmail"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shuaizhang/MyGmail/MyGmail/MyGmail/MyGmailSideMenuView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "81"
+                  endingLineNumber = "81"
+                  offsetFromSymbolStart = "1188">
+               </Location>
+               <Location
+                  uuid = "8D73F309-3444-4E7E-9DC2-EB48773DAE9C - 3f9d0777e2e6bfe7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #4 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.listRowSeparator(_: SwiftUI.Visibility, edges: SwiftUI.VerticalEdge.Set) -&gt; some&gt;&gt;.0 in closure #1 () -&gt; SwiftUI.TupleView&lt;(SwiftUI.HStack&lt;SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.frame(width: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, height: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, alignment: SwiftUI.Alignment) -&gt; some&gt;&gt;.0, SwiftUI.Text)&gt;&gt;, SwiftUI.Section&lt;SwiftUI.EmptyView, &lt;&lt;opaque return type of SwiftUI.View.listRowSeparator(_: SwiftUI.Visibility, edges: SwiftUI.VerticalEdge.Set) -&gt; some&gt;&gt;.0, SwiftUI.EmptyView&gt;, &lt;&lt;opaque return type of MyGmail.MyGmailSideMenuView.menuSeperator() -&gt; some&gt;&gt;.0, SwiftUI.Section&lt;SwiftUI.EmptyView, &lt;&lt;opaque return type of SwiftUI.View.listRowSeparator(_: SwiftUI.Visibility, edges: SwiftUI.VerticalEdge.Set) -&gt; some&gt;&gt;.0, SwiftUI.EmptyView&gt;, &lt;&lt;opaque return type of MyGmail.MyGmailSideMenuView.menuSeperator() -&gt; some&gt;&gt;.0, SwiftUI.Section&lt;SwiftUI.EmptyView, &lt;&lt;opaque return type of SwiftUI.View.listRowSeparator(_: SwiftUI.Visibility, edges: SwiftUI.VerticalEdge.Set) -&gt; some&gt;&gt;.0, SwiftUI.EmptyView&gt;)&gt; in closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.scrollIndicators(_: SwiftUI.ScrollIndicatorVisibility, axes: SwiftUI.Axis.Set) -&gt; some&gt;&gt;.0 in closure #1 () -&gt; SwiftUI.TupleView&lt;(SwiftUI.Spacer, &lt;&lt;opaque return type of SwiftUI.View.foregroundColor(Swift.Optional&lt;SwiftUI.Color&gt;) -&gt; some&gt;&gt;.0, SwiftUI.Spacer)&gt; in MyGmail.MyGmailSideMenuView.body.getter : some"
+                  moduleName = "MyGmail"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shuaizhang/MyGmail/MyGmail/MyGmail/MyGmailSideMenuView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "80"
+                  endingLineNumber = "80"
+                  offsetFromSymbolStart = "580">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

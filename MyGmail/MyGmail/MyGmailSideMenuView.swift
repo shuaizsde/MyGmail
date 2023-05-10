@@ -82,6 +82,7 @@ struct MyGmailSideMenuView: View {
                 }.scrollIndicators(.hidden)
                 
             }.listStyle(.inset)
+             .foregroundColor(Color("menuTextGray"))
             Spacer()
             
         }.ignoresSafeArea(.all)

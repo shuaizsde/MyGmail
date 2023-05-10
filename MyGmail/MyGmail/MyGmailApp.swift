@@ -14,7 +14,7 @@ struct MyGmailApp: App {
     var body: some Scene {
         WindowGroup {
             Group{
-                MyGmailTableView(incomingMails: MyGailViewModel())
+                MyGmailHomeView()
             }.environmentObject(slideInMenuService)
              .slideInView(
                 isActive: $slideInMenuService.isPresented, 

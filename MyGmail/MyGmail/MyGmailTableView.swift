@@ -72,9 +72,9 @@ struct MyGmailTableView: View {
     @ViewBuilder func createToolBarButtons()  -> some View {
         HStack{
             ZStack {
-                Image(systemName: envelopeButtonImageName)
+                Image(systemName: envelopeButtonImageName).foregroundColor(Color("gmailGray"))
                 Circle()
-                    .fill(.red)
+                    .fill(Color("gmailRed"))
                     .frame(width: unreadBubbleSize, height: unreadBubbleSize)
                     .overlay(
                         Text("5") // TODO: unread placeholder 
@@ -86,7 +86,7 @@ struct MyGmailTableView: View {
             }
             
             Spacer()
-            Image(systemName: videoButtonImageName)
+            Image(systemName: videoButtonImageName).foregroundColor(Color("gmailGray"))
             
         }.padding(80)
     }
