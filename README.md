@@ -2,6 +2,16 @@
 
 This is Simon Zhang's Gmail Inbox prototype
 
+
+-Final Video demo (05/10/23)
+
+https://github.com/zhang86036055/MyGmail/assets/77553874/f2d93391-cd7e-44a0-a783-9604004961be
+
+
+
+
+
+
 Milestone 1(03/08/2023)
 - Implemented Inbox tableView
 - Created InboxMails(Model), MailViewMidel, MailInboxTableView(View) and build connections as fundamental MVVM structure
@@ -22,9 +32,3 @@ Milestone 2
 - Slide to Archive
 
 ![Screenshot 2023-05-10 at 10 36 11 AM](https://github.com/zhang86036055/MyGmail/assets/77553874/d79701b4-0ac9-46bd-bd8a-b28ef0aa42bb)
-
-
--Final Video demo (05/10/23)
-
-https://github.com/zhang86036055/MyGmail/assets/77553874/f2d93391-cd7e-44a0-a783-9604004961be
-
