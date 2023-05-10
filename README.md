@@ -7,8 +7,7 @@ Milestone 1(03/08/2023)
 - Created InboxMails(Model), MailViewMidel, MailInboxTableView(View) and build connections as fundamental MVVM structure
 - Created fake inbox mails for preview
 - Starring mail
-https://github.com/zhang86036055/MyGmail/assets/77553874/97d7ca58-79f2-471d-a180-4488e153b69c
-
+https://github.com/zhang86036055/MyGmail/assets/77553874/315f5fa8-82be-4cdf-b49e-79bc944a2106
 
 Milestone 2
 - Search Bar
