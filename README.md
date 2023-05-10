@@ -5,8 +5,9 @@ This is Simon Zhang's Gmail Inbox prototype
 
 -Final Video demo (05/10/23)
 
-https://github.com/zhang86036055/MyGmail/assets/77553874/f2d93391-cd7e-44a0-a783-9604004961be
 
+
+https://github.com/zhang86036055/MyGmail/assets/77553874/6b2edd8a-f927-4ac7-94aa-8615efc17d8b
 
 
 
