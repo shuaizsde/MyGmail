@@ -49,6 +49,7 @@ struct MyGmailSideMenuView: View {
     private let gmailIconWidth: CGFloat = 25.0
     private static let iconFontSize: CGFloat = 14.0
     
+    
     // MARK: Body
     var body: some View {
         VStack {
@@ -59,30 +60,35 @@ struct MyGmailSideMenuView: View {
                         Image(MyGmailSideMenuView.gmailIcon).resizable().scaledToFit().frame(width: gmailIconWidth, height: gmailIconWidth)
                         Text(MyGmailSideMenuView.gmailText).font(.custom(MyGmailSideMenuView.defaultFontType, size: gmailIconWidth)).foregroundColor(.gray)
                     }
-                    
-                    Section {
-                        ForEach(MyGmailSideMenuView.section1) { iconCell(for: $0)}
-                            .listRowSeparator(.hidden)
+                    Section() {
+                        ForEach(MyGmailSideMenuView.section1, id: \.id) { 
+                            MyGmailSideMenuCell(item: $0)
+                        } 
+                        .listRowSeparator(.hidden)                    
                     }
                     
                     menuSeperator()
                     
-                    Section {
-                        ForEach(MyGmailSideMenuView.section2) { iconCell(for: $0)}
-                            .listRowSeparator(.hidden)
+                    Section() {
+                        ForEach(MyGmailSideMenuView.section2, id: \.id) { 
+                            MyGmailSideMenuCell(item: $0)
+                        } 
+                        .listRowSeparator(.hidden)                    
                     }
                     
                     menuSeperator()
                     
-                    Section {
-                        ForEach(MyGmailSideMenuView.section3) { iconCell(for: $0)}
-                            .listRowSeparator(.hidden)
+                    Section() {
+                        ForEach(MyGmailSideMenuView.section3, id: \.id) { 
+                            MyGmailSideMenuCell(item: $0)
+                            
+                        } 
+                        .listRowSeparator(.hidden)                    
                     }
-
-                }.scrollIndicators(.hidden)
-                
-            }.listStyle(.inset)
-             .foregroundColor(Color("menuTextGray"))
+                }
+                .listStyle(.inset)
+                .scrollIndicators(.hidden)                
+            }
             Spacer()
             
         }.ignoresSafeArea(.all)
@@ -90,13 +96,16 @@ struct MyGmailSideMenuView: View {
     
     @ViewBuilder private func menuSeperator() -> some View {
         Rectangle()
-            .frame(height: 0.2)
-            .foregroundColor(.gray)
+            .frame(height: 1)
+            .foregroundColor(.gray).opacity(0.2)
             .offset(CGSize(width: 50, height: 10))
             .listRowSeparator(.hidden)
     }
-    
-    @ViewBuilder func iconCell(for item: IconItem) -> some View {
+}
+
+struct MyGmailSideMenuCell: View {
+   @State var item: IconItem
+    var body: some View {
         HStack {
             Image(systemName: item.profilePicture)
             Spacer().frame(width: 35)
@@ -106,10 +115,22 @@ struct MyGmailSideMenuView: View {
             if let count = item.count {
                 Text("\(count)")
             }
-        }.font(
-            .custom(MyGmailSideMenuView.defaultFontType, size: MyGmailSideMenuView.iconFontSize)
+        }
+        .foregroundColor(item.isTapped ? Color("gmailRed") : Color("menuTextGray"))
+        .background(
+            RoundedRectangle(cornerRadius: 20)
+                .fill(item.isTapped ? Color("gmailRed") : Color.white)
+                .opacity(0.1)
+                .frame(width: 300, height: 44)
+                .offset(CGSize(width: -20, height: 0))
         )
-    }   
+            .font(
+            .custom("default", size: 14)
+        ).onTapGesture {
+            item.isTapped.toggle()
+            // TODO: Switch table view by tapping
+        }    
+    }
 }
 
 struct IconItem: Identifiable {
@@ -117,10 +138,16 @@ struct IconItem: Identifiable {
     let profilePicture: String
     let title: String
     var count: Int?
+    
+    var isTapped:Bool = false
 } 
 
 struct MyGmailSideMenuView_Previews: PreviewProvider {
+    
     static var previews: some View {
-        MyGmailSideMenuView()
+        HStack{
+            MyGmailSideMenuView().frame(width: UIScreen.main.bounds.size.width * 0.7)
+            Spacer()
+        }
     }
 }

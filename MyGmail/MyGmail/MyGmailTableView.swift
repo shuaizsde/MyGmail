@@ -98,7 +98,9 @@ struct MyGmailTableView: View {
             NavigationLink(destination: MyGmailBodyView(mail: cell)) { EmptyView() }
                 .opacity(0.0)
             HStack {
-                MyGmailTableItemView(mail: cell)
+                MyGmailTableItemView(mail: cell){
+                    incomingMails.star(cell)
+                }
             }.frame(height: 50)
         }
 

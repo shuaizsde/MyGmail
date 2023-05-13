@@ -10,10 +10,11 @@ import SwiftUI
 
 struct MyGmailTableItemView :View {
     
-    public let mail: InboxMails.Mail
+    public var mail: InboxMails.Mail
     private let profilePictureFrameWidth: CGFloat = 50.0
     private let profilePictureThumbnailPlaceHolder = "person.fill"
     private let senderFontWidth: CGFloat = 14.0
+    var tapOnStar: () -> ()
 
     
     var body: some View {
@@ -45,9 +46,9 @@ struct MyGmailTableItemView :View {
                         .font(.custom( "default", size: 12))
                     Spacer()
                     Image(systemName: mail.isStarred ? "star" : "star.fill")
-                        .foregroundColor(mail.isStarred ? Color.gray : Color.yellow)
+                        .foregroundColor(mail.isStarred ? Color.gray : Color.blue)
                         .font(.custom( "default", size: 14))
-                        //.onTapGesture {  mail.isStarred }
+                        .onTapGesture {tapOnStar()}
                 }
     
             }
@@ -80,7 +81,7 @@ struct MyGmailTableItemView :View {
 
 struct MyGmailTableItemView_Previews: PreviewProvider {
     static var previews: some View {
-        MyGmailTableItemView(mail: MyGailViewModel().mails[0]).frame(height: 50)
+        MyGmailTableItemView(mail: MyGailViewModel().mails[0], tapOnStar: {}).frame(height: 50)
     }
 }
 
