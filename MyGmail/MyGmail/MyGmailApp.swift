@@ -21,7 +21,7 @@ struct MyGmailApp: App {
                 edge:.leading, 
                 paddingPercentage: 0.3, 
                 options: SlideInViewOptions(paddingColor: .gray, paddingColorOpacity: 0.8)) {
-                    MyGmailSideMenuView()
+                    MyGmailSideMenuView(cells: SideMenuItemViewModel())
                 }
         }
     }

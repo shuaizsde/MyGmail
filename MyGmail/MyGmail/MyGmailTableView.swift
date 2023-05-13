@@ -51,19 +51,20 @@ struct MyGmailTableView: View {
             }
             .listStyle(.inset)
             .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button {
-                        didTapMenuButton()
-                    } label: {
-                        Image(systemName: menuButtonImage)
-                            .foregroundColor(.gray)
-                            .font(.custom( "default", size: unreadBubbleFontSize))
-                    }
-                }
                 ToolbarItemGroup(placement: .bottomBar) {
                     createToolBarButtons()
                 }
             }
+            .gesture(DragGesture(minimumDistance: 20, coordinateSpace: .global)
+                .onEnded { value in
+                    let horizontalAmount = value.translation.width as CGFloat
+                    let verticalAmount = value.translation.height as CGFloat
+                    
+                    if abs(horizontalAmount) > abs(verticalAmount) && horizontalAmount > 0 {
+                        slideInMenuService.isPresented.toggle()
+                    }
+                }
+            )
             .searchable(text: $searchString, prompt: searchbarPrompt)
         }
     }
@@ -105,10 +106,10 @@ struct MyGmailTableView: View {
         }
 
     }
-    
-    private func didTapMenuButton() {
-        slideInMenuService.isPresented.toggle()
-    }
+        
+//    private func didTapMenuButton() {
+//        slideInMenuService.isPresented.toggle()
+//    }
     
 }
 

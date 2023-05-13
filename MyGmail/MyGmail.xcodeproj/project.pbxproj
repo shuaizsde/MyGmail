@@ -19,6 +19,8 @@
 		1C2AC3602A0A788F004C0777 /* SlideInMenuService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2AC35F2A0A788F004C0777 /* SlideInMenuService.swift */; };
 		1C2AC3632A0AB1BA004C0777 /* MyGmailTableItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2AC3622A0AB1BA004C0777 /* MyGmailTableItemView.swift */; };
 		1C2AC3652A0C1C5D004C0777 /* MyGmailHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2AC3642A0C1C5D004C0777 /* MyGmailHomeView.swift */; };
+		1C2AC3672A10270A004C0777 /* SideMenuItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2AC3662A10270A004C0777 /* SideMenuItemViewModel.swift */; };
+		1C2AC3692A102AFD004C0777 /* SideMenuItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2AC3682A102AFD004C0777 /* SideMenuItems.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +37,8 @@
 		1C2AC35F2A0A788F004C0777 /* SlideInMenuService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideInMenuService.swift; sourceTree = "<group>"; };
 		1C2AC3622A0AB1BA004C0777 /* MyGmailTableItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGmailTableItemView.swift; sourceTree = "<group>"; };
 		1C2AC3642A0C1C5D004C0777 /* MyGmailHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGmailHomeView.swift; sourceTree = "<group>"; };
+		1C2AC3662A10270A004C0777 /* SideMenuItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuItemViewModel.swift; sourceTree = "<group>"; };
+		1C2AC3682A102AFD004C0777 /* SideMenuItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuItems.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +73,8 @@
 			children = (
 				1C2AC3612A0AB117004C0777 /* Helpers */,
 				1C2AC35D2A0A7846004C0777 /* MyGmailSideMenuView.swift */,
+				1C2AC3662A10270A004C0777 /* SideMenuItemViewModel.swift */,
+				1C2AC3682A102AFD004C0777 /* SideMenuItems.swift */,
 				1C2AC3642A0C1C5D004C0777 /* MyGmailHomeView.swift */,
 				1C2AC3532A09E70E004C0777 /* InboxMails.swift */,
 				1C2AC3572A09F807004C0777 /* MyGailViewModel.swift */,
@@ -175,7 +181,9 @@
 				1C2AC3482A09E6AE004C0777 /* MyGmailTableView.swift in Sources */,
 				1C2AC3462A09E6AE004C0777 /* MyGmailApp.swift in Sources */,
 				1C2AC3582A09F807004C0777 /* MyGailViewModel.swift in Sources */,
+				1C2AC3692A102AFD004C0777 /* SideMenuItems.swift in Sources */,
 				1C2AC3632A0AB1BA004C0777 /* MyGmailTableItemView.swift in Sources */,
+				1C2AC3672A10270A004C0777 /* SideMenuItemViewModel.swift in Sources */,
 				1C2AC3602A0A788F004C0777 /* SlideInMenuService.swift in Sources */,
 				1C2AC3652A0C1C5D004C0777 /* MyGmailHomeView.swift in Sources */,
 				1C2AC3562A09EFEC004C0777 /* MyGmailBodyView.swift in Sources */,
