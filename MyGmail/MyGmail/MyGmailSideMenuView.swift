@@ -9,9 +9,12 @@ import SwiftUI
 
 struct MyGmailSideMenuView: View {
     
+   // @Environment(\.dismiss) var dismiss
+    
     //MARK: Static fake iconItems and names
     @ObservedObject public var cells: SideMenuItemViewModel
-    @EnvironmentObject private var slideInMenuService: SlideInMenuService
+    @State public var slideInMenuService: SlideInMenuService
+    
     // MARK: private static values for pictures and strings
     private static let gmailIcon = "gmail"
     private static let gmailText = "Gmail"
@@ -33,7 +36,7 @@ struct MyGmailSideMenuView: View {
                    
                     Section() {
                         ForEach(cells.cells.filter({$0.id < 4}), id: \.id) { 
-                            MyGmailSideMenuCell(item: $0) {
+                            MyGmailSideMenuCell(slideInMenuService: $slideInMenuService, item: $0 ) {
                                 tapOnCell($0)
                               
                             }
@@ -44,7 +47,7 @@ struct MyGmailSideMenuView: View {
                     
                     Section() {
                         ForEach(cells.cells.filter({$0.id >= 4 && $0.id < 12}), id: \.id) { 
-                            MyGmailSideMenuCell(item: $0) {
+                            MyGmailSideMenuCell(slideInMenuService: $slideInMenuService, item: $0) {
                                 tapOnCell($0)
                             }
                         }
@@ -53,7 +56,7 @@ struct MyGmailSideMenuView: View {
                     menuSeperator()
                     Section() {
                         ForEach(cells.cells.filter({$0.id > 12}), id: \.id) { 
-                            MyGmailSideMenuCell(item: $0) {
+                            MyGmailSideMenuCell(slideInMenuService: $slideInMenuService, item: $0) {
                                 tapOnCell($0)
                             }
                         } 
@@ -83,10 +86,9 @@ struct MyGmailSideMenuView: View {
     
     struct MyGmailSideMenuCell: View {
         
-        @EnvironmentObject private var slideInMenuService: SlideInMenuService
-         var item: CellItem
-         // var cells: [CellItem]
-        var iconOnTap: (CellItem)->()
+        @Binding var slideInMenuService: SlideInMenuService
+        var item: CellItem
+        var iconOnTap: (CellItem)-> Void
         
         var body: some View {
             HStack {
@@ -100,6 +102,8 @@ struct MyGmailSideMenuView: View {
                 }
             }.onTapGesture {
                 iconOnTap(item)
+                // completion is below:
+               // slideInMenuService.isPresented.toggle()
             }
             .foregroundColor(item.isSelected ? Color("gmailRed") : Color("menuTextGray"))
             .background(
