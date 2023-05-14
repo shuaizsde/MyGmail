@@ -114,5 +114,75 @@ class MyGailViewModel: ObservableObject {
                      To have this test, you swallow a string with a weighted gelatin capsule on the end. The string is pulled out 4 hours later. Any bile, blood, or mucus attached to the string is examined under the microscope. This is done to look for cells and parasites or parasite eggs.
                      """
         ),
+        
+        Mail(
+            profilePicture: nil, 
+            sender: "Tom Kitty", 
+            time: "11:24 AM", 
+            subject: "First Email from Simon",
+            content: """
+                     Hi there, I’m emailing you today to let you know we have created a new project called myGmail. In this article, you’ll learn how to do it by yourself with SwiftUI
+                     If you know anybody else who’ll find this useful, please forward the email to them.Let us know if you face any problems accessing the project 
+                     by replying to this email. We’ll get back to you ASAP and ensure you gain access to it immediately.
+                     Thank you
+                     """
+        ),
+        Mail(
+            profilePicture: "person2", 
+            sender: "Sam Johns",  
+            time: "10:15 AM", 
+            subject: "Re: Google Team Match Update",
+            content: """
+                     Thanks, Simon. I have your call scheduled for Wednesday. Doc is updated with the details. Please be sure to take some time to review the Team Match Call Prep Resource
+                     and specifically practice/prep for the points listed below. Please let me know if you have any questions and let me know how the call goes once completed. 
+                     """
+        ),
+        Mail(
+            profilePicture: nil, 
+            sender: "Nick Diemons", 
+            time: "06:11 AM", 
+            subject: "Good luck on your interview",
+            content: """
+                     Good luck baby, you are my best bae!!! Love you (heart)
+                     """
+        ),
+        Mail(
+            profilePicture: nil, 
+            sender: "Annie Lee", 
+            time: "02:48 AM", 
+            subject: "from unknown sender",
+            content: """
+                     put me into spam,put me into spam,put me into spam,put me into spam,put me into spam,put me into spam,put me into spam,put me into spam,put me into spam,put me into spam,
+                     """
+        ),
+        Mail(
+            profilePicture: "person7", 
+            sender: "Cara Sue", 
+            time: "May 04", 
+            subject: "Google Team Match Update",
+            content: """
+                     Hi Simon Zhang,Thanks for your interest in a role at Google! We received your application and will be in touch soon about next steps.
+                     Thanks,
+                     Google Recruiting
+                     """
+        ),
+        Mail(
+            profilePicture: "person10", 
+            sender: "Tim Cook", 
+            time: "May 02", 
+            subject: "Test Test",
+            content: """
+                     To have this test, you swallow a string with a weighted gelatin capsule on the end. The string is pulled out 4 hours later. Any bile, blood, or mucus attached to the string is examined under the microscope. This is done to look for cells and parasites or parasite eggs.
+                     """
+        ),
+        Mail(
+            profilePicture: nil, 
+            sender: "SPAM2", 
+            time: "April 28", 
+            subject: "Test Test",
+            content: """
+                     To have this test, you swallow a string with a weighted gelatin capsule on the end. The string is pulled out 4 hours later. Any bile, blood, or mucus attached to the string is examined under the microscope. This is done to look for cells and parasites or parasite eggs.
+                     """
+        )
     ]
 }

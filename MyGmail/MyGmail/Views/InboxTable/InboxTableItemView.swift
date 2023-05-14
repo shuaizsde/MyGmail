@@ -20,7 +20,7 @@ struct InboxTableItemView :View {
     
     var body: some View {
         HStack {
-            profilePictureThumbnail(with: mail.profilePicture)
+            profilePictureThumbnail(with: mail)
             Spacer()
             
             HStack {
@@ -64,8 +64,8 @@ struct InboxTableItemView :View {
         }
     }
     
-    @ViewBuilder func profilePictureThumbnail(with profilePictureName: String?)  -> some View {
-        if let profilePictureName {
+    @ViewBuilder func profilePictureThumbnail(with mail: InboxMails.Mail?)  -> some View {
+        if let profilePictureName = mail?.profilePicture  {
             Image(profilePictureName)
                 .resizable()
                 .scaledToFill()
@@ -74,13 +74,12 @@ struct InboxTableItemView :View {
                 .cornerRadius(profilePictureFrameWidth)
                 .frame(width: 55)
         } else {
+            let placeHolder = String(mail?.sender.first ?? Character(""))
             Circle()
-                .fill(Color.gray)
+                .fill(Color.random())
                 .frame(width: profilePictureFrameWidth, height: profilePictureFrameWidth)
                 .overlay() {
-                    Image(systemName: profilePictureThumbnailPlaceHolder)
-                        .font(.largeTitle)
-                        .foregroundColor(.white)
+                    Text("\(placeHolder)").font(.custom( "default", size: 30)).foregroundColor(.white)
                 }.frame(width: 60)
         }
     }
@@ -90,10 +89,15 @@ struct InboxTableItemView :View {
 struct InboxTableItemView_Previews: PreviewProvider {
     static var previews: some View {
         InboxTableItemView(
-            mail: MyGailViewModel().mails[0], 
+            mail: MyGailViewModel().mails[15], 
             starOnTapped: {}
         )
         .frame(height: 50)
     }
 }
 
+extension Color {
+    static func random() -> Color {
+        return Color(red: Double.random(in: 0...1), green: Double.random(in: 0.2...1), blue: Double.random(in: 0.3...1))
+    }
+}
