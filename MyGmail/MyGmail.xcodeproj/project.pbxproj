@@ -21,6 +21,7 @@
 		1C2AC3652A0C1C5D004C0777 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2AC3642A0C1C5D004C0777 /* HomeView.swift */; };
 		1C2AC3672A10270A004C0777 /* SideMenuItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2AC3662A10270A004C0777 /* SideMenuItemViewModel.swift */; };
 		1C2AC3692A102AFD004C0777 /* SideMenuItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2AC3682A102AFD004C0777 /* SideMenuItems.swift */; };
+		1C2AC36F2A106401004C0777 /* ComposeMailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2AC36E2A106401004C0777 /* ComposeMailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		1C2AC3642A0C1C5D004C0777 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		1C2AC3662A10270A004C0777 /* SideMenuItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuItemViewModel.swift; sourceTree = "<group>"; };
 		1C2AC3682A102AFD004C0777 /* SideMenuItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuItems.swift; sourceTree = "<group>"; };
+		1C2AC36E2A106401004C0777 /* ComposeMailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposeMailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,7 +74,6 @@
 			isa = PBXGroup;
 			children = (
 				1C2AC3452A09E6AE004C0777 /* MyGmailApp.swift */,
-				1C2AC35F2A0A788F004C0777 /* SlideInMenuService.swift */,
 				1C2AC3612A0AB117004C0777 /* Helpers */,
 				1C2AC36C2A105533004C0777 /* Models */,
 				1C2AC36B2A1054C3004C0777 /* ViewModels */,
@@ -94,6 +95,7 @@
 		1C2AC3612A0AB117004C0777 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				1C2AC35F2A0A788F004C0777 /* SlideInMenuService.swift */,
 				1C2AC3592A0A71E1004C0777 /* SlideInView.swift */,
 			);
 			path = Helpers;
@@ -106,6 +108,7 @@
 				1C2AC3642A0C1C5D004C0777 /* HomeView.swift */,
 				1C2AC35D2A0A7846004C0777 /* SideBarMenuView.swift */,
 				1C2AC3552A09EFEC004C0777 /* EmailBodyView.swift */,
+				1C2AC36E2A106401004C0777 /* ComposeMailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -210,6 +213,7 @@
 				1C2AC3542A09E70E004C0777 /* InboxMails.swift in Sources */,
 				1C2AC35E2A0A7847004C0777 /* SideBarMenuView.swift in Sources */,
 				1C2AC35A2A0A71E1004C0777 /* SlideInView.swift in Sources */,
+				1C2AC36F2A106401004C0777 /* ComposeMailView.swift in Sources */,
 				1C2AC3482A09E6AE004C0777 /* InboxTableView.swift in Sources */,
 				1C2AC3462A09E6AE004C0777 /* MyGmailApp.swift in Sources */,
 				1C2AC3582A09F807004C0777 /* MyGailViewModel.swift in Sources */,

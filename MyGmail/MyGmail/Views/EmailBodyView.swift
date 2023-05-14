@@ -11,15 +11,13 @@ struct EmailBodyView: View {
     let mail: InboxMails.Mail
     
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .center) {
             VStack(alignment: .leading) {
                 Text(mail.subject).font(.title)
                 Text("From: \(mail.sender)")
                     .font(.body)
-                    .frame(width: .infinity, height: 20)
             }
             Spacer().frame(height: 50)
-                
             Text(mail.content).font(.body)
             Spacer()
         }

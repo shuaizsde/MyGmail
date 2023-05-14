@@ -10,11 +10,9 @@ import SwiftUI
 struct SideMenuItems {
     private(set) var cells: Array<CellItem>
     
-    // indexOfTheOneAndOnlyFaceUpCard
      var chosenCellIndex: Int? {
-        // cards.indices == 0..<cards.count
         get { cells.indices.filter({cells[$0].isSelected}).oneAndOnly }
-        set { cells.indices.forEach{cells[$0].isSelected = ($0 == newValue)} } // set the faceUpCardIndex to a new value and do flip the card by changing card's isFaceUp
+        set { cells.indices.forEach{cells[$0].isSelected = ($0 == newValue)} }
     }
     
     mutating func select(_ cell: CellItem) {
@@ -34,12 +32,14 @@ struct SideMenuItems {
     
     init() {
         cells = [CellItem]()
-            // Section 1
+        
+        // Section 1
         cells.append(CellItem(id: 0, profilePicture:"tray",title: "All Inboxes", unreads: 5))
         cells.append(CellItem(id: 1, profilePicture:"timelapse",title: "Primary"))
         cells.append(CellItem(id: 2, profilePicture:"person.2",title:"Social", unreads: 3))
         cells.append(CellItem(id: 3, profilePicture:"tag",title:"Promotions",unreads: 1))
-            // Section 2
+        
+        // Section 2
         cells.append(CellItem(id: 4, profilePicture:"star",title:"Starred"))
         cells.append(CellItem(id: 5, profilePicture:"timer",title:"Snoozed", unreads: 24))
         cells.append(CellItem(id: 6, profilePicture:"flag",title:"Important"))
@@ -49,17 +49,16 @@ struct SideMenuItems {
         cells.append(CellItem(id: 10, profilePicture:"mail.stack",title:"All mail", unreads: 528))
         cells.append(CellItem(id: 11, profilePicture:"xmark.bin",title:"Spam", unreads: 20)) 
         cells.append(CellItem(id: 12, profilePicture:"trash",title:"Trash"))
-            // Section 3
+        
+        // Section 3
         cells.append(CellItem(id: 13,profilePicture:"plus",title:"Create new"))
         cells.append(CellItem(id: 14,profilePicture:"gear",title:"Settings"))
         cells.append(CellItem(id: 15,profilePicture:"character.bubble",title:"Send feedback"))
         cells.append(CellItem(id: 16,profilePicture:"questionmark.circle",title:"Help"))
     }
-    
 }
 
 struct CellItem: Identifiable {
-    
     let id: Int
     
     let profilePicture: String
@@ -68,7 +67,6 @@ struct CellItem: Identifiable {
     
     var isSelected: Bool = false
 } 
-
 
 extension Array {
     var oneAndOnly: Element? {

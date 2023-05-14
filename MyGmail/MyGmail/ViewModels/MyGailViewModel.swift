@@ -11,6 +11,21 @@ class MyGailViewModel: ObservableObject {
     
     typealias Mail = InboxMails.Mail
     
+    @Published private var model = createInboxMails()
+    
+    var mails: Array<Mail> {
+        return model.mails
+    }
+    
+    private static func createInboxMails() -> InboxMails {
+        return InboxMails(preview)
+    }
+    
+    func star(_ mail: Mail) {
+        model.star(mail)
+    }
+    
+    // MARK: Faked data
     private static let preview: [InboxMails.Mail] = [
         Mail(
             profilePicture: "person1", 
@@ -100,18 +115,4 @@ class MyGailViewModel: ObservableObject {
                      """
         ),
     ]
-    
-    private static func createInboxMails() -> InboxMails {
-        return InboxMails(preview)
-    }
-    
-    @Published private var model = createInboxMails()
-    
-    var mails: Array<Mail> {
-        return model.mails
-    }
-    
-    func star(_ mail: Mail) {
-        model.star(mail)
-    }
 }

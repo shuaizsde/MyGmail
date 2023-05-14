@@ -18,6 +18,5 @@ class SideMenuItemViewModel: ObservableObject {
     func select(_ cell:  CellItem) {
         model.select(cell)
         print("ViewModel: \(cell.title) is selected")
-        print(model.chosenCellIndex ?? -1)
     }
 }
