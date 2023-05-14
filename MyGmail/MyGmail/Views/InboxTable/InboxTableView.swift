@@ -102,7 +102,7 @@ struct InboxTableView: View {
     @ViewBuilder func createInboxMailCell(for cell: InboxMailsViewModel.Mail)  -> some View {
         ZStack {
             // Hide chevron visibility
-            NavigationLink(destination: EmailBodyView(mail: cell)) { EmptyView() }
+            CustomNavigationLink(destination: EmailBodyView(mail: cell)) { EmptyView() }
                 .opacity(0.0)
             HStack {
                 InboxTableItemView(mail: cell, starOnTapped: { model.star(cell) }) {

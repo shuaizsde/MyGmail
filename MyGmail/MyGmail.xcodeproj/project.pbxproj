@@ -22,6 +22,10 @@
 		1C2AC3672A10270A004C0777 /* SideMenuItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2AC3662A10270A004C0777 /* SideMenuItemViewModel.swift */; };
 		1C2AC3692A102AFD004C0777 /* SideMenuItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2AC3682A102AFD004C0777 /* SideMenuItems.swift */; };
 		1C2AC36F2A106401004C0777 /* ComposeMailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2AC36E2A106401004C0777 /* ComposeMailView.swift */; };
+		1C2AC3712A10A866004C0777 /* CustomNavigationLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2AC3702A10A866004C0777 /* CustomNavigationLink.swift */; };
+		1C2AC3732A10A937004C0777 /* CustomNavBarContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2AC3722A10A937004C0777 /* CustomNavBarContainerView.swift */; };
+		1C2AC3752A10A9EE004C0777 /* CustomNavBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2AC3742A10A9EE004C0777 /* CustomNavBarView.swift */; };
+		1C2AC3772A10ACE8004C0777 /* CustomNavView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2AC3762A10ACE8004C0777 /* CustomNavView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +45,10 @@
 		1C2AC3662A10270A004C0777 /* SideMenuItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuItemViewModel.swift; sourceTree = "<group>"; };
 		1C2AC3682A102AFD004C0777 /* SideMenuItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuItems.swift; sourceTree = "<group>"; };
 		1C2AC36E2A106401004C0777 /* ComposeMailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposeMailView.swift; sourceTree = "<group>"; };
+		1C2AC3702A10A866004C0777 /* CustomNavigationLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationLink.swift; sourceTree = "<group>"; };
+		1C2AC3722A10A937004C0777 /* CustomNavBarContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavBarContainerView.swift; sourceTree = "<group>"; };
+		1C2AC3742A10A9EE004C0777 /* CustomNavBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavBarView.swift; sourceTree = "<group>"; };
+		1C2AC3762A10ACE8004C0777 /* CustomNavView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +81,7 @@
 		1C2AC3442A09E6AE004C0777 /* MyGmail */ = {
 			isa = PBXGroup;
 			children = (
+				1C2AC3782A10AF4D004C0777 /* NavigationBar */,
 				1C2AC3452A09E6AE004C0777 /* MyGmailApp.swift */,
 				1C2AC3612A0AB117004C0777 /* Helpers */,
 				1C2AC36C2A105533004C0777 /* Models */,
@@ -138,6 +147,17 @@
 				1C2AC3472A09E6AE004C0777 /* InboxTableView.swift */,
 			);
 			path = InboxTable;
+			sourceTree = "<group>";
+		};
+		1C2AC3782A10AF4D004C0777 /* NavigationBar */ = {
+			isa = PBXGroup;
+			children = (
+				1C2AC3762A10ACE8004C0777 /* CustomNavView.swift */,
+				1C2AC3722A10A937004C0777 /* CustomNavBarContainerView.swift */,
+				1C2AC3742A10A9EE004C0777 /* CustomNavBarView.swift */,
+				1C2AC3702A10A866004C0777 /* CustomNavigationLink.swift */,
+			);
+			path = NavigationBar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -211,15 +231,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				1C2AC3542A09E70E004C0777 /* InboxMails.swift in Sources */,
+				1C2AC3752A10A9EE004C0777 /* CustomNavBarView.swift in Sources */,
 				1C2AC35E2A0A7847004C0777 /* SideBarMenuView.swift in Sources */,
 				1C2AC35A2A0A71E1004C0777 /* SlideInView.swift in Sources */,
 				1C2AC36F2A106401004C0777 /* ComposeMailView.swift in Sources */,
 				1C2AC3482A09E6AE004C0777 /* InboxTableView.swift in Sources */,
+				1C2AC3772A10ACE8004C0777 /* CustomNavView.swift in Sources */,
 				1C2AC3462A09E6AE004C0777 /* MyGmailApp.swift in Sources */,
 				1C2AC3582A09F807004C0777 /* InboxMailsViewModel.swift in Sources */,
 				1C2AC3692A102AFD004C0777 /* SideMenuItems.swift in Sources */,
 				1C2AC3632A0AB1BA004C0777 /* InboxTableItemView.swift in Sources */,
 				1C2AC3672A10270A004C0777 /* SideMenuItemViewModel.swift in Sources */,
+				1C2AC3712A10A866004C0777 /* CustomNavigationLink.swift in Sources */,
+				1C2AC3732A10A937004C0777 /* CustomNavBarContainerView.swift in Sources */,
 				1C2AC3602A0A788F004C0777 /* SlideInMenuService.swift in Sources */,
 				1C2AC3652A0C1C5D004C0777 /* HomeView.swift in Sources */,
 				1C2AC3562A09EFEC004C0777 /* EmailBodyView.swift in Sources */,
