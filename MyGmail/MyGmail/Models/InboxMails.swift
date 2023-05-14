@@ -7,6 +7,14 @@
 
 import Foundation
 
+enum MailCatagory {
+    case none
+    case social
+    case promotion
+    case primary
+    case spam
+    
+}
 struct InboxMails {
     
     private(set) var mails: Array<Mail>
@@ -24,6 +32,12 @@ struct InboxMails {
         let content: String
         
         var isStarred = false
+        
+        // For extra upcoming fancy crazy features
+        var isUnread = false
+        var attachments: [(String,String)]? // <Type: Name>
+        var catagory: MailCatagory = .none
+        
     } 
     
     mutating func star(_ mail: Mail) {
