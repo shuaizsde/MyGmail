@@ -93,7 +93,17 @@ struct SideBarItemCellView: View {
             Spacer().frame(width: 35)
             Text(cell.title)
             Spacer()
-            if let count = cell.unreads { Text("\(count)") }
+            if let count = cell.unreads {
+                RoundedRectangle(cornerRadius: 10)
+                    .foregroundColor(count >= 10 ? Color.gray.opacity(0.5) : Color("gmailGreen"))
+                    .frame(width: 48, height: 18)
+                    .overlay(  
+                      
+                        Text(count >= 10 ? "\(count)" : "\(count) New") 
+                            .font(12)
+                            .foregroundColor(.white)
+                    )
+            }
             
         }
         .onTapGesture {
@@ -109,5 +119,11 @@ struct SideBarItemCellView: View {
                 .frame(width: 300, height: 44)
                 .offset(CGSize(width: -20, height: 0)))
         .font(.custom("default", size: 14))  
+    }
+}
+
+struct SideBarMenuView_Previews: PreviewProvider {
+    static var previews: some View {
+        SideBarMenuView(model: SideMenuItemViewModel(), slideInMenuService: SlideInMenuService())
     }
 }
