@@ -25,7 +25,7 @@ struct CustomNavBarView: View {
                 backButton.opacity(0)
             }
         }
-        .padding(5)
+        .padding()
         .accentColor(.white)
         .foregroundColor(Color("gmailGray"))
         .font(.headline)
