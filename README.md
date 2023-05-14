@@ -5,10 +5,9 @@ This is Simon Zhang's Gmail Inbox prototype
 
 -MileStone 3 Demo (03/14/2023, current Final Version)
 
+https://github.com/zhang86036055/MyGmail/assets/77553874/7b915afc-db7b-4de7-9e8c-d8e0829e1c5c
 
 
-
-https://github.com/zhang86036055/MyGmail/assets/77553874/dbeba756-2c38-4840-bb0e-3c211c936ad9
 
 
 
