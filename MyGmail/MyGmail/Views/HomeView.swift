@@ -1,5 +1,5 @@
 //
-//  MyGmailHomeView.swift
+//  HomeView.swift
 //  MyGmail
 //
 //  Created by Shuai Zhang on 5/10/23.
@@ -7,12 +7,12 @@
 
 import SwiftUI
 
-struct MyGmailHomeView: View {
+struct HomeView: View {
     var body: some View {
         ZStack(alignment: .bottomTrailing) {
-            MyGmailTableView(incomingMails: MyGailViewModel())
+            InboxTableView(model: MyGailViewModel())
             Button {
-                // TODO
+                // TODO compose button onTap()
             } label: {
                 Capsule()
                     .foregroundColor(.white)
@@ -30,8 +30,8 @@ struct MyGmailHomeView: View {
     }
 }
 
-struct MyGmailHomeView_Previews: PreviewProvider {
+struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        MyGmailHomeView()
+        HomeView()
     }
 }

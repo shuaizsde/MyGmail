@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MyGmailTableView: View {
+struct InboxTableView: View {
     
     // MARK: Static strings
     private let searchbarPrompt = "Search in mail"
@@ -16,24 +16,23 @@ struct MyGmailTableView: View {
     private let swipeArrowDownImage = "square.and.arrow.down"
     private let menuButtonImage = "chevron.right.2"
     
-    
     // MARK: Static values
     private let unreadBubbleSize: CGFloat = 16.0
     private let unreadBubbleFontSize: CGFloat = 12.0
     private let unreadBubbleOffset = CGSize(width: 10.0, height: -8)
     
     @EnvironmentObject private var slideInMenuService: SlideInMenuService
-    @ObservedObject var incomingMails: MyGailViewModel
+    // MARK: viewModel
+    @ObservedObject var model: MyGailViewModel
   
     // MARK: search bar
     @State var searchString = ""
     
     private var searchResults: [MyGailViewModel.Mail] {
         guard !searchString.isEmpty else {
-            return incomingMails.mails
+            return model.mails
         }
-        
-        return incomingMails.mails.filter { $0.sender.contains(searchString) }
+        return model.mails.filter { $0.sender.contains(searchString) }
     }
     
     // MARK: View Body
@@ -50,12 +49,18 @@ struct MyGmailTableView: View {
                     }
             }
             .listStyle(.inset)
+            // MARK: bottom Buttons
             .toolbar {
                 ToolbarItemGroup(placement: .bottomBar) {
                     createToolBarButtons()
                 }
             }
-            .gesture(DragGesture(minimumDistance: 20, coordinateSpace: .global)
+            // MARK: swipping gesture for side bar menu
+            .gesture(
+                DragGesture(
+                    minimumDistance: 20, 
+                    coordinateSpace: .global
+                )
                 .onEnded { value in
                     let horizontalAmount = value.translation.width as CGFloat
                     let verticalAmount = value.translation.height as CGFloat
@@ -65,6 +70,7 @@ struct MyGmailTableView: View {
                     }
                 }
             )
+            // MARK: search bar
             .searchable(text: $searchString, prompt: searchbarPrompt)
         }
     }
@@ -95,26 +101,22 @@ struct MyGmailTableView: View {
     // MARK: Inbox Mail Cell
     @ViewBuilder func createInboxMailCell(for cell: MyGailViewModel.Mail)  -> some View {
         ZStack {
-            // Hide right chevron visibility
-            NavigationLink(destination: MyGmailBodyView(mail: cell)) { EmptyView() }
+            // Hide chevron visibility
+            NavigationLink(destination: EmailBodyView(mail: cell)) { EmptyView() }
                 .opacity(0.0)
             HStack {
-                MyGmailTableItemView(mail: cell){
-                    incomingMails.star(cell)
+                InboxTableItemView(mail: cell){
+                    model.star(cell)
                 }
             }.frame(height: 50)
         }
 
     }
-        
-//    private func didTapMenuButton() {
-//        slideInMenuService.isPresented.toggle()
-//    }
     
 }
 
-struct MyGmailTableView_Previews: PreviewProvider {
+struct InboxTableView_Previews: PreviewProvider {
     static var previews: some View {
-        MyGmailTableView(incomingMails: MyGailViewModel())
+        InboxTableView(model: MyGailViewModel())
     }
 }
