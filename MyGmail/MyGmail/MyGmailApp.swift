@@ -29,7 +29,7 @@ struct MyGmailApp: App {
 
 //TabView {
 //    NavigationView {
-//        InboxTableView(model: MyGailViewModel())
+//        InboxTableView(model: InboxMailsViewModel())
 //    }.tabItem {
 //        Image(systemName: "envelope")
 //            .imageScale(.medium)

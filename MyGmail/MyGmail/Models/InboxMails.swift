@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 enum MailCatagory {
     case none
@@ -26,13 +27,14 @@ struct InboxMails {
     struct Mail: Identifiable {
         let id = UUID()
         var profilePicture: String?
+        var defaultColor = Color.random()
         let sender: String
         let time: String
         let subject: String
         let content: String
         
         var isStarred = false
-        
+        var isImportant = false
         // For extra upcoming fancy crazy features
         var isUnread = false
         var attachments: [(String,String)]? // <Type: Name>
@@ -43,5 +45,10 @@ struct InboxMails {
     mutating func star(_ mail: Mail) {
         let chosenIndex = mails.firstIndex(where: {$0.id == mail.id})
         mails[chosenIndex!].isStarred = !mail.isStarred
+    }
+    
+    mutating func important(_ mail: Mail) {
+        let chosenIndex = mails.firstIndex(where: {$0.id == mail.id})
+        mails[chosenIndex!].isImportant = !mail.isImportant
     }
 }

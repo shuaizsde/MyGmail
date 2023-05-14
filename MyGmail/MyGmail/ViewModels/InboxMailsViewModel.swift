@@ -1,5 +1,5 @@
 //
-//  MyGailViewModel.swift
+//  InboxMailsViewModel.swift
 //  MyGmail
 //
 //  Created by Shuai Zhang on 5/8/23.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-class MyGailViewModel: ObservableObject {
+class InboxMailsViewModel: ObservableObject {
     
     typealias Mail = InboxMails.Mail
     
@@ -23,6 +23,10 @@ class MyGailViewModel: ObservableObject {
     
     func star(_ mail: Mail) {
         model.star(mail)
+    }
+    
+    func important(_ mail: Mail) {
+        model.important(mail)
     }
     
     // MARK: Faked data

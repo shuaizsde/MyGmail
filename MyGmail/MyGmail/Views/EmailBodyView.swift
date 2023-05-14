@@ -27,6 +27,6 @@ struct EmailBodyView: View {
 
 struct EmailBodyView_Previews: PreviewProvider {
     static var previews: some View {
-        EmailBodyView(mail: MyGailViewModel().mails[0])
+        EmailBodyView(mail: InboxMailsViewModel().mails[0])
     }
 }

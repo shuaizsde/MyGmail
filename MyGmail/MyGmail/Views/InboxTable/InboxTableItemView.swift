@@ -16,7 +16,7 @@ struct InboxTableItemView :View {
     private let senderFontWidth: CGFloat = 14.0
     
     var starOnTapped: () -> Void
-
+    var chevronOnTapped: () -> Void
     
     var body: some View {
         HStack {
@@ -25,10 +25,19 @@ struct InboxTableItemView :View {
             
             HStack {
                 VStack(alignment: .leading) {
-                    Text(mail.sender)
-                        .font(.custom( "default", size: senderFontWidth))
-                        .fontWeight(.light)
-                        .foregroundColor(Color("gmailGray"))
+                    HStack {
+                        Image(systemName: "chevron.right.2")
+                            .font(.custom( "default", size: 12))
+                            .fontWeight(mail.isImportant ? .bold : .regular)
+                            .foregroundColor(mail.isImportant ? Color.yellow : Color("gmailGray"))
+                            .onTapGesture {
+                                chevronOnTapped()
+                            }
+                        Spacer().frame(width: 3)
+                        Text(mail.sender).foregroundColor(Color("gmailGray"))
+                    }
+                    .font(.custom( "default", size: senderFontWidth))
+                    .fontWeight(.light)
                     
                     Spacer(minLength: 5)
                     
@@ -76,7 +85,7 @@ struct InboxTableItemView :View {
         } else {
             let placeHolder = String(mail?.sender.first ?? Character(""))
             Circle()
-                .fill(Color.random())
+                .fill(mail?.defaultColor ?? .white)
                 .frame(width: profilePictureFrameWidth, height: profilePictureFrameWidth)
                 .overlay() {
                     Text("\(placeHolder)").font(.custom( "default", size: 30)).foregroundColor(.white)
@@ -89,8 +98,9 @@ struct InboxTableItemView :View {
 struct InboxTableItemView_Previews: PreviewProvider {
     static var previews: some View {
         InboxTableItemView(
-            mail: MyGailViewModel().mails[15], 
-            starOnTapped: {}
+            mail: InboxMailsViewModel().mails[15], 
+            starOnTapped: {}, 
+            chevronOnTapped: {}
         )
         .frame(height: 50)
     }

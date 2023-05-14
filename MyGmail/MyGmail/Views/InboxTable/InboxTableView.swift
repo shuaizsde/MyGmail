@@ -23,12 +23,12 @@ struct InboxTableView: View {
     
     @EnvironmentObject private var slideInMenuService: SlideInMenuService
     // MARK: viewModel
-    @ObservedObject var model: MyGailViewModel
+    @ObservedObject var model: InboxMailsViewModel
   
     // MARK: search bar
     @State var searchString = ""
     
-    private var searchResults: [MyGailViewModel.Mail] {
+    private var searchResults: [InboxMailsViewModel.Mail] {
         guard !searchString.isEmpty else {
             return model.mails
         }
@@ -99,14 +99,14 @@ struct InboxTableView: View {
     }
     
     // MARK: Inbox Mail Cell
-    @ViewBuilder func createInboxMailCell(for cell: MyGailViewModel.Mail)  -> some View {
+    @ViewBuilder func createInboxMailCell(for cell: InboxMailsViewModel.Mail)  -> some View {
         ZStack {
             // Hide chevron visibility
             NavigationLink(destination: EmailBodyView(mail: cell)) { EmptyView() }
                 .opacity(0.0)
             HStack {
-                InboxTableItemView(mail: cell){
-                    model.star(cell)
+                InboxTableItemView(mail: cell, starOnTapped: { model.star(cell) }) {
+                    model.important(cell)
                 }
             }.frame(height: 50)
         }
@@ -117,6 +117,6 @@ struct InboxTableView: View {
 
 struct InboxTableView_Previews: PreviewProvider {
     static var previews: some View {
-        InboxTableView(model: MyGailViewModel())
+        InboxTableView(model: InboxMailsViewModel())
     }
 }

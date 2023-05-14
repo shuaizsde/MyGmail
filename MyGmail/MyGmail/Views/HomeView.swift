@@ -10,7 +10,7 @@ import SwiftUI
 struct HomeView: View {
     var body: some View {
         ZStack(alignment: .bottomTrailing) {
-            InboxTableView(model: MyGailViewModel())
+            InboxTableView(model: InboxMailsViewModel())
             Button {
                 // TODO compose button onTap()
             } label: {
