@@ -35,12 +35,20 @@ class InboxMailsViewModel: ObservableObject {
             profilePicture: "person1", 
             sender: "Simon Zhang", 
             time: "11:24 AM", 
-            subject: "First Email from Simon",
+            subject: "Resume of Simon Zhang",
             content: """
-                     Hi there, I’m emailing you today to let you know we have created a new project called myGmail. In this article, you’ll learn how to do it by yourself with SwiftUI
-                     If you know anybody else who’ll find this useful, please forward the email to them.Let us know if you face any problems accessing the project 
-                     by replying to this email. We’ll get back to you ASAP and ensure you gain access to it immediately.
-                     Thank you
+                     3+ years of experience full stack software developer with a versatile skillset. Developed products with 2 billion+ daily active users, proficient in IOS and Web development with Swift , Objective-C, Java and Javascript. Experienced in producing complex projects with programming, designing, management skills. A committed team player who consistently delivers results.
+                     
+                     WORK EXPERIENCE
+                     Whatsapp, Meta
+                     Whatsapp Communities, Software Engineer IC4 MountainView,CA | July2022-current
+                     Worked as production software engineer on WhatsApp 2023 flagship product: WA Communities. Led the creation of multiple key features that catered to over 2 billion+ daily active users.
+                     Initiated the development process by drafting prototype features from scratch, including UI designs and specification documents. Implemented demos into production and conducted A/B testing to prove the effectiveness of the improvements. Presented the results to team managers to advance the features to reality.
+                     Responsible for managing several categories on a daily basis, including UI tests, end-to-end(e2e) tests, internationalization(i18n) and accessibility(a11y) bugs, code refactoring and migration for Better Engineering. Served on-call for Severity-One issues.
+                     Collaborated with external teams to align work on various factors, such as Server Queries, Logging, AB-properties, UX workflow, and other related items.
+                     Released features: "Community Creation Flow", "Subgroup Manager", "Community Navigation Menu", "Orphaned Participants Cleaner", "Announcement Group Improvement", "Community Introduction Views(NUX)" and 3 more.(by 03/29/23)
+                     
+                     ...
                      """
         ),
         Mail(

@@ -30,59 +30,61 @@ struct EmailBodyView: View {
     
     
     var body: some View {
-        //Color.red
-        VStack(alignment: .leading) {
-            titleSection
-            Spacer().frame(height: defaultSpacing)
-            senderSection
-            Spacer().frame(height: defaultSpacing)
-            Text(mail.content)
-                .font(16)
-                .lineSpacing(8)
-                .opacity(0.6)
-            Spacer()
-            HStack {
-                Button(action: {
+        ScrollView {
+            VStack(alignment: .leading) {
+                titleSection
+                Spacer().frame(height: defaultSpacing)
+                senderSection
+                Spacer().frame(height: defaultSpacing * 2)
+                Text(mail.content)
+                    .font(16)
+                    .lineSpacing(8)
+                    .opacity(0.6)
+                Spacer().frame(height: 50)
+                HStack {
+                    Button(action: {
+                        
+                    }, label: {
+                        RoundedRectangle(cornerRadius: 5)
+                            .stroke()
+                            .foregroundColor(.gray)
+                            .opacity(0.5)
+                            .frame(width: 168, height: 32)
+                            .overlay(  
+                                HStack {
+                                    Image(systemName: reply)
+                                    Text(replyText)
+                                }
+                                    .font(defaultIconFont)
+                                    .fontWeight(.bold)
+                                    .foregroundColor(defaultIconColor)
+                            ) .fontWeight(.bold)
+                        
+                    })
+                    Spacer()
                     
-                }, label: {
-                    RoundedRectangle(cornerRadius: 5)
-                        .stroke()
-                        .foregroundColor(.gray)
-                        .opacity(0.5)
-                        .frame(width: 168, height: 32)
-                        .overlay(  
-                            HStack {
-                                Image(systemName: reply)
-                                Text(replyText)
-                            }
-                            .font(defaultIconFont)
-                            .fontWeight(.bold)
-                            .foregroundColor(defaultIconColor)
-                        ) .fontWeight(.bold)
-                            
-                })
-                Spacer()
-                
-                Button(action: {
-                    
-                }, label: {
-                    RoundedRectangle(cornerRadius: 5)
-                        .stroke()
-                        .foregroundColor(.gray)
-                        .opacity(0.5)
-                        .frame(width: 168, height: 32)
-                        .overlay(
-                            HStack {
-                                Image(systemName: forward)
-                                Text(forwardText)
-                            }
-                            .font(defaultIconFont)
-                            .foregroundColor(defaultIconColor)
-                        ).fontWeight(.bold)
-                            
-                })
-            }.padding(.horizontal, 10)
+                    Button(action: {
+                        
+                    }, label: {
+                        RoundedRectangle(cornerRadius: 5)
+                            .stroke()
+                            .foregroundColor(.gray)
+                            .opacity(0.5)
+                            .frame(width: 168, height: 32)
+                            .overlay(
+                                HStack {
+                                    Image(systemName: forward)
+                                    Text(forwardText)
+                                }
+                                    .font(defaultIconFont)
+                                    .foregroundColor(defaultIconColor)
+                            ).fontWeight(.bold)
+                        
+                    })
+                }.padding(.horizontal, 10)
+            }
         }
+        .scrollIndicators(.hidden)
         .padding()
     }
 }
