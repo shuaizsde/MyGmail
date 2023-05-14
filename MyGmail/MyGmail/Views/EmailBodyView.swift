@@ -13,17 +13,20 @@ struct EmailBodyView: View {
     // Sizes
     let defaultIconFont = Font.custom( "default", size: 14)
     let defaultTextFont = Font.custom( "default", size: 14)
+    let defaultIconColor = Color("gmailGray")
     var profilePictureFrameWidth = 40.0
     var defaultSpacing = 20.0
     
     // Static Strings
     let toMe = "to me"
-    
+    let replyText = "Reply"
+    let forwardText = "Forward"
     // Icon 
     let returnIcon = "return"
     let ellipsisIcon = "ellipsis"
     let starIcon = "star"
-    let defaultIconColor = Color("gmailGray")
+    let reply = "return.left"
+    let forward = "return.right"
     
     
     var body: some View {
@@ -45,15 +48,17 @@ struct EmailBodyView: View {
                     RoundedRectangle(cornerRadius: 5)
                         .stroke()
                         .foregroundColor(.gray)
-                        .frame(width: 165, height: 35)
+                        .opacity(0.5)
+                        .frame(width: 168, height: 32)
                         .overlay(  
                             HStack {
-                                Image(systemName: "return.left")
-                                Text("Reply")
+                                Image(systemName: reply)
+                                Text(replyText)
                             }
                             .font(defaultIconFont)
+                            .fontWeight(.bold)
                             .foregroundColor(defaultIconColor)
-                        )
+                        ) .fontWeight(.bold)
                             
                 })
                 Spacer()
@@ -64,15 +69,16 @@ struct EmailBodyView: View {
                     RoundedRectangle(cornerRadius: 5)
                         .stroke()
                         .foregroundColor(.gray)
-                        .frame(width: 165, height: 35)
+                        .opacity(0.5)
+                        .frame(width: 168, height: 32)
                         .overlay(
                             HStack {
-                                Image(systemName: "return.right")
-                                Text("Forward")
+                                Image(systemName: forward)
+                                Text(forwardText)
                             }
                             .font(defaultIconFont)
                             .foregroundColor(defaultIconColor)
-                        )
+                        ).fontWeight(.bold)
                             
                 })
             }.padding(.horizontal, 10)
@@ -90,7 +96,11 @@ extension EmailBodyView {
                     Text("\(mail.sender)").font(defaultTextFont)
                     Text("\(mail.time)").font(defaultTextFont)
                 }
-                Text(toMe).font(.caption2)
+                HStack() {
+                    Text(toMe)
+                    Spacer().frame(width: 4)
+                    Image(systemName: "chevron.down").resizable().frame(width: 8, height: 5)
+                }.font(.caption2)
             }
             Spacer()
             Button(action: {} ,label: {Image(systemName: returnIcon)})
@@ -111,7 +121,6 @@ extension EmailBodyView {
                     .foregroundColor(.gray.opacity(0.3))
                     .frame(width: 36, height: 16)
                     .overlay(  
-                        
                         Text("Inbox")
                         .font(12)
                     )
@@ -138,7 +147,7 @@ extension EmailBodyView {
                 .fill(mail?.defaultColor ?? .white)
                 .frame(width: profilePictureFrameWidth, height: profilePictureFrameWidth)
                 .overlay() {
-                    Text("\(placeHolder)").font(25).foregroundColor(.white)
+                    Text("\(placeHolder)").font(24).foregroundColor(.white)
                 }.frame(width: profilePictureFrameWidth)
         }
     }
