@@ -12,6 +12,7 @@ struct EmailBodyView: View {
     
     // Sizes
     let defaultIconFont = Font.custom( "default", size: 14)
+    let defaultTextFont = Font.custom( "default", size: 14)
     var profilePictureFrameWidth = 40.0
     var defaultSpacing = 20.0
     
@@ -37,6 +38,44 @@ struct EmailBodyView: View {
                 .lineSpacing(8)
                 .opacity(0.6)
             Spacer()
+            HStack {
+                Button(action: {
+                    
+                }, label: {
+                    RoundedRectangle(cornerRadius: 5)
+                        .stroke()
+                        .foregroundColor(.gray)
+                        .frame(width: 165, height: 35)
+                        .overlay(  
+                            HStack {
+                                Image(systemName: "return.left")
+                                Text("Reply")
+                            }
+                            .font(defaultIconFont)
+                            .foregroundColor(defaultIconColor)
+                        )
+                            
+                })
+                Spacer()
+                
+                Button(action: {
+                    
+                }, label: {
+                    RoundedRectangle(cornerRadius: 5)
+                        .stroke()
+                        .foregroundColor(.gray)
+                        .frame(width: 165, height: 35)
+                        .overlay(
+                            HStack {
+                                Image(systemName: "return.right")
+                                Text("Forward")
+                            }
+                            .font(defaultIconFont)
+                            .foregroundColor(defaultIconColor)
+                        )
+                            
+                })
+            }.padding(.horizontal, 10)
         }
         .padding()
     }
@@ -47,9 +86,9 @@ extension EmailBodyView {
         HStack {
             profilePictureThumbnail(with: mail)
             VStack(alignment: .leading) {
-                HStack {
-                    Text("\(mail.sender)").font(.body)
-                    Text("\(mail.time)").font(.caption)
+                HStack(alignment: .center) {
+                    Text("\(mail.sender)").font(defaultTextFont)
+                    Text("\(mail.time)").font(defaultTextFont)
                 }
                 Text(toMe).font(.caption2)
             }
@@ -64,8 +103,19 @@ extension EmailBodyView {
     }
     private var titleSection: some View {
         HStack() {
-            Text(mail.subject)
-                .font(.title2)
+            HStack(alignment: .center) {
+                Text(mail.subject)
+                    .font(.title2)
+                    .lineLimit(1)
+                RoundedRectangle(cornerRadius: 2)
+                    .foregroundColor(.gray.opacity(0.3))
+                    .frame(width: 36, height: 16)
+                    .overlay(  
+                        
+                        Text("Inbox")
+                        .font(12)
+                    )
+            }
             Spacer()
             Button(action: {} ,label: {Image(systemName: starIcon)})
                 .font(defaultIconFont)
@@ -88,7 +138,7 @@ extension EmailBodyView {
                 .fill(mail?.defaultColor ?? .white)
                 .frame(width: profilePictureFrameWidth, height: profilePictureFrameWidth)
                 .overlay() {
-                    Text("\(placeHolder)").font(30).foregroundColor(.white)
+                    Text("\(placeHolder)").font(25).foregroundColor(.white)
                 }.frame(width: profilePictureFrameWidth)
         }
     }

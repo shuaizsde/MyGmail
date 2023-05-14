@@ -75,7 +75,7 @@ struct InboxTableView: View {
                 .searchable(text: $searchString, prompt: searchbarPrompt)
                 
                 Button {
-                    // TODO compose button onTap()
+                    //
                 } label: {
                     Capsule()
                         .foregroundColor(.white)
