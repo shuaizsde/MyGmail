@@ -113,6 +113,7 @@ extension EmailBodyView {
 
         }.foregroundColor(defaultIconColor)
     }
+    
     private var titleSection: some View {
         HStack() {
             HStack(alignment: .center) {

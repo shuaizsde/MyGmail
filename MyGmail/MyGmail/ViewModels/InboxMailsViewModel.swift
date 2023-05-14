@@ -32,10 +32,10 @@ class InboxMailsViewModel: ObservableObject {
     // MARK: Faked data
     private static let preview: [InboxMails.Mail] = [
         Mail(
-            profilePicture: "person1", 
+            profilePicture: "simon", 
             sender: "Simon Zhang", 
             time: "11:24 AM", 
-            subject: "Resume of Simon Zhang",
+            subject: "*README: Simon Resume *",
             content: """
                      3+ years of experience full stack software developer with a versatile skillset. Developed products with 2 billion+ daily active users, proficient in IOS and Web development with Swift , Objective-C, Java and Javascript. Experienced in producing complex projects with programming, designing, management skills. A committed team player who consistently delivers results.
                      
