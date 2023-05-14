@@ -9,25 +9,25 @@ import SwiftUI
 
 struct CustomNavView<Content: View>: View {
     let content: Content
+    var showToolBarService: ShowToolBarService
     
-    init(@ViewBuilder content: ()-> Content) {
+    init(@ViewBuilder content: ()-> Content, showToolBarService: ShowToolBarService) {
         self.content = content()
+        self.showToolBarService = showToolBarService
     }
     var body: some View {
         NavigationView {
-            CustomNavBarContainerView {
-                Color.orange
-            }
+            CustomNavBarContainerView(content: { Color.orange}, showToolBarService: showToolBarService)
             .navigationBarHidden(true)
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
-struct CustomNavView_Previews: PreviewProvider {
-    static var previews: some View {
-        CustomNavView {
-            Color.red.ignoresSafeArea()
-        }
-    }
-}
+//struct CustomNavView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        CustomNavView {
+//            Color.red.ignoresSafeArea()
+//        }
+//    }
+//}

@@ -3,4 +3,70 @@
    uuid = "8D378639-3EA5-4901-99C1-9A01323B2F8D"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F32EA9E0-6017-4D62-B95F-B73F8308D18E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MyGmail/NavigationBar/CustomNavBarView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "backButton"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "F32EA9E0-6017-4D62-B95F-B73F8308D18E - e2d33a1070266b3b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in MyGmail.CustomNavBarView.backButton.getter : some"
+                  moduleName = "MyGmail"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shuaizhang/MyGmail/MyGmail/MyGmail/NavigationBar/CustomNavBarView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "39"
+                  endingLineNumber = "39"
+                  offsetFromSymbolStart = "244">
+               </Location>
+               <Location
+                  uuid = "F32EA9E0-6017-4D62-B95F-B73F8308D18E - e2d33a1070266b79"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in MyGmail.CustomNavBarView.backButton.getter : some"
+                  moduleName = "MyGmail"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shuaizhang/MyGmail/MyGmail/MyGmail/NavigationBar/CustomNavBarView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "41"
+                  endingLineNumber = "41"
+                  offsetFromSymbolStart = "244">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "53EBCC20-864F-4A21-A612-F357DCEAEDFE"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MyGmail/Views/InboxTable/InboxTableView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

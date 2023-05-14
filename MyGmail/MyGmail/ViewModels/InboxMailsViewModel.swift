@@ -52,7 +52,7 @@ class InboxMailsViewModel: ObservableObject {
                      """
         ),
         Mail(
-            profilePicture: "person2", 
+            profilePicture: "cecillia", 
             sender: "Cecilia D'Costa", 
             time: "10:15 AM", 
             subject: "Re: Google Team Match Update",

@@ -28,6 +28,8 @@ struct InboxTableView: View {
     // MARK: search bar
     @State var searchString = ""
     
+    var showToolBarService = ShowToolBarService()
+    
     private var searchResults: [InboxMailsViewModel.Mail] {
         guard !searchString.isEmpty else {
             return model.mails
@@ -50,12 +52,6 @@ struct InboxTableView: View {
                         }
                 }
                 .listStyle(.inset)
-                // MARK: bottom Buttons
-                .toolbar {
-                    ToolbarItemGroup(placement: .bottomBar) {
-                        createToolBarButtons()
-                    }
-                }
                 // MARK: swipping gesture for side bar menu
                 .gesture(
                     DragGesture(
@@ -69,13 +65,14 @@ struct InboxTableView: View {
                         if abs(horizontalAmount) > abs(verticalAmount) && horizontalAmount > 0 {
                             slideInMenuService.isPresented.toggle()
                         }
+                        showToolBarService.showToolBar = false
                     }
                 )
                 // MARK: search bar
                 .searchable(text: $searchString, prompt: searchbarPrompt)
                 
-                Button {
-                    //
+                NavigationLink {
+                    ComposeMailView()
                 } label: {
                     Capsule()
                         .foregroundColor(.white)
@@ -122,7 +119,7 @@ struct InboxTableView: View {
     @ViewBuilder func createInboxMailCell(for cell: InboxMailsViewModel.Mail)  -> some View {
         ZStack {
             // Hide chevron visibility
-            CustomNavigationLink(destination: EmailBodyView(mail: cell)) { EmptyView() }
+            CustomNavigationLink(destination: EmailBodyView(mail: cell), showToolBarService: showToolBarService) { EmptyView() }
                 .opacity(0.0)
             HStack {
                 InboxTableItemView(mail: cell, starOnTapped: { model.star(cell) }) {
@@ -134,9 +131,9 @@ struct InboxTableView: View {
     }
     
 }
-
-struct InboxTableView_Previews: PreviewProvider {
-    static var previews: some View {
-        InboxTableView(model: InboxMailsViewModel())
-    }
-}
+//
+//struct InboxTableView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        InboxTableView(model: InboxMailsViewModel())
+//    }
+//}

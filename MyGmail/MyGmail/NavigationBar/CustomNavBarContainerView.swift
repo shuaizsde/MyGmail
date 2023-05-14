@@ -9,28 +9,29 @@ import SwiftUI
 
 struct CustomNavBarContainerView<Content: View>: View {
     let content: Content
-    
-    init(@ViewBuilder content:() -> Content){
+    var showToolBarService: ShowToolBarService
+    init(@ViewBuilder content:() -> Content, showToolBarService: ShowToolBarService){
         self.content = content()
+        self.showToolBarService = showToolBarService
     }
     
     
     var body: some View {
         VStack(spacing: 0) {
-            CustomNavBarView()
+            CustomNavBarView(showToolBarService: showToolBarService)
             content.frame(maxWidth: .infinity,maxHeight: .infinity)
         }
     }
 }
 
-struct CustomNavBarContainerView_Previews: PreviewProvider {
-    static var previews: some View {
-        CustomNavBarContainerView {
-            ZStack {
-                Color.green.ignoresSafeArea()
-                Text("Hello")
-                    .foregroundColor(.white)
-            }
-        }
-    }
-}
+//struct CustomNavBarContainerView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        CustomNavBarContainerView {
+//            ZStack {
+//                Color.green.ignoresSafeArea()
+//                Text("Hello")
+//                    .foregroundColor(.white)
+//            }
+//        }
+//    }
+//}

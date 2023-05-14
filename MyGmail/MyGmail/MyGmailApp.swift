@@ -10,12 +10,14 @@ import SwiftUI
 @main
 struct MyGmailApp: App {
     @StateObject private var slideInMenuService = SlideInMenuService()
+    @StateObject private var showToolBarService = ShowToolBarService()
     
     var body: some Scene {
         WindowGroup {
             Group{
-                HomeView()
+                HomeView(model: InboxMailsViewModel(), showToolBarService: showToolBarService)
             }.environmentObject(slideInMenuService)
+             .environmentObject(showToolBarService)
              .slideInView(
                 isActive: $slideInMenuService.isPresented, 
                 edge:.leading, 
