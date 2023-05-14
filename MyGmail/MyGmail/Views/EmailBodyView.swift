@@ -9,19 +9,36 @@ import SwiftUI
 
 struct EmailBodyView: View {
     let mail: InboxMails.Mail
+    
+    // Sizes
+    let defaultIconFont = Font.custom( "default", size: 14)
     var profilePictureFrameWidth = 40.0
+    var defaultSpacing = 20.0
+    
+    // Static Strings
+    let toMe = "to me"
+    
+    // Icon 
+    let returnIcon = "return"
+    let ellipsisIcon = "ellipsis"
+    let starIcon = "star"
+    let defaultIconColor = Color("gmailGray")
+    
+    
     var body: some View {
         //Color.red
         VStack(alignment: .leading) {
             titleSection
-            Spacer().frame(height: 20)
+            Spacer().frame(height: defaultSpacing)
             senderSection
-            Spacer().frame(height: 30)
-            Text(mail.content).font(.body)
-                Spacer()
+            Spacer().frame(height: defaultSpacing)
+            Text(mail.content)
+                .font(16)
+                .lineSpacing(8)
+                .opacity(0.6)
+            Spacer()
         }
         .padding()
-//        Spacer()
     }
 }
 extension EmailBodyView {
@@ -32,23 +49,28 @@ extension EmailBodyView {
             VStack(alignment: .leading) {
                 HStack {
                     Text("\(mail.sender)").font(.body)
-                    Text("\(mail.time)").font(.body)
+                    Text("\(mail.time)").font(.caption)
                 }
-                Text("to me").font(.caption2)
+                Text(toMe).font(.caption2)
             }
             Spacer()
-            Image(systemName: "return")
-            Spacer().frame(width: 20)
-            Image(systemName: "ellipsis")
+            Button(action: {} ,label: {Image(systemName: returnIcon)})
+                .font(defaultIconFont)
+            Spacer().frame(width: defaultSpacing)
+            Button(action: {} ,label: {Image(systemName: ellipsisIcon)})
+                .font(defaultIconFont)
 
-        }
+        }.foregroundColor(defaultIconColor)
     }
     private var titleSection: some View {
         HStack() {
-            Text(mail.subject).font(.title2)
+            Text(mail.subject)
+                .font(.title2)
             Spacer()
-            Image(systemName: "star")
-        }
+            Button(action: {} ,label: {Image(systemName: starIcon)})
+                .font(defaultIconFont)
+                .foregroundColor(defaultIconColor)
+        }.opacity(0.7)
     }
     
     @ViewBuilder func profilePictureThumbnail(with mail: InboxMails.Mail?)  -> some View {
@@ -66,11 +88,17 @@ extension EmailBodyView {
                 .fill(mail?.defaultColor ?? .white)
                 .frame(width: profilePictureFrameWidth, height: profilePictureFrameWidth)
                 .overlay() {
-                    Text("\(placeHolder)").font(.custom( "default", size: 30)).foregroundColor(.white)
-                }.frame(width: 60)
+                    Text("\(placeHolder)").font(30).foregroundColor(.white)
+                }.frame(width: profilePictureFrameWidth)
         }
     }
     
+}
+
+extension Text {
+    func font(_ width: CGFloat) -> Text {
+        return self.font(.custom( "default", size: width))
+    }
 }
 
 struct EmailBodyView_Previews: PreviewProvider {

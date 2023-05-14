@@ -38,62 +38,82 @@ struct InboxTableView: View {
     // MARK: View Body
     var body: some View {
         NavigationView {
-            List{
-                ForEach(searchResults) {createInboxMailCell(for: $0)}
-                    .swipeActions(edge: .trailing) {
-                        Button {
-                            // TODO
-                        } label: {
-                            Image(systemName: swipeArrowDownImage)
-                        }.tint(.green)
-                    }
-            }
-            .listStyle(.inset)
-            // MARK: bottom Buttons
-            .toolbar {
-                ToolbarItemGroup(placement: .bottomBar) {
-                    createToolBarButtons()
+            ZStack {
+                List{
+                    ForEach(searchResults) {createInboxMailCell(for: $0)}
+                        .swipeActions(edge: .trailing) {
+                            Button {
+                                // TODO
+                            } label: {
+                                Image(systemName: swipeArrowDownImage)
+                            }.tint(.green)
+                        }
                 }
-            }
-            // MARK: swipping gesture for side bar menu
-            .gesture(
-                DragGesture(
-                    minimumDistance: 20, 
-                    coordinateSpace: .global
+                .listStyle(.inset)
+                // MARK: bottom Buttons
+                .toolbar {
+                    ToolbarItemGroup(placement: .bottomBar) {
+                        createToolBarButtons()
+                    }
+                }
+                // MARK: swipping gesture for side bar menu
+                .gesture(
+                    DragGesture(
+                        minimumDistance: 20, 
+                        coordinateSpace: .global
+                    )
+                    .onEnded { value in
+                        let horizontalAmount = value.translation.width as CGFloat
+                        let verticalAmount = value.translation.height as CGFloat
+                        
+                        if abs(horizontalAmount) > abs(verticalAmount) && horizontalAmount > 0 {
+                            slideInMenuService.isPresented.toggle()
+                        }
+                    }
                 )
-                .onEnded { value in
-                    let horizontalAmount = value.translation.width as CGFloat
-                    let verticalAmount = value.translation.height as CGFloat
-                    
-                    if abs(horizontalAmount) > abs(verticalAmount) && horizontalAmount > 0 {
-                        slideInMenuService.isPresented.toggle()
-                    }
-                }
-            )
-            // MARK: search bar
-            .searchable(text: $searchString, prompt: searchbarPrompt)
+                // MARK: search bar
+                .searchable(text: $searchString, prompt: searchbarPrompt)
+                
+                Button {
+                    // TODO compose button onTap()
+                } label: {
+                    Capsule()
+                        .foregroundColor(.white)
+                        .shadow(radius: 4, x: 3, y: 3)
+                        .frame(width: 110, height: 40)
+                        .overlay(alignment: .center) {
+                            HStack {
+                                Image(systemName: "pencil").resizable().scaledToFit().frame(width: 15, height: 20)
+                                Text("Compose").bold()
+                            }.foregroundColor(Color("gmailRed")).font(.caption)
+                        }
+                } .position(x: 320, y: 640)
+            }
         }
     }
     
     // MARK: Bottom Tool Bar Buttons
     @ViewBuilder func createToolBarButtons()  -> some View {
         HStack{
-            ZStack {
-                Image(systemName: envelopeButtonImageName).foregroundColor(Color("gmailGray"))
-                Circle()
-                    .fill(Color("gmailRed"))
-                    .frame(width: unreadBubbleSize, height: unreadBubbleSize)
-                    .overlay(
-                        Text("5") // TODO: unread placeholder 
-                            .fontWeight(.bold)
-                            .foregroundColor(.white)
-                            .font(.custom( "default", size: unreadBubbleFontSize))
-                    )
-                    .offset(unreadBubbleOffset)
-            }
+            Button(action: {} ,label: {
+                ZStack {
+                    Image(systemName: envelopeButtonImageName).foregroundColor(Color("gmailGray"))
+                    Circle()
+                        .fill(Color("gmailRed"))
+                        .frame(width: unreadBubbleSize, height: unreadBubbleSize)
+                        .overlay(
+                            Text("5") // TODO: unread placeholder 
+                                .fontWeight(.bold)
+                                .foregroundColor(.white)
+                                .font(.custom( "default", size: unreadBubbleFontSize))
+                        )
+                        .offset(unreadBubbleOffset)
+                }
+            })
             
             Spacer()
-            Image(systemName: videoButtonImageName).foregroundColor(Color("gmailGray"))
+            Button(action: {} ,label: { Image(systemName: videoButtonImageName).foregroundColor(Color("gmailGray"))})
+
             
         }.padding(80)
     }
