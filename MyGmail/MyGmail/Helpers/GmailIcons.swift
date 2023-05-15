@@ -15,6 +15,8 @@ struct GmailIcons {
     
     static let composeButtonIcon = Image(systemName: "pencil")
     
-    static let menuIcon_archived = Image(systemName: "square.and.arrow.down")
+    static let importantIcon = Image(systemName: "chevron.right.2")
     
+    static let menuIcon_archived = Image(systemName: "square.and.arrow.down")
+    static let person_archived = Image(systemName: "person.fill")
 }

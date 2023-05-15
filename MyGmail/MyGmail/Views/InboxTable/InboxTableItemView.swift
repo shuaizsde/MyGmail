@@ -9,12 +9,11 @@ import SwiftUI
 
 
 struct InboxTableItemView :View {
+
+    private let profilePictureFrameWidth = GmailSize.defaultSext
+    private let senderFontWidth = GmailSize.defaultFont2
     
-    public var mail: InboxMails.Mail
-    private let profilePictureFrameWidth: CGFloat = 50.0
-    private let profilePictureThumbnailPlaceHolder = "person.fill"
-    private let senderFontWidth: CGFloat = 14.0
-    
+    var mail: InboxMails.Mail
     var starOnTapped: () -> Void
     var chevronOnTapped: () -> Void
     
@@ -26,29 +25,30 @@ struct InboxTableItemView :View {
             HStack {
                 VStack(alignment: .leading) {
                     HStack {
-                        Image(systemName: "chevron.right.2")
-                            .font(.custom( "default", size: 12))
+                        GmailIcons.importantIcon
+                            .font(GmailFont.defaultFont)
                             .fontWeight(mail.isImportant ? .bold : .regular)
                             .foregroundColor(mail.isImportant ? Color.yellow : Color("gmailGray"))
                             .onTapGesture {
                                 chevronOnTapped()
                             }
-                        Spacer().frame(width: 3)
+                        Spacer()
+                            .frame(width: GmailSize.defaultHalf)
                         Text(mail.sender).foregroundColor(Color("gmailGray"))
                     }
-                    .font(.custom( "default", size: senderFontWidth))
+                    .font(GmailFont.defaultFont)
                     .fontWeight(.light)
                     
-                    Spacer(minLength: 5)
+                    Spacer(minLength: GmailSize.defaultHalf)
                     
                     Text(mail.subject)
-                        .font(.caption)
+                        .font(GmailFont.defaultFont)
                         .foregroundColor(.gray)
                     
                     Spacer(minLength: 0)
                     
                     Text(mail.content)
-                        .font(.caption)
+                        .font(GmailFont.defaultFont)
                         .lineLimit(1)
                         .fontWeight(.light)
                         .foregroundColor(.gray)
@@ -57,46 +57,46 @@ struct InboxTableItemView :View {
                 VStack(alignment: .trailing) {
                     Text(mail.time)
                         .foregroundColor(.gray)
-                        .font(.custom( "default", size: 12))
+                        .font(GmailFont.defaultFont)
                     
                     Spacer()
                     
                     Image(systemName: mail.isStarred ? "star.fill" : "star")
                         .foregroundColor(mail.isStarred ? Color.blue : Color.gray)
-                        .font(.custom( "default", size: 14))
+                        .font(GmailFont.defaultFont2)
                         .onTapGesture {
                             starOnTapped()
                         }
                 }
-    
             }
         }
     }
     
-    @ViewBuilder func profilePictureThumbnail(with mail: InboxMails.Mail?)  -> some View {
-        if let profilePictureName = mail?.profilePicture  {
+    @ViewBuilder func profilePictureThumbnail(with mail: InboxMails.Mail)  -> some View {
+        if let profilePictureName = mail.profilePicture  {
             Image(profilePictureName)
                 .resizable()
                 .scaledToFill()
                 .cornerRadius(profilePictureFrameWidth)
-                .frame(width: profilePictureFrameWidth, height: profilePictureFrameWidth)
-                .cornerRadius(profilePictureFrameWidth)
-                .frame(width: 55)
+                .frame(
+                    width: profilePictureFrameWidth, 
+                    height: profilePictureFrameWidth
+                )
         } else {
-            let placeHolder = String(mail?.sender.first ?? Character(""))
+            let placeHolder = String(mail.sender.first ?? Character(""))
             Circle()
-                .fill(mail?.defaultColor ?? .white)
-                .frame(width: profilePictureFrameWidth, height: profilePictureFrameWidth)
+                .fill(mail.defaultColor)
+                .frame(
+                    width: profilePictureFrameWidth, 
+                    height: profilePictureFrameWidth
+                )
                 .overlay() {
-                    Text("\(placeHolder)").font(.custom( "default", size: 30)).foregroundColor(.white)
-                }.frame(width: 60)
+                    Text("\(placeHolder)")
+                        .font(GmailFont.defaultLargeProfile)
+                        .foregroundColor(.white)
+                }
+                .frame(width: 60)
         }
-    }
-}
-
-extension Color {
-    static func random() -> Color {
-        return Color(red: Double.random(in: 0...1), green: Double.random(in: 0.2...1), blue: Double.random(in: 0.3...1))
     }
 }
 

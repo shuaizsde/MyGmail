@@ -62,3 +62,12 @@ struct InboxMails {
         mails[chosenIndex!].isImportant = !mail.isImportant
     }
 }
+extension Color {
+    static func random() -> Color {
+        Color(
+            red: Double.random(in: 0...1), 
+            green: Double.random(in: 0.2...1), 
+            blue: Double.random(in: 0.3...1)
+        )
+    }
+}
