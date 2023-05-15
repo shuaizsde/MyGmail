@@ -12,6 +12,14 @@ class InboxMailsViewModel: ObservableObject {
     typealias Mail = InboxMails.Mail
     
     @Published private var model = createInboxMails()
+    //@Published private var filterService: FilterService
+    
+    
+    init(model: InboxMails = createInboxMails()) {
+        self.model = model
+        // self.filterService = filterService
+    }
+    
     
     var mails: Array<Mail> {
         return model.mails

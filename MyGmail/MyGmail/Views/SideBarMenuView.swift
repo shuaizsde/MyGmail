@@ -124,6 +124,6 @@ struct SideBarItemCellView: View {
 
 struct SideBarMenuView_Previews: PreviewProvider {
     static var previews: some View {
-        SideBarMenuView(model: SideMenuItemViewModel(), slideInMenuService: SlideInMenuService())
+        SideBarMenuView(model: SideMenuItemViewModel(filterService: FilterService()), slideInMenuService: SlideInMenuService())
     }
 }

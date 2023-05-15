@@ -73,8 +73,8 @@ struct HomeView: View {
     }
 }
 
-struct HomeView_Previews: PreviewProvider {
-    static var previews: some View {
-        HomeView(model: InboxMailsViewModel(), showToolBarService: ShowToolBarService())
-    }
-}
+//struct HomeView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        HomeView(model: InboxMailsViewModel(filterService: FilterService()), showToolBarService: ShowToolBarService())
+//    }
+//}

@@ -22,6 +22,8 @@ struct InboxTableView: View {
     private let unreadBubbleOffset = CGSize(width: 10.0, height: -8)
     
     @EnvironmentObject private var slideInMenuService: SlideInMenuService
+    @EnvironmentObject private var filterService: FilterService
+    
     // MARK: viewModel
     @ObservedObject var model: InboxMailsViewModel
   
@@ -31,10 +33,12 @@ struct InboxTableView: View {
     var showToolBarService = ShowToolBarService()
     
     private var searchResults: [InboxMailsViewModel.Mail] {
+        
+        let filtedMails = model.mails.filter(filterService.currentFilter)
         guard !searchString.isEmpty else {
-            return model.mails
+            return filtedMails
         }
-        return model.mails.filter { $0.sender.contains(searchString) }
+        return filtedMails.filter { $0.sender.contains(searchString) }
     }
     
     // MARK: View Body

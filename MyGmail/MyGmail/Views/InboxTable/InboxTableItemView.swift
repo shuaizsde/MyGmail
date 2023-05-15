@@ -61,8 +61,8 @@ struct InboxTableItemView :View {
                     
                     Spacer()
                     
-                    Image(systemName: mail.isStarred ? "star" : "star.fill")
-                        .foregroundColor(mail.isStarred ? Color.gray : Color.blue)
+                    Image(systemName: mail.isStarred ? "star.fill" : "star")
+                        .foregroundColor(mail.isStarred ? Color.blue : Color.gray)
                         .font(.custom( "default", size: 14))
                         .onTapGesture {
                             starOnTapped()
@@ -95,16 +95,16 @@ struct InboxTableItemView :View {
 }
 
 
-struct InboxTableItemView_Previews: PreviewProvider {
-    static var previews: some View {
-        InboxTableItemView(
-            mail: InboxMailsViewModel().mails[15], 
-            starOnTapped: {}, 
-            chevronOnTapped: {}
-        )
-        .frame(height: 50)
-    }
-}
+//struct InboxTableItemView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        InboxTableItemView(
+//            mail: InboxMailsViewModel(filterService: FilterService()).mails[15], 
+//            starOnTapped: {}, 
+//            chevronOnTapped: {}
+//        )
+//        .frame(height: 50)
+//    }
+//}
 
 extension Color {
     static func random() -> Color {

@@ -11,36 +11,23 @@ import SwiftUI
 struct MyGmailApp: App {
     @StateObject private var slideInMenuService = SlideInMenuService()
     @StateObject private var showToolBarService = ShowToolBarService()
-    
+    @StateObject private var filterService = FilterService()
+    @StateObject private var inboxViewModel = InboxMailsViewModel()
+ 
     var body: some Scene {
         WindowGroup {
             Group{
-                HomeView(model: InboxMailsViewModel(), showToolBarService: showToolBarService)
+                HomeView(model: inboxViewModel, showToolBarService: showToolBarService)
             }.environmentObject(slideInMenuService)
              .environmentObject(showToolBarService)
+             .environmentObject(filterService)
              .slideInView(
                 isActive: $slideInMenuService.isPresented, 
                 edge:.leading, 
                 paddingPercentage: 0.3, 
                 options: SlideInViewOptions(paddingColor: .gray, paddingColorOpacity: 0.8)) {
-                    SideBarMenuView(model: SideMenuItemViewModel(), slideInMenuService: slideInMenuService)
+                    SideBarMenuView(model: SideMenuItemViewModel(filterService: filterService), slideInMenuService: slideInMenuService)
                 }
         }
     }
 }
-
-//TabView {
-//    NavigationView {
-//        InboxTableView(model: InboxMailsViewModel())
-//    }.tabItem {
-//        Image(systemName: "envelope")
-//            .imageScale(.medium)
-//    }
-//    
-//    NavigationView{
-//        VideoChat()
-//    }.tabItem {
-//        Image(systemName: "video")
-//            .imageScale(.medium)
-//    }
-//}

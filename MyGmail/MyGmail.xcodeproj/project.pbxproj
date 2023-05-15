@@ -28,6 +28,7 @@
 		1C2AC3772A10ACE8004C0777 /* CustomNavView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2AC3762A10ACE8004C0777 /* CustomNavView.swift */; };
 		1CC147622A115F950035849F /* ShowToolBarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC147612A115F950035849F /* ShowToolBarService.swift */; };
 		1CC147642A1177430035849F /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC147632A1177430035849F /* CameraView.swift */; };
+		1CC147662A118EB20035849F /* FilterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC147652A118EB20035849F /* FilterService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +54,7 @@
 		1C2AC3762A10ACE8004C0777 /* CustomNavView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavView.swift; sourceTree = "<group>"; };
 		1CC147612A115F950035849F /* ShowToolBarService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowToolBarService.swift; sourceTree = "<group>"; };
 		1CC147632A1177430035849F /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		1CC147652A118EB20035849F /* FilterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				1C2AC35F2A0A788F004C0777 /* SlideInMenuService.swift */,
+				1CC147652A118EB20035849F /* FilterService.swift */,
 				1C2AC3592A0A71E1004C0777 /* SlideInView.swift */,
 				1CC147612A115F950035849F /* ShowToolBarService.swift */,
 			);
@@ -237,6 +240,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1CC147622A115F950035849F /* ShowToolBarService.swift in Sources */,
+				1CC147662A118EB20035849F /* FilterService.swift in Sources */,
 				1C2AC3542A09E70E004C0777 /* InboxMails.swift in Sources */,
 				1C2AC3752A10A9EE004C0777 /* CustomNavBarView.swift in Sources */,
 				1CC147642A1177430035849F /* CameraView.swift in Sources */,

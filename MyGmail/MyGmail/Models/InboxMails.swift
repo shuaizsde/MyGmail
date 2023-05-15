@@ -45,6 +45,14 @@ struct InboxMails {
     mutating func star(_ mail: Mail) {
         let chosenIndex = mails.firstIndex(where: {$0.id == mail.id})
         mails[chosenIndex!].isStarred = !mail.isStarred
+        var count = 0
+        for mail in mails {
+            if mail.isStarred {
+                count += 1
+            }
+        }
+        print(count)
+        print("------------")
     }
     
     mutating func important(_ mail: Mail) {
