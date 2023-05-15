@@ -116,7 +116,6 @@ struct InboxTableView: View {
                         .offset(unreadBubbleOffset)
                 }
             })
-    
             Spacer()
             Button(
                 action: {},
