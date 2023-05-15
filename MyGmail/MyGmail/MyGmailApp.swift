@@ -31,7 +31,7 @@ struct MyGmailApp: App {
                         paddingColorOpacity: 0.8)
                 ) { 
                     SideBarMenuView(
-                        model: SideMenuItemViewModel(filterService: filterService), 
+                        model: SideMenuItemViewModel(filterService: filterService), mailViewModel: inboxViewModel, 
                         slideInMenuService: slideInMenuService
                     )
                 }

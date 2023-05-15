@@ -26,7 +26,7 @@ struct InboxMails {
         let subject: String
         let content: String
         
-        var isUnread = false
+        var isUnread = true
         
         var isPrimary = false
         var isSocial = false

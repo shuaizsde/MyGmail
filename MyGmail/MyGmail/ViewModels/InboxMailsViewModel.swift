@@ -151,6 +151,7 @@ class InboxMailsViewModel: ObservableObject {
                      Thanks, Simon. I have your call scheduled for Wednesday. Doc is updated with the details. Please be sure to take some time to review the Team Match Call Prep Resource
                      and specifically practice/prep for the points listed below. Please let me know if you have any questions and let me know how the call goes once completed. 
                      """,
+            isUnread: false, 
             isSent: true
         ),
         Mail(
@@ -161,6 +162,7 @@ class InboxMailsViewModel: ObservableObject {
             content: """
                      Good luck baby, you are my best bae!!! Love you (heart)
                      """,
+            isUnread: false, 
             isSent: true
         ),
         Mail(
@@ -183,7 +185,8 @@ class InboxMailsViewModel: ObservableObject {
                      Thanks,
                      Google Recruiting
                      """,
-            isPrimary: true
+            isUnread: false, 
+            isDraft: true
         ),
         Mail(
             profilePicture: "person10", 
@@ -225,6 +228,52 @@ class InboxMailsViewModel: ObservableObject {
             }
         }
         return count
+    }
+    
+    func getUnreads(of catagory: String) -> Int {
+        var count = 0
+        
+        var isUnderCatagory = false
+        for mail in model.mails {
+            switch menuButton(rawValue: catagory) {
+                
+            case .primary:
+                isUnderCatagory = mail.isPrimary
+            case .social:
+                isUnderCatagory = mail.isSocial
+            case .promotions:
+                isUnderCatagory = mail.isPromotions
+            case .starred:
+                isUnderCatagory = mail.isStarred  
+            case .snoozed: 
+                isUnderCatagory = mail.isSnoozed
+            case .important: 
+                isUnderCatagory = mail.isImportant
+            case .sent: 
+                isUnderCatagory = mail.isSent
+            case .scheduled: 
+                isUnderCatagory = mail.isScheduled
+            case .drafts: 
+                isUnderCatagory = mail.isDraft  
+            case .spam: 
+                isUnderCatagory = mail.isSpam 
+            case .allMail: 
+                isUnderCatagory = true
+            case .trash: 
+                isUnderCatagory = mail.isTrash
+            case .archived: 
+                isUnderCatagory = mail.isTrash  
+            default:
+                isUnderCatagory = false
+            }
+        
+            if isUnderCatagory && mail.isUnread {
+                count += 1
+            }
+        }
+        
+        return count 
+        
     }
     
     init(model: InboxMails = createInboxMails()) {

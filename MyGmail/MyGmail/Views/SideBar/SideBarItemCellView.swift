@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SideBarItemCellView: View {
     
+    @ObservedObject var mailViewModel: InboxMailsViewModel
     @Binding var slideInMenuService: SlideInMenuService
     
     var cell: CellItem
@@ -22,19 +23,20 @@ struct SideBarItemCellView: View {
             Text(cell.title)
             Spacer()
             
-            if let count = cell.unreads {
-                RoundedRectangle(cornerRadius: 10)
-                    .foregroundColor(count >= 10 ?  GmailColor.gray : GmailColor.green)
-                    .frame(
-                        width: 48, 
-                        height: 18
-                    )
-                    .overlay(  
-                        Text(count >= 10 ? "\(count)" : "\(count) New") 
-                        .font(GmailFont.defaultFont)
-                        .foregroundColor(.white)
-                    )
-            }
+            let count = mailViewModel.getUnreads(of: cell.title) 
+            RoundedRectangle(cornerRadius: 10)
+                .foregroundColor(count >= 10 ?  GmailColor.gray : GmailColor.green)
+                .frame(
+                    width: 48, 
+                    height: 18
+                )
+                .overlay(  
+                    Text(count >= 10 ? "\(count)" : "\(count) New") 
+                    .font(GmailFont.defaultFont)
+                    .foregroundColor(.white)
+                )
+                .opacity(count == 0 ? 0 : 1)
+            
             
         }
             .onTapGesture {
