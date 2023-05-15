@@ -9,78 +9,42 @@ import SwiftUI
 
 struct EmailBodyView: View {
     let mail: InboxMails.Mail
-    
-    // Sizes
-    let defaultIconFont = Font.custom( "default", size: 14)
-    let defaultTextFont = Font.custom( "default", size: 14)
-    let defaultIconColor = Color("gmailGray")
-    var profilePictureFrameWidth = 40.0
-    var defaultSpacing = 20.0
+  
+    let thumbnailWidth = 40.0
+    let defaultSpacing = 20.0
+    let largeSpacing = 50.0
+    let defaultOpacity = 0.6
     
     // Static Strings
     let toMe = "to me"
     let replyText = "Reply"
     let forwardText = "Forward"
-    // Icon 
-    let returnIcon = "return"
-    let ellipsisIcon = "ellipsis"
-    let starIcon = "star"
-    let reply = "return.left"
-    let forward = "return.right"
+    
     
     
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
+                
                 titleSection
                 Spacer().frame(height: defaultSpacing)
+                
                 senderSection
                 Spacer().frame(height: defaultSpacing * 2)
+                
                 Text(mail.content)
-                    .font(16)
+                    .font(GmailFont.defaultDouble)
                     .lineSpacing(8)
-                    .opacity(0.6)
-                Spacer().frame(height: 50)
+                    .opacity(defaultOpacity)
+                
+                Spacer()
+                    .frame(height: largeSpacing)
+                
                 HStack {
-                    Button(action: {
-                        
-                    }, label: {
-                        RoundedRectangle(cornerRadius: 5)
-                            .stroke()
-                            .foregroundColor(.gray)
-                            .opacity(0.5)
-                            .frame(width: 168, height: 32)
-                            .overlay(  
-                                HStack {
-                                    Image(systemName: reply)
-                                    Text(replyText)
-                                }
-                                    .font(defaultIconFont)
-                                    .fontWeight(.bold)
-                                    .foregroundColor(defaultIconColor)
-                            ) .fontWeight(.bold)
-                        
-                    })
+                    replyForwardButton(replyText, icon: GmailIcons.replyIcon, action: nil)
                     Spacer()
-                    
-                    Button(action: {
-                        
-                    }, label: {
-                        RoundedRectangle(cornerRadius: 5)
-                            .stroke()
-                            .foregroundColor(.gray)
-                            .opacity(0.5)
-                            .frame(width: 168, height: 32)
-                            .overlay(
-                                HStack {
-                                    Image(systemName: forward)
-                                    Text(forwardText)
-                                }
-                                    .font(defaultIconFont)
-                                    .foregroundColor(defaultIconColor)
-                            ).fontWeight(.bold)
-                        
-                    })
+                    replyForwardButton(forwardText, icon: GmailIcons.forwardIcon, action: nil)
+                   
                 }.padding(.horizontal, 10)
             }
         }
@@ -89,29 +53,54 @@ struct EmailBodyView: View {
     }
 }
 extension EmailBodyView {
-
+    @ViewBuilder func replyForwardButton(_ text: String, icon: Image, action: (()-> Void)?) -> some View {
+         Button(
+            action: action ?? {}, 
+            label: {
+                RoundedRectangle(cornerRadius: 5)
+                    .stroke()
+                    .foregroundColor(.gray)
+                    .opacity(0.5)
+                    .frame(width: 168, height: 32)
+                    .overlay(  
+                        HStack {
+                            icon
+                            Text(text)
+                        }
+                            .font(GmailFont.defaultFont2)
+                            .fontWeight(.bold)
+                            .foregroundColor(GmailColor.gray)
+                    ) .fontWeight(.bold)
+            }
+        )
+    }
     private var senderSection: some View {
         HStack {
             profilePictureThumbnail(with: mail)
             VStack(alignment: .leading) {
                 HStack(alignment: .center) {
-                    Text("\(mail.sender)").font(defaultTextFont)
-                    Text("\(mail.time)").font(defaultTextFont)
+                    Text("\(mail.sender)").font(GmailFont.defaultFont2)
+                    Text("\(mail.time)").font(GmailFont.defaultFont2)
                 }
                 HStack() {
                     Text(toMe)
                     Spacer().frame(width: 4)
-                    Image(systemName: "chevron.down").resizable().frame(width: 8, height: 5)
+                    GmailIcons.chevronDownIcon
+                        .resizable()
+                        .frame(
+                            width: 8, 
+                            height: 5
+                        )
                 }.font(.caption2)
             }
             Spacer()
-            Button(action: {} ,label: {Image(systemName: returnIcon)})
-                .font(defaultIconFont)
+            Button(action: {} ,label: {GmailIcons.returnIcon})
+                .font(GmailFont.defaultFont2)
             Spacer().frame(width: defaultSpacing)
-            Button(action: {} ,label: {Image(systemName: ellipsisIcon)})
-                .font(defaultIconFont)
+            Button(action: {} ,label: {GmailIcons.ellipsisIcon})
+                .font(GmailFont.defaultFont2)
 
-        }.foregroundColor(defaultIconColor)
+        }.foregroundColor(GmailColor.gray)
     }
     
     private var titleSection: some View {
@@ -125,13 +114,13 @@ extension EmailBodyView {
                     .frame(width: 36, height: 16)
                     .overlay(  
                         Text("Inbox")
-                        .font(12)
+                        .font(GmailFont.defaultFont)
                     )
             }
             Spacer()
-            Button(action: {} ,label: {Image(systemName: starIcon)})
-                .font(defaultIconFont)
-                .foregroundColor(defaultIconColor)
+            Button(action: {} ,label: {GmailIcons.starIcon})
+                .font(GmailFont.defaultFont2)
+                .foregroundColor(GmailColor.gray)
         }.opacity(0.7)
     }
     
@@ -140,27 +129,26 @@ extension EmailBodyView {
             Image(profilePictureName)
                 .resizable()
                 .scaledToFill()
-                .cornerRadius(profilePictureFrameWidth)
-                .frame(width: profilePictureFrameWidth, height: profilePictureFrameWidth)
-                .cornerRadius(profilePictureFrameWidth)
-                .frame(width: profilePictureFrameWidth)
+                .cornerRadius(thumbnailWidth)
+                .frame(width: thumbnailWidth, height: thumbnailWidth)
+                .cornerRadius(thumbnailWidth)
+                .frame(width: thumbnailWidth)
         } else {
             let placeHolder = String(mail?.sender.first ?? Character(""))
             Circle()
                 .fill(mail?.defaultColor ?? .white)
-                .frame(width: profilePictureFrameWidth, height: profilePictureFrameWidth)
+                .frame(
+                    width: thumbnailWidth, 
+                    height: thumbnailWidth
+                )
                 .overlay() {
-                    Text("\(placeHolder)").font(24).foregroundColor(.white)
-                }.frame(width: profilePictureFrameWidth)
+                    Text("\(placeHolder)")
+                        .font(GmailFont.defaultTriple)
+                        .foregroundColor(.white)
+                }.frame(width: thumbnailWidth)
         }
     }
     
-}
-
-extension Text {
-    func font(_ width: CGFloat) -> Text {
-        return self.font(.custom( "default", size: width))
-    }
 }
 
 struct EmailBodyView_Previews: PreviewProvider {

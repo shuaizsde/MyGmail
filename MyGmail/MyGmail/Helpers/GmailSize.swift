@@ -27,5 +27,18 @@ struct GmailFont {
     
     public static let defaultFont = Font.custom( "default", size: GmailSize.defaultFont)
     public static let defaultFont2 = Font.custom( "default", size: GmailSize.defaultFont2)
+    
+    public static let defaultDouble = Font.custom( "default", size: GmailSize.defaultDouble)
+    public static let defaultTriple = Font.custom( "default", size: GmailSize.defaultTripple)
+    
     public static let defaultLargeProfile = Font.custom( "default", size: GmailSize.defaultQuad)
+}
+
+struct GmailColor {
+    
+    public static let red = Color("gmailRed")
+    public static let green = Color("gmailGreen")
+    public static let gray = Color("gmailGray")
+    public static let textGray = Color("gmailTextGray")
+    
 }

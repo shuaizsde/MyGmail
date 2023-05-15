@@ -84,7 +84,7 @@ extension InboxTableView {
                         
                         Text(GmailStrings.composeButton).bold()
                     }
-                    .foregroundColor(Color("gmailRed"))
+                    .foregroundColor(GmailColor.red)
                     .font(.caption)
                 }
         }

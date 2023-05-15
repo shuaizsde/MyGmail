@@ -40,9 +40,9 @@ struct HomeView: View {
                 isCameraView = false
             } ,label: {
                 ZStack {
-                    GmailIcons.envelopeIcon.foregroundColor(Color("gmailGray"))
+                    GmailIcons.envelopeIcon.foregroundColor(GmailColor.gray)
                     Circle()
-                        .fill(Color("gmailRed"))
+                        .fill(GmailColor.red)
                         .frame(width: GmailSize.defaultDouble, height: GmailSize.defaultDouble)
                         .overlay(
                             Text("5") // TODO: unread placeholder 
@@ -57,7 +57,7 @@ struct HomeView: View {
             Spacer()
             Button(
                 action: {isCameraView = true} ,
-                label: { GmailIcons.videoIcon.foregroundColor(Color("gmailGray"))}
+                label: { GmailIcons.videoIcon.foregroundColor(GmailColor.gray)}
             )
         }.padding(80)
     }

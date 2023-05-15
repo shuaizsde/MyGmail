@@ -32,6 +32,7 @@
 		1CC147682A1270920035849F /* GmailIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC147672A1270920035849F /* GmailIcons.swift */; };
 		1CC1476A2A1271060035849F /* GmailStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC147692A1271060035849F /* GmailStrings.swift */; };
 		1CC1476C2A1272EE0035849F /* GmailSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC1476B2A1272EE0035849F /* GmailSize.swift */; };
+		1CC1476E2A1294420035849F /* SideBarItemCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC1476D2A1294420035849F /* SideBarItemCellView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +62,7 @@
 		1CC147672A1270920035849F /* GmailIcons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GmailIcons.swift; sourceTree = "<group>"; };
 		1CC147692A1271060035849F /* GmailStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GmailStrings.swift; sourceTree = "<group>"; };
 		1CC1476B2A1272EE0035849F /* GmailSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GmailSize.swift; sourceTree = "<group>"; };
+		1CC1476D2A1294420035849F /* SideBarItemCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarItemCellView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +138,7 @@
 				1C2AC3552A09EFEC004C0777 /* EmailBodyView.swift */,
 				1C2AC36E2A106401004C0777 /* ComposeMailView.swift */,
 				1CC147632A1177430035849F /* CameraView.swift */,
+				1CC1476D2A1294420035849F /* SideBarItemCellView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -256,6 +259,7 @@
 				1CC147642A1177430035849F /* CameraView.swift in Sources */,
 				1C2AC35E2A0A7847004C0777 /* SideBarMenuView.swift in Sources */,
 				1C2AC35A2A0A71E1004C0777 /* SlideInView.swift in Sources */,
+				1CC1476E2A1294420035849F /* SideBarItemCellView.swift in Sources */,
 				1CC1476C2A1272EE0035849F /* GmailSize.swift in Sources */,
 				1C2AC36F2A106401004C0777 /* ComposeMailView.swift in Sources */,
 				1C2AC3482A09E6AE004C0777 /* InboxTableView.swift in Sources */,

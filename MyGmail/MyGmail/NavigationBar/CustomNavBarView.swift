@@ -29,7 +29,7 @@ struct CustomNavBarView: View {
         }
         .padding()
         .accentColor(.white)
-        .foregroundColor(Color("gmailGray"))
+        .foregroundColor(GmailColor.gray)
         .font(.headline)
         .background(Color.white.ignoresSafeArea(edges: .top))
     }

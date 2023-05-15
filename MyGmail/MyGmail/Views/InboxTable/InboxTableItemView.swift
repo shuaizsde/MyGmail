@@ -28,13 +28,13 @@ struct InboxTableItemView :View {
                         GmailIcons.importantIcon
                             .font(GmailFont.defaultFont)
                             .fontWeight(mail.isImportant ? .bold : .regular)
-                            .foregroundColor(mail.isImportant ? Color.yellow : Color("gmailGray"))
+                            .foregroundColor(mail.isImportant ? Color.yellow : GmailColor.gray)
                             .onTapGesture {
                                 chevronOnTapped()
                             }
                         Spacer()
                             .frame(width: GmailSize.defaultHalf)
-                        Text(mail.sender).foregroundColor(Color("gmailGray"))
+                        Text(mail.sender).foregroundColor(GmailColor.gray)
                     }
                     .font(GmailFont.defaultFont)
                     .fontWeight(.light)
