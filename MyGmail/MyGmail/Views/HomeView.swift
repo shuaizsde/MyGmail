@@ -45,7 +45,7 @@ struct HomeView: View {
                         .fill(GmailColor.red)
                         .frame(width: GmailSize.defaultDouble, height: GmailSize.defaultDouble)
                         .overlay(
-                            Text("5") // TODO: unread placeholder 
+                            Text("\(model.unreads)") // TODO: unread placeholder 
                                 .fontWeight(.bold)
                                 .foregroundColor(.white)
                                 .font(GmailFont.defaultFont)

@@ -217,6 +217,16 @@ class InboxMailsViewModel: ObservableObject {
         return model.mails
     }
     
+    var unreads: Int {
+        var count = 0
+        for mail in model.mails {
+            if mail.isUnread {
+                count += 1
+            }
+        }
+        return count
+    }
+    
     init(model: InboxMails = createInboxMails()) {
         self.model = model
     }
