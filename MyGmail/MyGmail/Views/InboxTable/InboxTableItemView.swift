@@ -77,11 +77,12 @@ struct InboxTableItemView :View {
             Image(profilePictureName)
                 .resizable()
                 .scaledToFill()
-                .cornerRadius(profilePictureFrameWidth)
                 .frame(
                     width: profilePictureFrameWidth, 
                     height: profilePictureFrameWidth
                 )
+                .clipShape(Circle())
+                .frame(width: 50)
         } else {
             let placeHolder = String(mail.sender.first ?? Character(""))
             Circle()
@@ -95,7 +96,7 @@ struct InboxTableItemView :View {
                         .font(GmailFont.defaultLargeProfile)
                         .foregroundColor(.white)
                 }
-                .frame(width: 60)
+                .frame(width: 50)
         }
     }
 }
@@ -103,7 +104,7 @@ struct InboxTableItemView :View {
 struct InboxTableItemView_Previews: PreviewProvider {
     static var previews: some View {
         InboxTableItemView(
-            mail: InboxMailsViewModel().mails[15], 
+            mail: InboxMailsViewModel().mails[5], 
             starOnTapped: {}, 
             chevronOnTapped: {}
         )

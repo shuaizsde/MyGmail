@@ -19,4 +19,10 @@ struct GmailIcons {
     
     static let menuIcon_archived = Image(systemName: "square.and.arrow.down")
     static let person_archived = Image(systemName: "person.fill")
+    
+    
+    private let envelopeButtonImageName = "envelope"
+    private let videoButtonImageName = "video"
+    private let swipeArrowDownImage = "square.and.arrow.down"
+    private let menuButtonImage = "chevron.right.2"
 }

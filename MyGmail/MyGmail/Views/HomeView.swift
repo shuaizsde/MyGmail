@@ -9,15 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     
-    // MARK: Static strings
-    private let envelopeButtonImageName = "envelope"
-    private let videoButtonImageName = "video"
-    private let swipeArrowDownImage = "square.and.arrow.down"
-    private let menuButtonImage = "chevron.right.2"
     
-    // MARK: Static values
-    private let unreadBubbleSize: CGFloat = 16.0
-    private let unreadBubbleFontSize: CGFloat = 12.0
     private let unreadBubbleOffset = CGSize(width: 10.0, height: -8)
     
     @ObservedObject var model: InboxMailsViewModel
@@ -48,15 +40,15 @@ struct HomeView: View {
                 isCameraView = false
             } ,label: {
                 ZStack {
-                    Image(systemName: envelopeButtonImageName).foregroundColor(Color("gmailGray"))
+                    GmailIcons.envelopeIcon.foregroundColor(Color("gmailGray"))
                     Circle()
                         .fill(Color("gmailRed"))
-                        .frame(width: unreadBubbleSize, height: unreadBubbleSize)
+                        .frame(width: GmailSize.defaultDouble, height: GmailSize.defaultDouble)
                         .overlay(
                             Text("5") // TODO: unread placeholder 
                                 .fontWeight(.bold)
                                 .foregroundColor(.white)
-                                .font(.custom( "default", size: unreadBubbleFontSize))
+                                .font(GmailFont.defaultFont)
                         )
                         .offset(unreadBubbleOffset)
                 }
@@ -65,7 +57,7 @@ struct HomeView: View {
             Spacer()
             Button(
                 action: {isCameraView = true} ,
-                label: { Image(systemName: videoButtonImageName).foregroundColor(Color("gmailGray"))}
+                label: { GmailIcons.videoIcon.foregroundColor(Color("gmailGray"))}
             )
         }.padding(80)
     }

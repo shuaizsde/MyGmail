@@ -10,9 +10,9 @@ import SwiftUI
 struct InboxTableView: View {
     
     // MARK: Static values
-    private let unreadBubbleSize = GmailSize.defaultSingle
-    private let unreadBubbleFontSize = GmailSize.defaultFont
-    private let unreadBubbleOffset = CGSize(width: 10.0, height: -1 * GmailSize.defaultSingle)
+//    private let unreadBubbleSize = GmailSize.defaultSingle
+//    private let unreadBubbleFontSize = GmailSize.defaultFont
+//    private let unreadBubbleOffset = CGSize(width: 10.0, height: -1 * GmailSize.defaultSingle)
     private let composeButtonOffsetX = 320.0
     private let composeButtonOffsetY = 640.0
     
@@ -92,37 +92,6 @@ extension InboxTableView {
             x: composeButtonOffsetX, 
             y: composeButtonOffsetY
         )
-    }
-    
-    // MARK: Bottom Tool Bar Buttons
-    @ViewBuilder func createToolBarButtons()  -> some View {
-        HStack{
-            Button(action: {} ,label: {
-                ZStack {
-                    GmailIcons.envelopeIcon
-                        .foregroundColor(Color("gmailGray"))
-                    Circle()
-                        .fill(Color("gmailRed"))
-                        .frame(
-                            width: unreadBubbleSize, 
-                            height: unreadBubbleSize
-                        )
-                        .overlay(
-                            // TODO: fix with actual unreads
-                            Text("5") 
-                                .fontWeight(.bold)
-                                .foregroundColor(.white)
-                                .font(.custom( "default", size: unreadBubbleFontSize))
-                        )
-                        .offset(unreadBubbleOffset)
-                }
-            })
-            Spacer()
-            Button(
-                action: {},
-                label: {GmailIcons.videoIcon.foregroundColor(Color("gmailGray"))}
-            )
-        }.padding(80)
     }
     
     // MARK: Inbox Mail Cell
