@@ -28,18 +28,8 @@ struct InboxMails {
         
         var isUnread = false
         
-        var isPrimary = false
-        var isSocial = false
-        var isPromotions = false
         var isStarred = false
-        var isSnoozed = false
         var isImportant = false
-        var isSent = false
-        var isScheduled = false
-        var isDraft = false
-        var isSpam = false
-        var isTrash = false
-        
         var attachments: [(String,String)]? // <Type: Name>
     } 
     
