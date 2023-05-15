@@ -135,7 +135,7 @@ struct InboxTableView: View {
     }
     
 }
-//
+
 //struct InboxTableView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        InboxTableView(model: InboxMailsViewModel())

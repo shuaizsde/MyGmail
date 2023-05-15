@@ -108,8 +108,7 @@ struct SideBarItemCellView: View {
         }
         .onTapGesture {
             iconOnTap(cell)
-            // MARK: completion handler, unmark when filter is done
-            // slideInMenuService.isPresented.toggle()
+            slideInMenuService.isPresented.toggle()
         }
         .foregroundColor(cell.isSelected ? Color("gmailRed") : Color("menuTextGray"))
         .background(
@@ -124,6 +123,6 @@ struct SideBarItemCellView: View {
 
 struct SideBarMenuView_Previews: PreviewProvider {
     static var previews: some View {
-        SideBarMenuView(model: SideMenuItemViewModel(filterService: FilterService()), slideInMenuService: SlideInMenuService())
+        SideBarMenuView(model: SideMenuItemViewModel( filterService: FilterService()), slideInMenuService: SlideInMenuService())
     }
 }

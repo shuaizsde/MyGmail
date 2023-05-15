@@ -8,8 +8,5 @@
 import SwiftUI
 
 class FilterService: ObservableObject {
-    @Published var currentFilter: (InboxMailsViewModel.Mail)-> Bool = {_ in true }
-    // test
-    // test 2
-    
+    @Published var currentFilter: (InboxMailsViewModel.Mail) -> Bool = {_ in true }
 }

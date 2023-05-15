@@ -23,15 +23,13 @@ class SideMenuItemViewModel: ObservableObject {
         return model.cells
     }
       
-    func select(_ cell:  CellItem) -> (()->Bool)? {
+    func select(_ cell:  CellItem) {
         model.select(cell)
         if cell.title == "Starred" {
             filterService.currentFilter = {$0.isStarred}
         }else{
             filterService.currentFilter = {_ in true}
         }
-        print("ViewModel: \(cell.title) is selected")
-        
-        return nil
     }
+    
 }

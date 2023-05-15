@@ -9,7 +9,5 @@ import SwiftUI
 
 class ShowToolBarService: ObservableObject {
     @Published var showToolBar = true
-    
-    @StateObject public static var shared = ShowToolBarService()
 }
 

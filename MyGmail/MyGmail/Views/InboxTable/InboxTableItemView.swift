@@ -94,20 +94,19 @@ struct InboxTableItemView :View {
     }
 }
 
-
-//struct InboxTableItemView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        InboxTableItemView(
-//            mail: InboxMailsViewModel(filterService: FilterService()).mails[15], 
-//            starOnTapped: {}, 
-//            chevronOnTapped: {}
-//        )
-//        .frame(height: 50)
-//    }
-//}
-
 extension Color {
     static func random() -> Color {
         return Color(red: Double.random(in: 0...1), green: Double.random(in: 0.2...1), blue: Double.random(in: 0.3...1))
+    }
+}
+
+struct InboxTableItemView_Previews: PreviewProvider {
+    static var previews: some View {
+        InboxTableItemView(
+            mail: InboxMailsViewModel().mails[15], 
+            starOnTapped: {}, 
+            chevronOnTapped: {}
+        )
+        .frame(height: 50)
     }
 }
