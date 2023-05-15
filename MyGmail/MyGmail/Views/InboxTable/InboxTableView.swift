@@ -66,9 +66,7 @@ struct InboxTableView: View {
 
 extension InboxTableView {
     @ViewBuilder func composeButton()  -> some View {
-        NavigationLink {
-            ComposeMailView()
-        } label: {
+        CustomNavigationLink(destination: ComposeMailView()) {
             Capsule()
                 .foregroundColor(.white)
                 .shadow(radius: 4, x: 3, y: 3)
