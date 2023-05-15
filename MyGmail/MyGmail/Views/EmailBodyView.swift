@@ -37,43 +37,40 @@ struct EmailBodyView: View {
                     .lineSpacing(8)
                     .opacity(defaultOpacity)
                 
-                Spacer()
-                    .frame(height: largeSpacing)
+                Spacer().frame(height: largeSpacing)
                 
-                HStack {
-                    replyForwardButton(replyText, icon: GmailIcons.replyIcon, action: nil)
-                    Spacer()
-                    replyForwardButton(forwardText, icon: GmailIcons.forwardIcon, action: nil)
-                   
-                }.padding(.horizontal, 10)
+                replyForwardSection
+                    .padding(.horizontal, 10)
             }
         }
         .scrollIndicators(.hidden)
         .padding()
     }
 }
+
 extension EmailBodyView {
-    @ViewBuilder func replyForwardButton(_ text: String, icon: Image, action: (()-> Void)?) -> some View {
-         Button(
-            action: action ?? {}, 
-            label: {
-                RoundedRectangle(cornerRadius: 5)
-                    .stroke()
-                    .foregroundColor(.gray)
-                    .opacity(0.5)
-                    .frame(width: 168, height: 32)
+    
+    private var titleSection: some View {
+        HStack() {
+            HStack(alignment: .center) {
+                Text(mail.subject)
+                    .font(.title2)
+                    .lineLimit(1)
+                RoundedRectangle(cornerRadius: 2)
+                    .foregroundColor(.gray.opacity(0.3))
+                    .frame(width: 36, height: 16)
                     .overlay(  
-                        HStack {
-                            icon
-                            Text(text)
-                        }
-                            .font(GmailFont.defaultFont2)
-                            .fontWeight(.bold)
-                            .foregroundColor(GmailColor.gray)
-                    ) .fontWeight(.bold)
+                        Text("Inbox")
+                        .font(GmailFont.defaultFont)
+                    )
             }
-        )
+            Spacer()
+            Button(action: {} ,label: {GmailIcons.starIcon})
+                .font(GmailFont.defaultFont2)
+                .foregroundColor(GmailColor.gray)
+        }.opacity(0.7)
     }
+    
     private var senderSection: some View {
         HStack {
             profilePictureThumbnail(with: mail)
@@ -96,32 +93,53 @@ extension EmailBodyView {
             Spacer()
             Button(action: {} ,label: {GmailIcons.returnIcon})
                 .font(GmailFont.defaultFont2)
+            
             Spacer().frame(width: defaultSpacing)
+            
             Button(action: {} ,label: {GmailIcons.ellipsisIcon})
                 .font(GmailFont.defaultFont2)
 
         }.foregroundColor(GmailColor.gray)
     }
     
-    private var titleSection: some View {
-        HStack() {
-            HStack(alignment: .center) {
-                Text(mail.subject)
-                    .font(.title2)
-                    .lineLimit(1)
-                RoundedRectangle(cornerRadius: 2)
-                    .foregroundColor(.gray.opacity(0.3))
-                    .frame(width: 36, height: 16)
-                    .overlay(  
-                        Text("Inbox")
-                        .font(GmailFont.defaultFont)
-                    )
-            }
+    private var replyForwardSection: some View {
+        HStack {
+            replyForwardButton(
+                text: replyText, 
+                icon: GmailIcons.replyIcon, 
+                action: nil
+            )
             Spacer()
-            Button(action: {} ,label: {GmailIcons.starIcon})
-                .font(GmailFont.defaultFont2)
-                .foregroundColor(GmailColor.gray)
-        }.opacity(0.7)
+            replyForwardButton(
+                text: forwardText, 
+                icon: GmailIcons.forwardIcon, 
+                action: nil
+            )
+        }
+    }
+    
+    
+    @ViewBuilder func replyForwardButton(text: String, icon: Image, action: (()-> Void)?) -> some View {
+         Button(
+            action: action ?? {}, 
+            label: {
+                RoundedRectangle(cornerRadius: 5)
+                    .stroke()
+                    .foregroundColor(.gray)
+                    .opacity(0.5)
+                    .frame(width: 168, height: 32)
+                    .overlay(  
+                        HStack {
+                            icon
+                            Text(text)
+                        }
+                        .font(GmailFont.defaultFont2)
+                        .fontWeight(.bold)
+                        .foregroundColor(GmailColor.gray)
+                    ) 
+                    .fontWeight(.bold)
+            }
+        )
     }
     
     @ViewBuilder func profilePictureThumbnail(with mail: InboxMails.Mail?)  -> some View {

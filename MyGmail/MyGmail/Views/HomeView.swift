@@ -22,7 +22,7 @@ struct HomeView: View {
             if isCameraView {
                 CameraView()
             } else {
-                InboxTableView(showToolBarService: showToolBarService, model: model)
+                InboxTableView(model: model)
             }
         }.toolbar() {
             if showToolBarService.showToolBar {
