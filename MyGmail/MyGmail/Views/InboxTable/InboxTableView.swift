@@ -15,15 +15,15 @@ struct InboxTableView: View {
     private let unreadBubbleOffset = CGSize(width: 10.0, height: -1 * GmailSize.defaultSingle)
     private let composeButtonOffsetX = 320.0
     private let composeButtonOffsetY = 640.0
+    
+    
     // TODO: Fix this feature 
     var showToolBarService = ShowToolBarService()
+    
     @EnvironmentObject private var slideInMenuService: SlideInMenuService
     @EnvironmentObject private var filterService: FilterService
     
-    // MARK: viewModel
     @ObservedObject var model: InboxMailsViewModel
-  
-    // MARK: search bar
     @State var searchString = ""
     
     private var searchResults: [InboxMailsViewModel.Mail] {
@@ -34,7 +34,6 @@ struct InboxTableView: View {
         return filtedMails.filter {$0.sender.contains(searchString)}
     }
     
-    // MARK: View Body
     var body: some View {
         NavigationView {
             ZStack {
@@ -62,7 +61,9 @@ struct InboxTableView: View {
             }
         }
     }
-    
+}
+
+extension InboxTableView {
     @ViewBuilder func composeButton()  -> some View {
         NavigationLink {
             ComposeMailView()
@@ -128,15 +129,19 @@ struct InboxTableView: View {
     @ViewBuilder func createInboxMailCell(for cell: InboxMailsViewModel.Mail)  -> some View {
         ZStack {
             // Hide chevron visibility
-            CustomNavigationLink(destination: EmailBodyView(mail: cell)) { EmptyView() }
-                .opacity(0.0)
-            HStack {
-                InboxTableItemView(mail: cell, starOnTapped: { model.star(cell) }) {
-                    model.important(cell)
-                }
-            }.frame(height: 50)
+            CustomNavigationLink(
+                destination: EmailBodyView(mail: cell),
+                label: {EmptyView()}
+            )
+            .opacity(0.0)
+            
+            InboxTableItemView(
+                mail: cell, 
+                starOnTapped: { model.star(cell) },
+                chevronOnTapped: { model.important(cell) }
+            )
+            .frame(height: 50)
         }
-
     }
     
     private func swipeToDisplayMenu() -> _EndedGesture<DragGesture> {
