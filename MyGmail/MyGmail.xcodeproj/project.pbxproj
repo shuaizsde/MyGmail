@@ -29,9 +29,7 @@
 		1CC147622A115F950035849F /* ShowToolBarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC147612A115F950035849F /* ShowToolBarService.swift */; };
 		1CC147642A1177430035849F /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC147632A1177430035849F /* CameraView.swift */; };
 		1CC147662A118EB20035849F /* FilterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC147652A118EB20035849F /* FilterService.swift */; };
-		1CC147682A1270920035849F /* GmailIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC147672A1270920035849F /* GmailIcons.swift */; };
-		1CC1476A2A1271060035849F /* GmailStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC147692A1271060035849F /* GmailStrings.swift */; };
-		1CC1476C2A1272EE0035849F /* GmailSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC1476B2A1272EE0035849F /* GmailSize.swift */; };
+		1CC1476C2A1272EE0035849F /* StaticFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC1476B2A1272EE0035849F /* StaticFields.swift */; };
 		1CC1476E2A1294420035849F /* SideBarItemCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC1476D2A1294420035849F /* SideBarItemCellView.swift */; };
 /* End PBXBuildFile section */
 
@@ -59,9 +57,7 @@
 		1CC147612A115F950035849F /* ShowToolBarService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowToolBarService.swift; sourceTree = "<group>"; };
 		1CC147632A1177430035849F /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		1CC147652A118EB20035849F /* FilterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterService.swift; sourceTree = "<group>"; };
-		1CC147672A1270920035849F /* GmailIcons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GmailIcons.swift; sourceTree = "<group>"; };
-		1CC147692A1271060035849F /* GmailStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GmailStrings.swift; sourceTree = "<group>"; };
-		1CC1476B2A1272EE0035849F /* GmailSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GmailSize.swift; sourceTree = "<group>"; };
+		1CC1476B2A1272EE0035849F /* StaticFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticFields.swift; sourceTree = "<group>"; };
 		1CC1476D2A1294420035849F /* SideBarItemCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarItemCellView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -95,12 +91,12 @@
 		1C2AC3442A09E6AE004C0777 /* MyGmail */ = {
 			isa = PBXGroup;
 			children = (
-				1C2AC3782A10AF4D004C0777 /* NavigationBar */,
 				1C2AC3452A09E6AE004C0777 /* MyGmailApp.swift */,
-				1C2AC3612A0AB117004C0777 /* Helpers */,
-				1C2AC36C2A105533004C0777 /* Models */,
-				1C2AC36B2A1054C3004C0777 /* ViewModels */,
 				1C2AC36A2A105497004C0777 /* Views */,
+				1C2AC36B2A1054C3004C0777 /* ViewModels */,
+				1C2AC36C2A105533004C0777 /* Models */,
+				1C2AC3782A10AF4D004C0777 /* NavigationBar */,
+				1C2AC3612A0AB117004C0777 /* Helpers */,
 				1C2AC3492A09E6B0004C0777 /* Assets.xcassets */,
 				1C2AC34B2A09E6B0004C0777 /* Preview Content */,
 			);
@@ -122,9 +118,7 @@
 				1CC147652A118EB20035849F /* FilterService.swift */,
 				1C2AC3592A0A71E1004C0777 /* SlideInView.swift */,
 				1CC147612A115F950035849F /* ShowToolBarService.swift */,
-				1CC147672A1270920035849F /* GmailIcons.swift */,
-				1CC1476B2A1272EE0035849F /* GmailSize.swift */,
-				1CC147692A1271060035849F /* GmailStrings.swift */,
+				1CC1476B2A1272EE0035849F /* StaticFields.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -252,7 +246,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1CC147622A115F950035849F /* ShowToolBarService.swift in Sources */,
-				1CC1476A2A1271060035849F /* GmailStrings.swift in Sources */,
 				1CC147662A118EB20035849F /* FilterService.swift in Sources */,
 				1C2AC3542A09E70E004C0777 /* InboxMails.swift in Sources */,
 				1C2AC3752A10A9EE004C0777 /* CustomNavBarView.swift in Sources */,
@@ -260,7 +253,7 @@
 				1C2AC35E2A0A7847004C0777 /* SideBarMenuView.swift in Sources */,
 				1C2AC35A2A0A71E1004C0777 /* SlideInView.swift in Sources */,
 				1CC1476E2A1294420035849F /* SideBarItemCellView.swift in Sources */,
-				1CC1476C2A1272EE0035849F /* GmailSize.swift in Sources */,
+				1CC1476C2A1272EE0035849F /* StaticFields.swift in Sources */,
 				1C2AC36F2A106401004C0777 /* ComposeMailView.swift in Sources */,
 				1C2AC3482A09E6AE004C0777 /* InboxTableView.swift in Sources */,
 				1C2AC3772A10ACE8004C0777 /* CustomNavView.swift in Sources */,
@@ -268,7 +261,6 @@
 				1C2AC3582A09F807004C0777 /* InboxMailsViewModel.swift in Sources */,
 				1C2AC3692A102AFD004C0777 /* SideMenuItems.swift in Sources */,
 				1C2AC3632A0AB1BA004C0777 /* InboxTableItemView.swift in Sources */,
-				1CC147682A1270920035849F /* GmailIcons.swift in Sources */,
 				1C2AC3672A10270A004C0777 /* SideMenuItemViewModel.swift in Sources */,
 				1C2AC3712A10A866004C0777 /* CustomNavigationLink.swift in Sources */,
 				1C2AC3732A10A937004C0777 /* CustomNavBarContainerView.swift in Sources */,

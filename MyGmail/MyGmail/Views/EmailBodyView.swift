@@ -15,13 +15,6 @@ struct EmailBodyView: View {
     let largeSpacing = 50.0
     let defaultOpacity = 0.6
     
-    // Static Strings
-    let toMe = "to me"
-    let replyText = "Reply"
-    let forwardText = "Forward"
-    
-    
-    
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
@@ -80,7 +73,7 @@ extension EmailBodyView {
                     Text("\(mail.time)").font(GmailFont.defaultFont2)
                 }
                 HStack() {
-                    Text(toMe)
+                    Text(GmailStrings.toMe)
                     Spacer().frame(width: 4)
                     GmailIcons.chevronDownIcon
                         .resizable()
@@ -105,13 +98,13 @@ extension EmailBodyView {
     private var replyForwardSection: some View {
         HStack {
             replyForwardButton(
-                text: replyText, 
+                text: GmailStrings.replyText, 
                 icon: GmailIcons.replyIcon, 
                 action: nil
             )
             Spacer()
             replyForwardButton(
-                text: forwardText, 
+                text: GmailStrings.forwardText, 
                 icon: GmailIcons.forwardIcon, 
                 action: nil
             )
