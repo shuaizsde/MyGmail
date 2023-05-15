@@ -9,18 +9,14 @@ import SwiftUI
 
 struct InboxTableView: View {
     
-    // MARK: Static strings
-    private let searchbarPrompt = "Search in mail"
-    private let envelopeButtonImageName = "envelope"
-    private let videoButtonImageName = "video"
-    private let swipeArrowDownImage = "square.and.arrow.down"
-    private let menuButtonImage = "chevron.right.2"
-    
     // MARK: Static values
-    private let unreadBubbleSize: CGFloat = 16.0
-    private let unreadBubbleFontSize: CGFloat = 12.0
-    private let unreadBubbleOffset = CGSize(width: 10.0, height: -8)
-    
+    private let unreadBubbleSize = GmailSize.defaultSingle
+    private let unreadBubbleFontSize = GmailSize.defaultFont
+    private let unreadBubbleOffset = CGSize(width: 10.0, height: -1 * GmailSize.defaultSingle)
+    private let composeButtonOffsetX = 320.0
+    private let composeButtonOffsetY = 640.0
+    // TODO: Fix this feature 
+    var showToolBarService = ShowToolBarService()
     @EnvironmentObject private var slideInMenuService: SlideInMenuService
     @EnvironmentObject private var filterService: FilterService
     
@@ -30,15 +26,12 @@ struct InboxTableView: View {
     // MARK: search bar
     @State var searchString = ""
     
-    var showToolBarService = ShowToolBarService()
-    
     private var searchResults: [InboxMailsViewModel.Mail] {
-        
         let filtedMails = model.mails.filter(filterService.currentFilter)
         guard !searchString.isEmpty else {
             return filtedMails
         }
-        return filtedMails.filter { $0.sender.contains(searchString) }
+        return filtedMails.filter {$0.sender.contains(searchString)}
     }
     
     // MARK: View Body
@@ -46,51 +39,58 @@ struct InboxTableView: View {
         NavigationView {
             ZStack {
                 List{
-                    ForEach(searchResults) {createInboxMailCell(for: $0)}
-                        .swipeActions(edge: .trailing) {
-                            Button {
-                                // TODO
-                            } label: {
-                                Image(systemName: swipeArrowDownImage)
-                            }.tint(.green)
-                        }
+                    ForEach(searchResults) {
+                        createInboxMailCell(for: $0)
+                        
+                    }
+                    .swipeActions(edge: .trailing) {
+                        Button(action: {}, label:  {GmailIcons.swipeDownIcon})
+                            .tint(.green)
+                    }
                 }
                 .listStyle(.inset)
                 // MARK: swipping gesture for side bar menu
                 .gesture(
-                    DragGesture(
-                        minimumDistance: 20, 
-                        coordinateSpace: .global
-                    )
-                    .onEnded { value in
-                        let horizontalAmount = value.translation.width as CGFloat
-                        let verticalAmount = value.translation.height as CGFloat
-                        
-                        if abs(horizontalAmount) > abs(verticalAmount) && horizontalAmount > 0 {
-                            slideInMenuService.isPresented.toggle()
-                            showToolBarService.showToolBar = false
-                        }
-                    }
+                    swipeToDisplayMenu()
                 )
-                // MARK: search bar
-                .searchable(text: $searchString, prompt: searchbarPrompt)
-                
-                NavigationLink {
-                    ComposeMailView()
-                } label: {
-                    Capsule()
-                        .foregroundColor(.white)
-                        .shadow(radius: 4, x: 3, y: 3)
-                        .frame(width: 110, height: 40)
-                        .overlay(alignment: .center) {
-                            HStack {
-                                Image(systemName: "pencil").resizable().scaledToFit().frame(width: 15, height: 20)
-                                Text("Compose").bold()
-                            }.foregroundColor(Color("gmailRed")).font(.caption)
-                        }
-                } .position(x: 320, y: 640)
+                .searchable(
+                    text: $searchString, 
+                    prompt: GmailStrings.searchbarPlaceHolder
+                )
+            
+                composeButton()
             }
         }
+    }
+    
+    @ViewBuilder func composeButton()  -> some View {
+        NavigationLink {
+            ComposeMailView()
+        } label: {
+            Capsule()
+                .foregroundColor(.white)
+                .shadow(radius: 4, x: 3, y: 3)
+                .frame(width: GmailSize.defaultSingle * 15, height: GmailSize.defaultSingle * 5)
+                .overlay(alignment: .center) {
+                    HStack {
+                        GmailIcons.composeButtonIcon
+                            .resizable()
+                            .scaledToFit()
+                            .frame(
+                                width: GmailSize.defaultDouble, 
+                                height: GmailSize.defaultTripple
+                            )
+                        
+                        Text(GmailStrings.composeButton).bold()
+                    }
+                    .foregroundColor(Color("gmailRed"))
+                    .font(.caption)
+                }
+        }
+        .position(
+            x: composeButtonOffsetX, 
+            y: composeButtonOffsetY
+        )
     }
     
     // MARK: Bottom Tool Bar Buttons
@@ -98,12 +98,17 @@ struct InboxTableView: View {
         HStack{
             Button(action: {} ,label: {
                 ZStack {
-                    Image(systemName: envelopeButtonImageName).foregroundColor(Color("gmailGray"))
+                    GmailIcons.envelopeIcon
+                        .foregroundColor(Color("gmailGray"))
                     Circle()
                         .fill(Color("gmailRed"))
-                        .frame(width: unreadBubbleSize, height: unreadBubbleSize)
+                        .frame(
+                            width: unreadBubbleSize, 
+                            height: unreadBubbleSize
+                        )
                         .overlay(
-                            Text("5") // TODO: unread placeholder 
+                            // TODO: fix with actual unreads
+                            Text("5") 
                                 .fontWeight(.bold)
                                 .foregroundColor(.white)
                                 .font(.custom( "default", size: unreadBubbleFontSize))
@@ -111,11 +116,12 @@ struct InboxTableView: View {
                         .offset(unreadBubbleOffset)
                 }
             })
-            
+    
             Spacer()
-            Button(action: {} ,label: { Image(systemName: videoButtonImageName).foregroundColor(Color("gmailGray"))})
-
-            
+            Button(
+                action: {},
+                label: {GmailIcons.videoIcon.foregroundColor(Color("gmailGray"))}
+            )
         }.padding(80)
     }
     
@@ -123,7 +129,7 @@ struct InboxTableView: View {
     @ViewBuilder func createInboxMailCell(for cell: InboxMailsViewModel.Mail)  -> some View {
         ZStack {
             // Hide chevron visibility
-            CustomNavigationLink(destination: EmailBodyView(mail: cell), showToolBarService: showToolBarService) { EmptyView() }
+            CustomNavigationLink(destination: EmailBodyView(mail: cell)) { EmptyView() }
                 .opacity(0.0)
             HStack {
                 InboxTableItemView(mail: cell, starOnTapped: { model.star(cell) }) {
@@ -134,10 +140,25 @@ struct InboxTableView: View {
 
     }
     
+    private func swipeToDisplayMenu() -> _EndedGesture<DragGesture> {
+        DragGesture(
+            minimumDistance: 20, 
+            coordinateSpace: .global
+        )
+        .onEnded { value in
+            let horizontalAmount = value.translation.width as CGFloat
+            let verticalAmount = value.translation.height as CGFloat
+            
+            if abs(horizontalAmount) > abs(verticalAmount) && horizontalAmount > 0 {
+                slideInMenuService.isPresented.toggle()
+                showToolBarService.showToolBar = false
+            }
+        }
+    }
 }
 
-//struct InboxTableView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        InboxTableView(model: InboxMailsViewModel())
-//    }
-//}
+struct InboxTableView_Previews: PreviewProvider {
+    static var previews: some View {
+        InboxTableView(model: InboxMailsViewModel())
+    }
+}

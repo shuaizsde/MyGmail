@@ -13,7 +13,7 @@ struct CustomNavBarView: View {
     @State private var title: String = ""
     @State private var subtitle: String = ""
     
-    var showToolBarService: ShowToolBarService
+
     
     var body: some View {
         HStack {
@@ -38,7 +38,6 @@ struct CustomNavBarView: View {
 extension CustomNavBarView {
     private var backButton: some View {
         Button(action: {
-            showToolBarService.showToolBar = true
             presentationMode.wrappedValue.dismiss()
         }, label: {
             Image(systemName: "chevron.left")
@@ -71,8 +70,8 @@ extension CustomNavBarView {
     }
 }
 
-//struct CustomNavBarView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        CustomNavBarView()
-//    }
-//}
+struct CustomNavBarView_Previews: PreviewProvider {
+    static var previews: some View {
+        CustomNavBarView()
+    }
+}
