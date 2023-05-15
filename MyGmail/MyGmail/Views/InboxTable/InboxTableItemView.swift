@@ -11,7 +11,6 @@ import SwiftUI
 struct InboxTableItemView :View {
 
     private let profilePictureFrameWidth = GmailSize.defaultSext
-    private let senderFontWidth = GmailSize.defaultFont2
     
     var mail: InboxMails.Mail
     var starOnTapped: () -> Void

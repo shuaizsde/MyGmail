@@ -230,4 +230,8 @@ class InboxMailsViewModel: ObservableObject {
         model.important(mail)
     }
     
+    func archive(_ mail: Mail) {
+        model.archive(mail)
+    }
+    
 }

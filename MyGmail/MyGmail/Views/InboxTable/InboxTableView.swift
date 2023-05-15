@@ -10,9 +10,6 @@ import SwiftUI
 struct InboxTableView: View {
     
     // MARK: Static values
-//    private let unreadBubbleSize = GmailSize.defaultSingle
-//    private let unreadBubbleFontSize = GmailSize.defaultFont
-//    private let unreadBubbleOffset = CGSize(width: 10.0, height: -1 * GmailSize.defaultSingle)
     private let composeButtonOffsetX = 320.0
     private let composeButtonOffsetY = 640.0
     
@@ -38,13 +35,17 @@ struct InboxTableView: View {
         NavigationView {
             ZStack {
                 List{
-                    ForEach(searchResults) {
-                        createInboxMailCell(for: $0)
-                        
-                    }
-                    .swipeActions(edge: .trailing) {
-                        Button(action: {}, label:  {GmailIcons.swipeDownIcon})
-                            .tint(.green)
+                    ForEach(searchResults) { mail in
+                        createInboxMailCell(for: mail)
+                            .swipeActions(edge: .trailing, allowsFullSwipe: false) {
+                                Button(
+                                    action: {
+                                        withAnimation(.easeInOut) {
+                                            model.archive(mail)
+                                        }
+                                    }, label:  {GmailIcons.swipeDownIcon})
+                                    .tint(.green)
+                            }
                     }
                 }
                 .listStyle(.inset)

@@ -126,13 +126,12 @@
 		1C2AC36A2A105497004C0777 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				1CC1476F2A12B6330035849F /* SideBar */,
 				1C2AC36D2A105587004C0777 /* InboxTable */,
 				1C2AC3642A0C1C5D004C0777 /* HomeView.swift */,
-				1C2AC35D2A0A7846004C0777 /* SideBarMenuView.swift */,
 				1C2AC3552A09EFEC004C0777 /* EmailBodyView.swift */,
 				1C2AC36E2A106401004C0777 /* ComposeMailView.swift */,
 				1CC147632A1177430035849F /* CameraView.swift */,
-				1CC1476D2A1294420035849F /* SideBarItemCellView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -173,6 +172,15 @@
 				1C2AC3702A10A866004C0777 /* CustomNavigationLink.swift */,
 			);
 			path = NavigationBar;
+			sourceTree = "<group>";
+		};
+		1CC1476F2A12B6330035849F /* SideBar */ = {
+			isa = PBXGroup;
+			children = (
+				1C2AC35D2A0A7846004C0777 /* SideBarMenuView.swift */,
+				1CC1476D2A1294420035849F /* SideBarItemCellView.swift */,
+			);
+			path = SideBar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

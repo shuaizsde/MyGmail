@@ -49,7 +49,7 @@ class SideMenuItemViewModel: ObservableObject {
         case .trash: 
             filterService.currentFilter = {$0.isTrash} 
         default:
-            filterService.currentFilter = {!$0.isSent}
+            filterService.currentFilter = {!$0.isSent && !$0.isArchived && !$0.isSpam && !$0.isTrash }
         }
     }
 }

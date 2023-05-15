@@ -39,6 +39,7 @@ struct InboxMails {
         var isDraft = false
         var isSpam = false
         var isTrash = false
+        var isArchived = false
         
         var attachments: [(String,String)]? // <Type: Name>
     } 
@@ -51,6 +52,10 @@ struct InboxMails {
     mutating func important(_ mail: Mail) {
         let chosenIndex = mails.firstIndex(where: {$0.id == mail.id})
         mails[chosenIndex!].isImportant = !mail.isImportant
+    }
+    mutating func archive(_ mail: Mail) {
+        let chosenIndex = mails.firstIndex(where: {$0.id == mail.id})
+        mails[chosenIndex!].isArchived = true
     }
 }
 
