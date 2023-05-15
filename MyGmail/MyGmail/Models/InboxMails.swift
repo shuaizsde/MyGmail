@@ -57,6 +57,10 @@ struct InboxMails {
         let chosenIndex = mails.firstIndex(where: {$0.id == mail.id})
         mails[chosenIndex!].isArchived = true
     }
+    mutating func read(_ mail: Mail) {
+        let chosenIndex = mails.firstIndex(where: {$0.id == mail.id})
+        mails[chosenIndex!].isUnread = false
+    }
 }
 
 extension Color {

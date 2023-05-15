@@ -95,12 +95,19 @@ extension InboxTableView {
         )
     }
     
+    
+//    NavigationLink(destination: TradeView(trade: trade)) {
+//        Text("Trade View Link")
+//    }.simultaneousGesture(TapGesture().onEnded{
+//        print("Hello world!")
+//    })
+    
     // MARK: Inbox Mail Cell
     @ViewBuilder func createInboxMailCell(for cell: InboxMailsViewModel.Mail)  -> some View {
         ZStack {
             // Hide chevron visibility
             CustomNavigationLink(
-                destination: EmailBodyView(mail: cell),
+                destination: EmailBodyView(mail: cell, viewModel: model),
                 label: {EmptyView()}
             )
             .opacity(0.0)

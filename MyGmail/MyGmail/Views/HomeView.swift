@@ -45,11 +45,13 @@ struct HomeView: View {
                         .fill(GmailColor.red)
                         .frame(width: GmailSize.defaultDouble, height: GmailSize.defaultDouble)
                         .overlay(
+                            
                             Text("\(model.unreads)") // TODO: unread placeholder 
                                 .fontWeight(.bold)
                                 .foregroundColor(.white)
                                 .font(GmailFont.defaultFont)
                         )
+                        .opacity(model.unreads > 0 ? 1.0 : 0)
                         .offset(unreadBubbleOffset)
                 }
             })

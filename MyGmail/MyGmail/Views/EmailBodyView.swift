@@ -15,6 +15,8 @@ struct EmailBodyView: View {
     let largeSpacing = 50.0
     let defaultOpacity = 0.6
     
+    @ObservedObject var viewModel: InboxMailsViewModel
+    
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
@@ -34,6 +36,10 @@ struct EmailBodyView: View {
                 
                 replyForwardSection
                     .padding(.horizontal, 10)
+            }.onAppear {
+                if mail.isUnread {
+                    viewModel.read(mail)
+                }
             }
         }
         .scrollIndicators(.hidden)
@@ -163,6 +169,6 @@ extension EmailBodyView {
 
 struct EmailBodyView_Previews: PreviewProvider {
     static var previews: some View {
-        EmailBodyView(mail: InboxMailsViewModel().mails[0])
+        EmailBodyView(mail: InboxMailsViewModel().mails[0], viewModel: InboxMailsViewModel())
     }
 }
