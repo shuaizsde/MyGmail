@@ -32,7 +32,6 @@ struct SideMenuItems {
     
     init() {
         cells = [CellItem]()
-        
         // Section 1
         cells.append(CellItem(id: 0, profilePicture:"tray",title: "All Inboxes", unreads: 5))
         cells.append(CellItem(id: 1, profilePicture:"timelapse",title: "Primary"))
@@ -63,8 +62,8 @@ struct CellItem: Identifiable {
     
     let profilePicture: String
     let title: String
+    // TODO: Recalculate unreads in place
     var unreads: Int?
-    
     var isSelected: Bool = false
 } 
 

@@ -12,8 +12,6 @@ class SideMenuItemViewModel: ObservableObject {
     @Published private var model = SideMenuItems()
     @ObservedObject var filterService: FilterService
     
-    @Published var filter: (()->Bool)? = nil
-    
     init(model: SideMenuItems = SideMenuItems(), filterService: FilterService) {
         self.model = model
         self.filterService = filterService
@@ -50,31 +48,28 @@ class SideMenuItemViewModel: ObservableObject {
             filterService.currentFilter = {$0.isSpam}    
         case .trash: 
             filterService.currentFilter = {$0.isTrash} 
-      
         default:
             filterService.currentFilter = {!$0.isSent}
         }
-     
     }
-    
-    enum menuButton: String {
-        case allInboxes = "All Inboxes"
-        case primary = "Primary"
-        case social = "Social"
-        case promotions = "Promotions"
-        case starred = "Starred"
-        case snoozed = "Snoozed"
-        case important = "Important"
-        case sent = "Sent"
-        case scheduled = "Scheduled"
-        case drafts = "Drafts"
-        case allMail = "All mail"
-        case spam = "Spam"
-        case trash = "Trash"
-        case createNew = "Create New"
-        case settings = "Settings"
-        case feedback = "Send feedback"
-        case help = "Help"
-    }
-    
+}
+
+enum menuButton: String {
+    case allInboxes = "All Inboxes"
+    case primary = "Primary"
+    case social = "Social"
+    case promotions = "Promotions"
+    case starred = "Starred"
+    case snoozed = "Snoozed"
+    case important = "Important"
+    case sent = "Sent"
+    case scheduled = "Scheduled"
+    case drafts = "Drafts"
+    case allMail = "All mail"
+    case spam = "Spam"
+    case trash = "Trash"
+    case createNew = "Create New"
+    case settings = "Settings"
+    case feedback = "Send feedback"
+    case help = "Help"
 }

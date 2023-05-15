@@ -23,15 +23,14 @@ struct GmailSize {
 
 struct GmailFont {
     
-    public static let defaultSmall = Font.custom( "default", size: 10)
+    public static let defaultSmall = Font.custom("default", size: 10)
     
-    public static let defaultFont = Font.custom( "default", size: GmailSize.defaultFont)
-    public static let defaultFont2 = Font.custom( "default", size: GmailSize.defaultFont2)
+    public static let defaultFont = Font.custom("default", size: GmailSize.defaultFont)
+    public static let defaultFont2 = Font.custom("default", size: GmailSize.defaultFont2)
     
-    public static let defaultDouble = Font.custom( "default", size: GmailSize.defaultDouble)
-    public static let defaultTriple = Font.custom( "default", size: GmailSize.defaultTripple)
-    
-    public static let defaultLargeProfile = Font.custom( "default", size: GmailSize.defaultQuad)
+    public static let defaultDouble = Font.custom("default", size: GmailSize.defaultDouble)
+    public static let defaultTriple = Font.custom("default", size: GmailSize.defaultTripple)
+    public static let defaultLargeProfile = Font.custom("default", size: GmailSize.defaultQuad)
 }
 
 struct GmailColor {
@@ -45,7 +44,7 @@ struct GmailColor {
 
 struct GmailIcons {
     
-    static let gmailIcon = Image("envelope")
+    static let gmailIcon = Image("gmail")
     
     static let envelopeIcon = Image(systemName: "envelope")
     static let videoIcon = Image(systemName: "video")  
