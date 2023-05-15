@@ -35,23 +35,24 @@ struct InboxTableItemView :View {
                         Spacer()
                             .frame(width: GmailSize.defaultHalf)
                         Text(mail.sender)
-                            .foregroundColor(GmailColor.gray)
-                            .fontWeight(mail.isUnread ? .heavy : .heavy)
+                            .foregroundColor(mail.isUnread ? .black : GmailColor.gray)
+                            .font(GmailFont.defaultFont2)
+                            .fontWeight(mail.isUnread ? .heavy : .regular)
                     }
-                    .font(GmailFont.defaultFont)
                     
                     Spacer(minLength: GmailSize.defaultHalf)
                     
                     Text(mail.subject)
                         .font(GmailFont.defaultFont)
-                        .foregroundColor(.gray)
+                        .fontWeight(mail.isUnread ? .bold : .regular)
+                        .foregroundColor(mail.isUnread ? .black : GmailColor.gray)
                     
                     Spacer(minLength: 0)
                     
                     Text(mail.content)
                         .font(GmailFont.defaultFont)
                         .lineLimit(1)
-                        .fontWeight(.light)
+                        .fontWeight(mail.isUnread ? .regular : .light)
                         .foregroundColor(.gray)
                 }
                 

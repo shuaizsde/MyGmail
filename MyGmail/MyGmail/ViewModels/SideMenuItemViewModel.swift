@@ -45,7 +45,9 @@ class SideMenuItemViewModel: ObservableObject {
         case .drafts: 
             filterService.currentFilter = {$0.isDraft}   
         case .spam: 
-            filterService.currentFilter = {$0.isSpam}    
+            filterService.currentFilter = {$0.isSpam}  
+        case .allMail: 
+            filterService.currentFilter = {_ in true} 
         case .trash: 
             filterService.currentFilter = {$0.isTrash} 
         case .archived: 
