@@ -8,14 +8,7 @@
 import Foundation
 import SwiftUI
 
-enum MailCatagory {
-    case none
-    case social
-    case promotion
-    case primary
-    case spam
-    
-}
+
 struct InboxMails {
     
     private(set) var mails: Array<Mail>
@@ -33,19 +26,18 @@ struct InboxMails {
         let subject: String
         let content: String
         
+        var isUnread = false
+        
         var isStarred = false
         var isImportant = false
-        // For extra upcoming fancy crazy features
-        var isUnread = false
         var attachments: [(String,String)]? // <Type: Name>
-        var catagory: MailCatagory = .none
-        
     } 
     
     mutating func star(_ mail: Mail) {
         let chosenIndex = mails.firstIndex(where: {$0.id == mail.id})
         mails[chosenIndex!].isStarred = !mail.isStarred
         var count = 0
+        // Test Use
         for mail in mails {
             if mail.isStarred {
                 count += 1

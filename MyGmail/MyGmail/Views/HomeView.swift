@@ -26,7 +26,6 @@ struct HomeView: View {
     @State var isCameraView = false
     
     var body: some View {
-      //  var currentView = isCameraView ? CameraView() : InboxTableView(model: model, showToolBarService: showToolBarService)
         ZStack {
             if isCameraView {
                 CameraView()
@@ -75,6 +74,6 @@ struct HomeView: View {
 
 //struct HomeView_Previews: PreviewProvider {
 //    static var previews: some View {
-//        HomeView(model: InboxMailsViewModel(filterService: FilterService()), showToolBarService: ShowToolBarService())
+//        HomeView(model: InboxMailsViewModel(), showToolBarService: ShowToolBarService())
 //    }
 //}

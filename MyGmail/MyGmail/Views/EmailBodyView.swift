@@ -163,8 +163,8 @@ extension Text {
     }
 }
 
-//struct EmailBodyView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        EmailBodyView(mail: InboxMailsViewModel(filterService: FilterService()).mails[0])
-//    }
-//}
+struct EmailBodyView_Previews: PreviewProvider {
+    static var previews: some View {
+        EmailBodyView(mail: InboxMailsViewModel().mails[0])
+    }
+}
