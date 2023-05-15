@@ -25,11 +25,56 @@ class SideMenuItemViewModel: ObservableObject {
       
     func select(_ cell:  CellItem) {
         model.select(cell)
-        if cell.title == "Starred" {
-            filterService.currentFilter = {$0.isStarred}
-        }else{
-            filterService.currentFilter = {_ in true}
+        
+        switch menuButton(rawValue: cell.title) {
+            
+        case .primary:
+            filterService.currentFilter = {$0.isPrimary}
+        case .social:
+            filterService.currentFilter = {$0.isSocial}
+        case .promotions:
+            filterService.currentFilter = {$0.isPromotions}
+        case .starred:
+            filterService.currentFilter = {$0.isStarred}   
+        case .snoozed: 
+            filterService.currentFilter = {$0.isSnoozed}
+        case .important: 
+            filterService.currentFilter = {$0.isImportant}
+        case .sent: 
+            filterService.currentFilter = {$0.isSent} 
+        case .scheduled: 
+            filterService.currentFilter = {$0.isScheduled}   
+        case .drafts: 
+            filterService.currentFilter = {$0.isDraft}   
+        case .spam: 
+            filterService.currentFilter = {$0.isSpam}    
+        case .trash: 
+            filterService.currentFilter = {$0.isTrash} 
+      
+        default:
+            filterService.currentFilter = {!$0.isSent}
         }
+     
+    }
+    
+    enum menuButton: String {
+        case allInboxes = "All Inboxes"
+        case primary = "Primary"
+        case social = "Social"
+        case promotions = "Promotions"
+        case starred = "Starred"
+        case snoozed = "Snoozed"
+        case important = "Important"
+        case sent = "Sent"
+        case scheduled = "Scheduled"
+        case drafts = "Drafts"
+        case allMail = "All mail"
+        case spam = "Spam"
+        case trash = "Trash"
+        case createNew = "Create New"
+        case settings = "Settings"
+        case feedback = "Send feedback"
+        case help = "Help"
     }
     
 }
