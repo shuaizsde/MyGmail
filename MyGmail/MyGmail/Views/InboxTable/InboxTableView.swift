@@ -68,8 +68,8 @@ struct InboxTableView: View {
                         
                         if abs(horizontalAmount) > abs(verticalAmount) && horizontalAmount > 0 {
                             slideInMenuService.isPresented.toggle()
+                            showToolBarService.showToolBar = false
                         }
-                        showToolBarService.showToolBar = false
                     }
                 )
                 // MARK: search bar

@@ -167,8 +167,8 @@ class InboxMailsViewModel: ObservableObject {
             
         ),
         Mail(
-            profilePicture: "person2", 
-            sender: "Sam Johns",  
+            profilePicture: "simon", 
+            sender: "You",  
             time: "10:15 AM", 
             subject: "Re: Google Team Match Update",
             content: """
@@ -178,10 +178,10 @@ class InboxMailsViewModel: ObservableObject {
             isSent: true
         ),
         Mail(
-            profilePicture: nil, 
-            sender: "Nick Diemons", 
+            profilePicture: "simon", 
+            sender: "You", 
             time: "06:11 AM", 
-            subject: "Good luck on your interview",
+            subject: "Re:Good luck on your interview",
             content: """
                      Good luck baby, you are my best bae!!! Love you (heart)
                      """,

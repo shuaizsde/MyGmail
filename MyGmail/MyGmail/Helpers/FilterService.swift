@@ -8,5 +8,5 @@
 import SwiftUI
 
 class FilterService: ObservableObject {
-    @Published var currentFilter: (InboxMailsViewModel.Mail) -> Bool = {_ in true }
+    @Published var currentFilter: (InboxMailsViewModel.Mail) -> Bool = {!$0.isSent}
 }

@@ -29,8 +29,7 @@ struct HomeView: View {
         ZStack {
             if isCameraView {
                 CameraView()
-            }
-            if !isCameraView {
+            } else {
                 InboxTableView(model: model, showToolBarService: showToolBarService)
             }
         }.toolbar() {
