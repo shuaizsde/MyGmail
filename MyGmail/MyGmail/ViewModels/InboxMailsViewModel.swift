@@ -55,7 +55,10 @@ class InboxMailsViewModel: ObservableObject {
                      Released features: "Community Creation Flow", "Subgroup Manager", "Community Navigation Menu", "Orphaned Participants Cleaner", "Announcement Group Improvement", "Community Introduction Views(NUX)" and 3 more.(by 03/29/23)
                      
                      ...
-                     """
+                     """,
+            isPrimary: true,
+            isStarred: true,
+            isImportant: true
         ),
         Mail(
             profilePicture: "cecillia", 
@@ -65,7 +68,10 @@ class InboxMailsViewModel: ObservableObject {
             content: """
                      Thanks, Simon. I have your call scheduled for Wednesday. Doc is updated with the details. Please be sure to take some time to review the Team Match Call Prep Resource
                      and specifically practice/prep for the points listed below. Please let me know if you have any questions and let me know how the call goes once completed. 
-                     """
+                     """,
+            isPrimary: true,
+            isStarred: true,
+            isImportant: true
         ),
         Mail(
             profilePicture: "person3", 
@@ -74,7 +80,9 @@ class InboxMailsViewModel: ObservableObject {
             subject: "Good luck on your interview",
             content: """
                      Good luck baby, you are my best bae!!! Love you (heart)
-                     """
+                     """,
+            isPrimary: true,
+            isStarred: true
         ),
         Mail(
             profilePicture: nil, 
@@ -83,7 +91,8 @@ class InboxMailsViewModel: ObservableObject {
             subject: "from unknown sender",
             content: """
                      put me into spam,put me into spam,put me into spam,put me into spam,put me into spam,put me into spam,put me into spam,put me into spam,put me into spam,put me into spam,
-                     """
+                     """,
+            isSpam: true
         ),
         Mail(
             profilePicture: nil, 
@@ -94,7 +103,8 @@ class InboxMailsViewModel: ObservableObject {
                      Hi Simon Zhang,Thanks for your interest in a role at Google! We received your application and will be in touch soon about next steps.
                      Thanks,
                      Google Recruiting
-                     """
+                     """,
+            isTrash: true
         ),
         Mail(
             profilePicture: "person5", 
@@ -103,7 +113,9 @@ class InboxMailsViewModel: ObservableObject {
             subject: "Test Test",
             content: """
                      To have this test, you swallow a string with a weighted gelatin capsule on the end. The string is pulled out 4 hours later. Any bile, blood, or mucus attached to the string is examined under the microscope. This is done to look for cells and parasites or parasite eggs.
-                     """
+                     """,
+            isPrimary: true,
+            isSocial: true
         ),
         Mail(
             profilePicture: "person6", 
@@ -112,7 +124,9 @@ class InboxMailsViewModel: ObservableObject {
             subject: "Test Test",
             content: """
                      To have this test, you swallow a string with a weighted gelatin capsule on the end. The string is pulled out 4 hours later. Any bile, blood, or mucus attached to the string is examined under the microscope. This is done to look for cells and parasites or parasite eggs.
-                     """
+                     """,
+            isPrimary: true,
+            isSocial: true
         ),
         Mail(
             profilePicture: "person7", 
@@ -121,7 +135,9 @@ class InboxMailsViewModel: ObservableObject {
             subject: "Test Test",
             content: """
                      To have this test, you swallow a string with a weighted gelatin capsule on the end. The string is pulled out 4 hours later. Any bile, blood, or mucus attached to the string is examined under the microscope. This is done to look for cells and parasites or parasite eggs.
-                     """
+                     """,
+            isUnread: true,
+            isSocial: true
         ),
         Mail(
             profilePicture: "person8", 
@@ -130,7 +146,9 @@ class InboxMailsViewModel: ObservableObject {
             subject: "Test Test",
             content: """
                      To have this test, you swallow a string with a weighted gelatin capsule on the end. The string is pulled out 4 hours later. Any bile, blood, or mucus attached to the string is examined under the microscope. This is done to look for cells and parasites or parasite eggs.
-                     """
+                     """,
+            isUnread: true,
+            isSpam: true
         ),
         
         Mail(
@@ -143,7 +161,10 @@ class InboxMailsViewModel: ObservableObject {
                      If you know anybody else who’ll find this useful, please forward the email to them.Let us know if you face any problems accessing the project 
                      by replying to this email. We’ll get back to you ASAP and ensure you gain access to it immediately.
                      Thank you
-                     """
+                     """,
+            isPrimary: true,
+            isPromotions: true
+            
         ),
         Mail(
             profilePicture: "person2", 
@@ -153,7 +174,8 @@ class InboxMailsViewModel: ObservableObject {
             content: """
                      Thanks, Simon. I have your call scheduled for Wednesday. Doc is updated with the details. Please be sure to take some time to review the Team Match Call Prep Resource
                      and specifically practice/prep for the points listed below. Please let me know if you have any questions and let me know how the call goes once completed. 
-                     """
+                     """,
+            isSent: true
         ),
         Mail(
             profilePicture: nil, 
@@ -162,7 +184,8 @@ class InboxMailsViewModel: ObservableObject {
             subject: "Good luck on your interview",
             content: """
                      Good luck baby, you are my best bae!!! Love you (heart)
-                     """
+                     """,
+            isSent: true
         ),
         Mail(
             profilePicture: nil, 
@@ -171,7 +194,8 @@ class InboxMailsViewModel: ObservableObject {
             subject: "from unknown sender",
             content: """
                      put me into spam,put me into spam,put me into spam,put me into spam,put me into spam,put me into spam,put me into spam,put me into spam,put me into spam,put me into spam,
-                     """
+                     """,
+            isSpam: true
         ),
         Mail(
             profilePicture: "person7", 
@@ -182,7 +206,8 @@ class InboxMailsViewModel: ObservableObject {
                      Hi Simon Zhang,Thanks for your interest in a role at Google! We received your application and will be in touch soon about next steps.
                      Thanks,
                      Google Recruiting
-                     """
+                     """,
+            isPrimary: true
         ),
         Mail(
             profilePicture: "person10", 
@@ -191,7 +216,8 @@ class InboxMailsViewModel: ObservableObject {
             subject: "Test Test",
             content: """
                      To have this test, you swallow a string with a weighted gelatin capsule on the end. The string is pulled out 4 hours later. Any bile, blood, or mucus attached to the string is examined under the microscope. This is done to look for cells and parasites or parasite eggs.
-                     """
+                     """,
+            isPrimary: true
         ),
         Mail(
             profilePicture: nil, 
@@ -200,7 +226,8 @@ class InboxMailsViewModel: ObservableObject {
             subject: "Test Test",
             content: """
                      To have this test, you swallow a string with a weighted gelatin capsule on the end. The string is pulled out 4 hours later. Any bile, blood, or mucus attached to the string is examined under the microscope. This is done to look for cells and parasites or parasite eggs.
-                     """
+                     """,
+            isSpam: true
         )
     ]
 }
