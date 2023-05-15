@@ -48,12 +48,12 @@ struct SideMenuItems {
         cells.append(CellItem(id: 10, profilePicture:"mail.stack",title:"All mail", unreads: 528))
         cells.append(CellItem(id: 11, profilePicture:"xmark.bin",title:"Spam", unreads: 20)) 
         cells.append(CellItem(id: 12, profilePicture:"trash",title:"Trash"))
-        
+        cells.append(CellItem(id: 13, profilePicture:"archivebox",title:"Archive"))
         // Section 3
-        cells.append(CellItem(id: 13,profilePicture:"plus",title:"Create new"))
-        cells.append(CellItem(id: 14,profilePicture:"gear",title:"Settings"))
-        cells.append(CellItem(id: 15,profilePicture:"character.bubble",title:"Send feedback"))
-        cells.append(CellItem(id: 16,profilePicture:"questionmark.circle",title:"Help"))
+        cells.append(CellItem(id: 14,profilePicture:"plus",title:"Create new"))
+        cells.append(CellItem(id: 15,profilePicture:"gear",title:"Settings"))
+        cells.append(CellItem(id: 16,profilePicture:"character.bubble",title:"Send feedback"))
+        cells.append(CellItem(id: 17,profilePicture:"questionmark.circle",title:"Help"))
     }
 }
 

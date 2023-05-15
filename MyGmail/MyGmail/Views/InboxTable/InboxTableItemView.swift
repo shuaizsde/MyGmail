@@ -23,6 +23,7 @@ struct InboxTableItemView :View {
             
             HStack {
                 VStack(alignment: .leading) {
+                    // MARK: Important Icon
                     HStack {
                         GmailIcons.importantIcon
                             .font(GmailFont.defaultFont)
@@ -33,10 +34,11 @@ struct InboxTableItemView :View {
                             }
                         Spacer()
                             .frame(width: GmailSize.defaultHalf)
-                        Text(mail.sender).foregroundColor(GmailColor.gray)
+                        Text(mail.sender)
+                            .foregroundColor(GmailColor.gray)
+                            .fontWeight(mail.isUnread ? .heavy : .heavy)
                     }
                     .font(GmailFont.defaultFont)
-                    .fontWeight(.light)
                     
                     Spacer(minLength: GmailSize.defaultHalf)
                     

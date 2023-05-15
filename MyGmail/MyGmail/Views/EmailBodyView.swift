@@ -130,7 +130,6 @@ extension EmailBodyView {
                         .fontWeight(.bold)
                         .foregroundColor(GmailColor.gray)
                     ) 
-                    .fontWeight(.bold)
             }
         )
     }

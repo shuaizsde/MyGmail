@@ -22,10 +22,10 @@ struct SideBarMenuView: View {
                     createSection(with: model, filter: {$0.id < 4})
                     sectionSeperator()
                     
-                    createSection(with: model, filter: {$0.id >= 4 && $0.id < 12})
+                    createSection(with: model, filter: {$0.id >= 4 && $0.id <= 13})
                     sectionSeperator()
                     
-                    createSection(with: model, filter: {$0.id >= 12})
+                    createSection(with: model, filter: {$0.id > 13})
                 }
                 .listStyle(.inset)
                 .scrollIndicators(.hidden)                

@@ -48,6 +48,8 @@ class SideMenuItemViewModel: ObservableObject {
             filterService.currentFilter = {$0.isSpam}    
         case .trash: 
             filterService.currentFilter = {$0.isTrash} 
+        case .archived: 
+            filterService.currentFilter = {$0.isArchived}  
         default:
             filterService.currentFilter = {!$0.isSent && !$0.isArchived && !$0.isSpam && !$0.isTrash }
         }
@@ -68,6 +70,7 @@ enum menuButton: String {
     case allMail = "All mail"
     case spam = "Spam"
     case trash = "Trash"
+    case archived = "Archive"
     case createNew = "Create New"
     case settings = "Settings"
     case feedback = "Send feedback"
