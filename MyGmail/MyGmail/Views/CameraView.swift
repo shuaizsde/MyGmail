@@ -9,7 +9,8 @@ import SwiftUI
 
 struct CameraView: View {
     var body: some View {
-        Text("Imagine this is a Video Chat")
+        //TODO: Now it's just a image
+        Image("cameraView").resizable().scaledToFill().frame(width: 250,height: 350)
     }
 }
 

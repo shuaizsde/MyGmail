@@ -9,7 +9,11 @@ import SwiftUI
 
 struct ComposeMailView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        //TODO: Now it's just a image
+        VStack {
+            Image("composeView").resizable().scaledToFill().frame(width: 395,height: 350)
+            Spacer()
+        }
     }
 }
 
