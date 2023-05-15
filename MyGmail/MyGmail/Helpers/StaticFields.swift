@@ -45,12 +45,12 @@ struct GmailColor {
 struct GmailIcons {
     
     static let gmailIcon = Image("gmail")
-    
+    static let backButtonIcon = Image(systemName: "chevron.left")
     static let envelopeIcon = Image(systemName: "envelope")
     static let videoIcon = Image(systemName: "video")  
     static let chevronDownIcon = Image(systemName: "chevron.down") 
     static let swipeDownIcon = Image(systemName: "square.and.arrow.down")
-    
+    static let trashIcon = Image(systemName: "trash")
     static let composeButtonIcon = Image(systemName: "pencil")
     
     static let importantIcon = Image(systemName: "chevron.right.2")

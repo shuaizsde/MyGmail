@@ -10,32 +10,8 @@ import Foundation
 class InboxMailsViewModel: ObservableObject {
     
     typealias Mail = InboxMails.Mail
-    
-    @Published private var model = createInboxMails()
-    
-    
-    init(model: InboxMails = createInboxMails()) {
-        self.model = model
-    }
-    
-    
-    var mails: Array<Mail> {
-        return model.mails
-    }
-    
-    private static func createInboxMails() -> InboxMails {
-        return InboxMails(preview)
-    }
-    
-    func star(_ mail: Mail) {
-        model.star(mail)
-    }
-    
-    func important(_ mail: Mail) {
-        model.important(mail)
-    }
-    
     // MARK: Faked data
+    
     private static let preview: [InboxMails.Mail] = [
         Mail(
             profilePicture: "simon", 
@@ -230,4 +206,28 @@ class InboxMailsViewModel: ObservableObject {
             isSpam: true
         )
     ]
+    
+    @Published private var model = createInboxMails()
+    
+    private static func createInboxMails() -> InboxMails {
+        return InboxMails(preview)
+    }
+    
+    var mails: Array<Mail> {
+        return model.mails
+    }
+    
+    init(model: InboxMails = createInboxMails()) {
+        self.model = model
+    }
+    
+    
+    func star(_ mail: Mail) {
+        model.star(mail)
+    }
+    
+    func important(_ mail: Mail) {
+        model.important(mail)
+    }
+    
 }

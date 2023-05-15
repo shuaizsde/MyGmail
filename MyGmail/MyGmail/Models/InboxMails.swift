@@ -20,7 +20,7 @@ struct InboxMails {
     struct Mail: Identifiable {
         let id = UUID()
         var profilePicture: String?
-        var defaultColor = Color.random()
+        var defaultColor = Color.randomColor()
         let sender: String
         let time: String
         let subject: String
@@ -46,15 +46,6 @@ struct InboxMails {
     mutating func star(_ mail: Mail) {
         let chosenIndex = mails.firstIndex(where: {$0.id == mail.id})
         mails[chosenIndex!].isStarred = !mail.isStarred
-        var count = 0
-        // Test Use
-        for mail in mails {
-            if mail.isStarred {
-                count += 1
-            }
-        }
-        print(count)
-        print("------------")
     }
     
     mutating func important(_ mail: Mail) {
@@ -62,8 +53,9 @@ struct InboxMails {
         mails[chosenIndex!].isImportant = !mail.isImportant
     }
 }
+
 extension Color {
-    static func random() -> Color {
+    static func randomColor() -> Color {
         Color(
             red: Double.random(in: 0...1), 
             green: Double.random(in: 0.2...1), 

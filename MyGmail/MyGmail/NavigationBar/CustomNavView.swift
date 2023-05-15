@@ -14,6 +14,7 @@ struct CustomNavView<Content: View>: View {
     init(@ViewBuilder content: ()-> Content) {
         self.content = content()
     }
+    
     var body: some View {
         NavigationView {
             CustomNavBarContainerView(content: { Color.orange})

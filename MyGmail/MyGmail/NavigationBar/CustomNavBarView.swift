@@ -8,21 +8,23 @@
 import SwiftUI
 
 struct CustomNavBarView: View {
+    
     @Environment(\.presentationMode) var presentationMode
+    
     @State private var showBackButton: Bool = true
-    @State private var title: String = ""
-    @State private var subtitle: String = ""
-    
 
-    
     var body: some View {
         HStack {
             if showBackButton {
                 backButton
             }
+            
             Spacer()
+            
             titleSection
+            
             Spacer().frame(width: 0)
+            
             if showBackButton {
                 backButton.opacity(0)
             }
@@ -36,36 +38,24 @@ struct CustomNavBarView: View {
 }
 
 extension CustomNavBarView {
+    
     private var backButton: some View {
         Button(action: {
             presentationMode.wrappedValue.dismiss()
         }, label: {
-            Image(systemName: "chevron.left")
+            GmailIcons.backButtonIcon
         })
     }
+    
     private var titleSection: some View {
         HStack(spacing: 20) {
-            Button(action: {
-        
-            }, label: {
-                Image(systemName: "square.and.arrow.down")
-            })
+            Button(action: {}, label: {GmailIcons.swipeDownIcon})
             
-            Button(action: {
-        
-            }, label: {
-                Image(systemName: "trash")
-            })
-            Button(action: {
-        
-            }, label: {
-                Image(systemName: "envelope")
-            })
-            Button(action: {
-        
-            }, label: {
-                Image(systemName: "ellipsis")
-            })
+            Button(action: {}, label: {GmailIcons.trashIcon})
+            
+            Button(action: {}, label: {GmailIcons.envelopeIcon})
+            
+            Button(action: {}, label: {GmailIcons.ellipsisIcon})
         }
     }
 }
