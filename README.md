@@ -19,16 +19,44 @@ https://github.com/zhang86036055/MyGmail/assets/77553874/caa83201-dbe1-4980-bcb7
 
 
 ***Implemented features:***
-1. Switch between views mentioned above, specifically:
-     * Tapping on compose button will open ComposeNewEmailView
-     * Slide device left screen edge will open sideMenw
-     * Tapping on email cell will open EmailContentView
-     * switching bottomTapBar will switch between inboxList and videoChat view
-     * Typing texts on search bar will filter emails by senderNames
-2. Search email with senders' name
-3. Filter emails of centain catagory: e.g. Sent, Primary, Starred, Spam ...
-4. Show User's profile picture if exists, otherwise show senderName's first character with a random Color.
-5. Mark Email as Starred, Important, Archived
+
+1.Compose Email Button (*NewEmail screen not implemented)
+
+https://github.com/zhang86036055/MyGmail/assets/77553874/93d5dbde-e2d1-474e-867d-53037ad3ff3d
+
+2. Search by senders' name
+
+https://github.com/zhang86036055/MyGmail/assets/77553874/5c069f9b-935c-4815-9eba-77de296bb7e2
+
+3. Star Email
+
+https://github.com/zhang86036055/MyGmail/assets/77553874/7aa1c003-a03f-40d1-8e53-173b87dd0651
+
+4. Archive
+
+https://github.com/zhang86036055/MyGmail/assets/77553874/0ff35fea-2751-43df-9d41-0c949f579c52
+
+5. Mark as important
+
+https://github.com/zhang86036055/MyGmail/assets/77553874/3263aa16-2373-449e-8ac3-a91bf9451267
+
+6.Show unread emails body in bold, tags unread numbers by catagory. Specifically: Bottom tab shows unreads counts that are not Archived, Spam or Trash
+
+https://github.com/zhang86036055/MyGmail/assets/77553874/148c744c-d12a-45da-83a3-6df43b4901b7
+
+7. Show User's profile picture if exists, otherwise show senderName's first character with a random Color.
+
+https://github.com/zhang86036055/MyGmail/assets/77553874/c33c3045-107b-48a5-b56a-d108717620f4
+
+8. Switch buttom bar between EmailList and VideoChat(Not Implemented)
+
+https://github.com/zhang86036055/MyGmail/assets/77553874/5be99f06-c297-4ef1-a8c0-981ef1bf1b53
+
+9. Side Menu with sliding left gester, tapping buttons will filter emails by catagory
+
+https://github.com/zhang86036055/MyGmail/assets/77553874/38f5580d-c1eb-4260-87b5-be9932828a23
+
+
 
 ***Tested features with faked data of:***
 - Emails that marked with labels of: Primary, Unread, Starred, Important, Spam, Trash, Promotions, Social ...
