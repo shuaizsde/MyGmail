@@ -50,7 +50,7 @@ struct HomeView: View {
                                 .foregroundColor(.white)
                                 .font(GmailFont.defaultFont)
                         )
-                        .opacity(model.unreads > 0 ? 1.0 : 0)
+                        .opacity(model.unreads - model.getUnreads(of: "Spam") - model.getUnreads(of: "Trash") > 0 ? 1.0 : 0)
                         .offset(unreadBubbleOffset)
                 }
             })
