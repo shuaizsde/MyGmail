@@ -8,45 +8,50 @@
 import SwiftUI
 
 struct SideBarMenuView: View {
-    
     @ObservedObject public var model: SideMenuItemViewModel
     @ObservedObject var mailViewModel: InboxMailsViewModel
-    
+
+    @ObservedObject var showToolBarService: ShowToolBarService
     @State public var slideInMenuService: SlideInMenuService
-    
+
     var body: some View {
         VStack {
             Spacer()
             NavigationView {
                 List {
                     gmailLogoHeader()
-                    
-                    createSection(with: model, filter: {$0.id < 4})
+
+                    createSection(with: model, filter: { $0.id < 4 })
                     sectionSeperator()
-                    
-                    createSection(with: model, filter: {$0.id >= 4 && $0.id <= 13})
+
+                    createSection(with: model, filter: { $0.id >= 4 && $0.id <= 13 })
                     sectionSeperator()
-                    
-                    createSection(with: model, filter: {$0.id > 13})
+
+                    createSection(with: model, filter: { $0.id > 13 })
                 }
                 .listStyle(.inset)
-                .scrollIndicators(.hidden)                
+                .scrollIndicators(.hidden)
             }
             Spacer()
-            
-        }.ignoresSafeArea(.all)
+        }
+        .ignoresSafeArea(.all)
+        .onAppear {
+            showToolBarService.showToolBar = false
+        }
+        .onDisappear {
+            showToolBarService.showToolBar = true
+        }
     }
 }
 
 extension SideBarMenuView {
-    
     @ViewBuilder private func gmailLogoHeader() -> some View {
         HStack {
             GmailIcons.gmailIcon
                 .resizable()
                 .scaledToFit()
                 .frame(
-                    width: GmailSize.defaultTripple, 
+                    width: GmailSize.defaultTripple,
                     height: GmailSize.defaultTripple
                 )
             Text("Gmail")
@@ -54,7 +59,7 @@ extension SideBarMenuView {
                 .foregroundColor(.gray)
         }
     }
-    
+
     @ViewBuilder private func sectionSeperator() -> some View {
         Rectangle()
             .frame(height: 1)
@@ -63,20 +68,20 @@ extension SideBarMenuView {
             .offset(CGSize(width: 50, height: 10))
             .listRowSeparator(.hidden)
     }
-    
+
     @ViewBuilder private func createSection(with model: SideMenuItemViewModel, filter: (CellItem) -> Bool) -> some View {
-        Section() {
-            ForEach(model.cells.filter(filter), id: \.id) { 
+        Section {
+            ForEach(model.cells.filter(filter), id: \.id) {
                 SideBarItemCellView(
                     mailViewModel: mailViewModel,
-                    slideInMenuService: $slideInMenuService, 
-                    cell: $0 
+                    slideInMenuService: $slideInMenuService,
+                    cell: $0
                 ) { tapOnCell($0) }
             }
-            .listRowSeparator(.hidden)                    
+            .listRowSeparator(.hidden)
         }
     }
-    
+
     private func tapOnCell(_ cell: CellItem) {
         model.select(cell)
     }
@@ -85,7 +90,7 @@ extension SideBarMenuView {
 struct SideBarMenuView_Previews: PreviewProvider {
     static var previews: some View {
         SideBarMenuView(
-            model: SideMenuItemViewModel(filterService: FilterService()), mailViewModel: InboxMailsViewModel(),
+            model: SideMenuItemViewModel(filterService: FilterService()), mailViewModel: InboxMailsViewModel(), showToolBarService: ShowToolBarService(),
             slideInMenuService: SlideInMenuService()
         )
     }

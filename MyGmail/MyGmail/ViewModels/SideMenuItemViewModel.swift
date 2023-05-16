@@ -8,52 +8,50 @@
 import SwiftUI
 
 class SideMenuItemViewModel: ObservableObject {
-    
     @Published private var model = SideMenuItems()
     @ObservedObject var filterService: FilterService
-    
+
     init(model: SideMenuItems = SideMenuItems(), filterService: FilterService) {
         self.model = model
         self.filterService = filterService
     }
-    
-    var cells: Array<CellItem> {
+
+    var cells: [CellItem] {
         return model.cells
     }
-      
-    func select(_ cell:  CellItem) {
+
+    func select(_ cell: CellItem) {
         model.select(cell)
-        
+
         switch menuButton(rawValue: cell.title) {
-            
         case .primary:
-            filterService.currentFilter = {$0.isPrimary}
+            filterService.currentFilter = { $0.isPrimary }
         case .social:
-            filterService.currentFilter = {$0.isSocial}
+            filterService.currentFilter = { $0.isSocial }
         case .promotions:
-            filterService.currentFilter = {$0.isPromotions}
+            filterService.currentFilter = { $0.isPromotions }
         case .starred:
-            filterService.currentFilter = {$0.isStarred}   
-        case .snoozed: 
-            filterService.currentFilter = {$0.isSnoozed}
-        case .important: 
-            filterService.currentFilter = {$0.isImportant}
-        case .sent: 
-            filterService.currentFilter = {$0.isSent} 
-        case .scheduled: 
-            filterService.currentFilter = {$0.isScheduled}   
-        case .drafts: 
-            filterService.currentFilter = {$0.isDraft}   
-        case .spam: 
-            filterService.currentFilter = {$0.isSpam}  
-        case .allMail: 
-            filterService.currentFilter = {_ in true} 
-        case .trash: 
-            filterService.currentFilter = {$0.isTrash} 
-        case .archived: 
-            filterService.currentFilter = {$0.isArchived}  
+            filterService.currentFilter = { $0.isStarred }
+        case .snoozed:
+            filterService.currentFilter = { $0.isSnoozed }
+        case .important:
+            filterService.currentFilter = { $0.isImportant }
+        case .sent:
+            filterService.currentFilter = { $0.isSent }
+        case .scheduled:
+            filterService.currentFilter = { $0.isScheduled }
+        case .drafts:
+            filterService.currentFilter = { $0.isDraft }
+        case .spam:
+            filterService.currentFilter = { $0.isSpam }
+        case .allMail:
+            filterService.currentFilter = { _ in true }
+        case .trash:
+            filterService.currentFilter = { $0.isTrash }
+        case .archived:
+            filterService.currentFilter = { $0.isArchived }
         default:
-            filterService.currentFilter = {!$0.isSent && !$0.isArchived && !$0.isSpam && !$0.isTrash }
+            filterService.currentFilter = { !$0.isSent && !$0.isArchived && !$0.isSpam && !$0.isTrash }
         }
     }
 }

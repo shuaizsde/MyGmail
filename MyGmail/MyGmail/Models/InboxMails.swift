@@ -8,15 +8,13 @@
 import Foundation
 import SwiftUI
 
-
 struct InboxMails {
-    
-    private(set) var mails: Array<Mail>
-    
-    init(_ mails: Array<Mail>) {
+    private(set) var mails: [Mail]
+
+    init(_ mails: [Mail]) {
         self.mails = mails
     }
-    
+
     struct Mail: Identifiable {
         let id = UUID()
         var profilePicture: String?
@@ -25,9 +23,9 @@ struct InboxMails {
         let time: String
         let subject: String
         let content: String
-        
+
         var isUnread = true
-        
+
         var isPrimary = false
         var isSocial = false
         var isPromotions = false
@@ -40,25 +38,27 @@ struct InboxMails {
         var isSpam = false
         var isTrash = false
         var isArchived = false
-        
-        var attachments: [(String,String)]? // <Type: Name>
-    } 
-    
+
+        var attachments: [(String, String)]? // <Type: Name>
+    }
+
     mutating func star(_ mail: Mail) {
-        let chosenIndex = mails.firstIndex(where: {$0.id == mail.id})
+        let chosenIndex = mails.firstIndex(where: { $0.id == mail.id })
         mails[chosenIndex!].isStarred = !mail.isStarred
     }
-    
+
     mutating func important(_ mail: Mail) {
-        let chosenIndex = mails.firstIndex(where: {$0.id == mail.id})
+        let chosenIndex = mails.firstIndex(where: { $0.id == mail.id })
         mails[chosenIndex!].isImportant = !mail.isImportant
     }
+
     mutating func archive(_ mail: Mail) {
-        let chosenIndex = mails.firstIndex(where: {$0.id == mail.id})
+        let chosenIndex = mails.firstIndex(where: { $0.id == mail.id })
         mails[chosenIndex!].isArchived = true
     }
+
     mutating func read(_ mail: Mail) {
-        let chosenIndex = mails.firstIndex(where: {$0.id == mail.id})
+        let chosenIndex = mails.firstIndex(where: { $0.id == mail.id })
         mails[chosenIndex!].isUnread = false
     }
 }
@@ -66,9 +66,9 @@ struct InboxMails {
 extension Color {
     static func randomColor() -> Color {
         Color(
-            red: Double.random(in: 0...1), 
-            green: Double.random(in: 0.2...1), 
-            blue: Double.random(in: 0.3...1)
+            red: Double.random(in: 0 ... 1),
+            green: Double.random(in: 0.2 ... 1),
+            blue: Double.random(in: 0.3 ... 1)
         )
     }
 }

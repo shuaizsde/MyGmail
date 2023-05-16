@@ -20,5 +20,189 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D4717038-D2A1-451D-9A9D-6B93BD0650C0"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MyGmail/Views/EmailBodyView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "52BC50AA-2DF5-4B01-8EF0-9E1D9AFC26F4"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MyGmail/Helpers/ShowToolBarService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "12"
+            endingLineNumber = "12"
+            landmarkName = "ShowToolBarService"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "52BC50AA-2DF5-4B01-8EF0-9E1D9AFC26F4 - 9dd6b567e65cb3dd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "property wrapper backing initializer of MyGmail.ShowToolBarService.showToolBar : Swift.Bool"
+                  moduleName = "MyGmail"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shuaizhang/MyGmail/MyGmail/MyGmail/Helpers/ShowToolBarService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "32">
+               </Location>
+               <Location
+                  uuid = "52BC50AA-2DF5-4B01-8EF0-9E1D9AFC26F4 - 41d6ed63a02eb3ab"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MyGmail.ShowToolBarService.showToolBar.getter : Swift.Bool"
+                  moduleName = "MyGmail"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shuaizhang/MyGmail/MyGmail/MyGmail/Helpers/ShowToolBarService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "112">
+               </Location>
+               <Location
+                  uuid = "52BC50AA-2DF5-4B01-8EF0-9E1D9AFC26F4 - f0232a2929ddcb97"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MyGmail.ShowToolBarService.showToolBar.setter : Swift.Bool"
+                  moduleName = "MyGmail"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shuaizhang/MyGmail/MyGmail/MyGmail/Helpers/ShowToolBarService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "144">
+               </Location>
+               <Location
+                  uuid = "52BC50AA-2DF5-4B01-8EF0-9E1D9AFC26F4 - f3282352748ec9a4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MyGmail.ShowToolBarService.showToolBar.modify : Swift.Bool"
+                  moduleName = "MyGmail"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shuaizhang/MyGmail/MyGmail/MyGmail/Helpers/ShowToolBarService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "52BC50AA-2DF5-4B01-8EF0-9E1D9AFC26F4 - 6b77cb05a4dcbd97"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MyGmail.ShowToolBarService.showToolBar.modify : Swift.Bool with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "MyGmail"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shuaizhang/MyGmail/MyGmail/MyGmail/Helpers/ShowToolBarService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "20">
+               </Location>
+               <Location
+                  uuid = "52BC50AA-2DF5-4B01-8EF0-9E1D9AFC26F4 - b21a775d87aa958e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MyGmail.ShowToolBarService.$showToolBar.getter : Combine.Published&lt;Swift.Bool&gt;.Publisher"
+                  moduleName = "MyGmail"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shuaizhang/MyGmail/MyGmail/MyGmail/Helpers/ShowToolBarService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "96">
+               </Location>
+               <Location
+                  uuid = "52BC50AA-2DF5-4B01-8EF0-9E1D9AFC26F4 - 56eb05d954d8487a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MyGmail.ShowToolBarService.$showToolBar.setter : Combine.Published&lt;Swift.Bool&gt;.Publisher"
+                  moduleName = "MyGmail"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shuaizhang/MyGmail/MyGmail/MyGmail/Helpers/ShowToolBarService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "196">
+               </Location>
+               <Location
+                  uuid = "52BC50AA-2DF5-4B01-8EF0-9E1D9AFC26F4 - fd31c369dcda816b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MyGmail.ShowToolBarService.$showToolBar.modify : Combine.Published&lt;Swift.Bool&gt;.Publisher"
+                  moduleName = "MyGmail"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shuaizhang/MyGmail/MyGmail/%3Ccompiler-generated%3E"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "56">
+               </Location>
+               <Location
+                  uuid = "52BC50AA-2DF5-4B01-8EF0-9E1D9AFC26F4 - 83b052b62598af15"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MyGmail.ShowToolBarService.$showToolBar.modify : Combine.Published&lt;Swift.Bool&gt;.Publisher with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "MyGmail"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shuaizhang/MyGmail/MyGmail/MyGmail/Helpers/ShowToolBarService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "24">
+               </Location>
+               <Location
+                  uuid = "52BC50AA-2DF5-4B01-8EF0-9E1D9AFC26F4 - 205157b30f71c51"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MyGmail.ShowToolBarService.init() -&gt; MyGmail.ShowToolBarService"
+                  moduleName = "MyGmail"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shuaizhang/MyGmail/MyGmail/MyGmail/Helpers/ShowToolBarService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "84">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

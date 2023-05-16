@@ -8,9 +8,8 @@
 import SwiftUI
 
 struct CustomNavBarView: View {
-    
     @Environment(\.presentationMode) var presentationMode
-    
+
     @State private var showBackButton: Bool = true
 
     var body: some View {
@@ -18,13 +17,13 @@ struct CustomNavBarView: View {
             if showBackButton {
                 backButton
             }
-            
+
             Spacer()
-            
+
             titleSection
-            
+
             Spacer().frame(width: 0)
-            
+
             if showBackButton {
                 backButton.opacity(0)
             }
@@ -38,7 +37,6 @@ struct CustomNavBarView: View {
 }
 
 extension CustomNavBarView {
-    
     private var backButton: some View {
         Button(action: {
             presentationMode.wrappedValue.dismiss()
@@ -46,16 +44,16 @@ extension CustomNavBarView {
             GmailIcons.backButtonIcon
         })
     }
-    
+
     private var titleSection: some View {
         HStack(spacing: 20) {
-            Button(action: {}, label: {GmailIcons.swipeDownIcon})
-            
-            Button(action: {}, label: {GmailIcons.trashIcon})
-            
-            Button(action: {}, label: {GmailIcons.envelopeIcon})
-            
-            Button(action: {}, label: {GmailIcons.ellipsisIcon})
+            Button(action: {}, label: { GmailIcons.swipeDownIcon })
+
+            Button(action: {}, label: { GmailIcons.trashIcon })
+
+            Button(action: {}, label: { GmailIcons.envelopeIcon })
+
+            Button(action: {}, label: { GmailIcons.ellipsisIcon })
         }
     }
 }

@@ -8,33 +8,31 @@
 import SwiftUI
 
 struct InboxTableView: View {
-    
     // MARK: Static values
+
     private let composeButtonOffsetX = 320.0
     private let composeButtonOffsetY = 640.0
-    
-    
-    // TODO: Fix this feature 
-    var showToolBarService = ShowToolBarService()
-    
+
+    @ObservedObject var showToolBarService: ShowToolBarService
+
     @EnvironmentObject private var slideInMenuService: SlideInMenuService
     @EnvironmentObject private var filterService: FilterService
-    
+
     @ObservedObject var model: InboxMailsViewModel
     @State var searchString = ""
-    
+
     private var searchResults: [InboxMailsViewModel.Mail] {
         let filtedMails = model.mails.filter(filterService.currentFilter)
         guard !searchString.isEmpty else {
             return filtedMails
         }
-        return filtedMails.filter {$0.sender.contains(searchString)}
+        return filtedMails.filter { $0.sender.contains(searchString) }
     }
-    
+
     var body: some View {
         NavigationView {
             ZStack {
-                List{
+                List {
                     ForEach(searchResults) { mail in
                         createInboxMailCell(for: mail)
                             .swipeActions(edge: .trailing, allowsFullSwipe: false) {
@@ -43,21 +41,24 @@ struct InboxTableView: View {
                                         withAnimation(.easeInOut) {
                                             model.archive(mail)
                                         }
-                                    }, label:  {GmailIcons.swipeDownIcon})
-                                    .tint(.green)
+                                    }, label: { GmailIcons.swipeDownIcon }
+                                )
+                                .tint(.green)
                             }
                     }
                 }
                 .listStyle(.inset)
+
                 // MARK: swipping gesture for side bar menu
+
                 .gesture(
                     swipeToDisplayMenu()
                 )
                 .searchable(
-                    text: $searchString, 
+                    text: $searchString,
                     prompt: GmailStrings.searchbarPlaceHolder
                 )
-            
+
                 composeButton()
             }
         }
@@ -65,7 +66,7 @@ struct InboxTableView: View {
 }
 
 extension InboxTableView {
-    @ViewBuilder func composeButton()  -> some View {
+    @ViewBuilder func composeButton() -> some View {
         CustomNavigationLink(destination: ComposeMailView()) {
             Capsule()
                 .foregroundColor(.white)
@@ -77,10 +78,10 @@ extension InboxTableView {
                             .resizable()
                             .scaledToFit()
                             .frame(
-                                width: GmailSize.defaultDouble, 
+                                width: GmailSize.defaultDouble,
                                 height: GmailSize.defaultTripple
                             )
-                        
+
                         Text(GmailStrings.composeButton).bold()
                     }
                     .foregroundColor(GmailColor.red)
@@ -88,40 +89,41 @@ extension InboxTableView {
                 }
         }
         .position(
-            x: composeButtonOffsetX, 
+            x: composeButtonOffsetX,
             y: composeButtonOffsetY
         )
     }
-    
+
     // MARK: Inbox Mail Cell
-    @ViewBuilder func createInboxMailCell(for cell: InboxMailsViewModel.Mail)  -> some View {
+
+    @ViewBuilder func createInboxMailCell(for cell: InboxMailsViewModel.Mail) -> some View {
         ZStack {
             // Hide chevron visibility
             CustomNavigationLink(
-                destination: EmailBodyView(mail: cell, viewModel: model),
-                label: {EmptyView()}
+                destination: EmailBodyView(mail: cell, viewModel: model, showToolBarService: showToolBarService).toolbar(.hidden, for: .bottomBar),
+                label: { EmptyView() }
             )
             .opacity(0.0)
-            
+
             InboxTableItemView(
-                mail: cell, 
+                mail: cell,
                 starOnTapped: { model.star(cell) },
                 chevronOnTapped: { model.important(cell) }
             )
             .frame(height: 50)
         }
     }
-    
+
     private func swipeToDisplayMenu() -> _EndedGesture<DragGesture> {
         DragGesture(
-            minimumDistance: 20, 
+            minimumDistance: 20,
             coordinateSpace: .global
         )
         .onEnded { value in
             let horizontalAmount = value.translation.width as CGFloat
             let verticalAmount = value.translation.height as CGFloat
-            
-            if abs(horizontalAmount) > abs(verticalAmount) && horizontalAmount > 0 {
+
+            if abs(horizontalAmount) > abs(verticalAmount), horizontalAmount > 0 {
                 slideInMenuService.isPresented.toggle()
                 showToolBarService.showToolBar = false
             }
@@ -131,6 +133,6 @@ extension InboxTableView {
 
 struct InboxTableView_Previews: PreviewProvider {
     static var previews: some View {
-        InboxTableView(model: InboxMailsViewModel())
+        InboxTableView(showToolBarService: ShowToolBarService(), model: InboxMailsViewModel())
     }
 }

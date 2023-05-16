@@ -8,45 +8,44 @@
 import SwiftUI
 
 struct HomeView: View {
-    
-    
     private let unreadBubbleOffset = CGSize(width: 10.0, height: -8)
-    
+
     @ObservedObject var model: InboxMailsViewModel
-    var showToolBarService: ShowToolBarService
-    
+    @ObservedObject var showToolBarService: ShowToolBarService
+
     @State var isCameraView = false
-    
+
     var body: some View {
-        ZStack {
+        VStack {
             if isCameraView {
                 CameraView()
             } else {
-                InboxTableView(model: model)
+                InboxTableView(showToolBarService: showToolBarService, model: model)
             }
-        }.toolbar() {
+        }.toolbar {
             if showToolBarService.showToolBar {
                 ToolbarItemGroup(placement: .bottomBar) {
                     createToolBarButtons()
                 }
             }
         }
-        
     }
-    
-    @ViewBuilder func createToolBarButtons()  -> some View {
+
+    @ViewBuilder func createToolBarButtons() -> some View {
         HStack {
             Button(action: {
                 isCameraView = false
-            } ,label: {
+            }, label: {
                 ZStack {
                     GmailIcons.envelopeIcon.foregroundColor(GmailColor.gray)
                     Circle()
                         .fill(GmailColor.red)
-                        .frame(width: GmailSize.defaultDouble, height: GmailSize.defaultDouble)
+                        .frame(
+                            width: GmailSize.defaultDouble,
+                            height: GmailSize.defaultDouble
+                        )
                         .overlay(
-                            
-                            Text("\(model.unreads)") // TODO: unread placeholder 
+                            Text("\(model.unreads)")
                                 .fontWeight(.bold)
                                 .foregroundColor(.white)
                                 .font(GmailFont.defaultFont)
@@ -55,18 +54,18 @@ struct HomeView: View {
                         .offset(unreadBubbleOffset)
                 }
             })
-            
+
             Spacer()
             Button(
-                action: {isCameraView = true} ,
-                label: { GmailIcons.videoIcon.foregroundColor(GmailColor.gray)}
+                action: { isCameraView = true },
+                label: { GmailIcons.videoIcon.foregroundColor(GmailColor.gray) }
             )
         }.padding(80)
     }
 }
 
-//struct HomeView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        HomeView(model: InboxMailsViewModel(), showToolBarService: ShowToolBarService())
-//    }
-//}
+struct HomeView_Previews: PreviewProvider {
+    static var previews: some View {
+        HomeView(model: InboxMailsViewModel(), showToolBarService: ShowToolBarService())
+    }
+}

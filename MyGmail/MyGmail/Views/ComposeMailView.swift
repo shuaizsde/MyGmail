@@ -9,10 +9,10 @@ import SwiftUI
 
 struct ComposeMailView: View {
     var body: some View {
-        //TODO: Now it's just a image
+        // TODO: Now it's just a image
         VStack {
             Spacer().frame(height: 50)
-            Image("composeView").resizable().scaledToFill().frame(width: 395,height: 350)
+            Image("composeView").resizable().scaledToFill().frame(width: 395, height: 350)
             Spacer()
         }
     }

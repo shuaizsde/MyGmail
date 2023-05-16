@@ -115,9 +115,9 @@
 			isa = PBXGroup;
 			children = (
 				1C2AC35F2A0A788F004C0777 /* SlideInMenuService.swift */,
+				1CC147612A115F950035849F /* ShowToolBarService.swift */,
 				1CC147652A118EB20035849F /* FilterService.swift */,
 				1C2AC3592A0A71E1004C0777 /* SlideInView.swift */,
-				1CC147612A115F950035849F /* ShowToolBarService.swift */,
 				1CC1476B2A1272EE0035849F /* StaticFields.swift */,
 			);
 			path = Helpers;

@@ -9,37 +9,41 @@ import SwiftUI
 
 struct EmailBodyView: View {
     let mail: InboxMails.Mail
-  
+
     let thumbnailWidth = 40.0
     let defaultSpacing = 20.0
     let largeSpacing = 50.0
     let defaultOpacity = 0.6
-    
+
     @ObservedObject var viewModel: InboxMailsViewModel
-    
+    @ObservedObject var showToolBarService: ShowToolBarService
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
-                
                 titleSection
                 Spacer().frame(height: defaultSpacing)
-                
+
                 senderSection
                 Spacer().frame(height: defaultSpacing * 2)
-                
+
                 Text(mail.content)
                     .font(GmailFont.defaultDouble)
                     .lineSpacing(8)
                     .opacity(defaultOpacity)
-                
+
                 Spacer().frame(height: largeSpacing)
-                
+
                 replyForwardSection
                     .padding(.horizontal, 10)
-            }.onAppear {
+            }
+            .onAppear {
                 if mail.isUnread {
                     viewModel.read(mail)
                 }
+                showToolBarService.showToolBar = false
+            }
+            .onDisappear {
+                showToolBarService.showToolBar = true
             }
         }
         .scrollIndicators(.hidden)
@@ -48,9 +52,8 @@ struct EmailBodyView: View {
 }
 
 extension EmailBodyView {
-    
     private var titleSection: some View {
-        HStack() {
+        HStack {
             HStack(alignment: .center) {
                 Text(mail.subject)
                     .font(.title2)
@@ -58,18 +61,23 @@ extension EmailBodyView {
                 RoundedRectangle(cornerRadius: 2)
                     .foregroundColor(.gray.opacity(0.3))
                     .frame(width: 36, height: 16)
-                    .overlay(  
+                    .overlay(
                         Text("Inbox")
-                        .font(GmailFont.defaultFont)
+                            .font(GmailFont.defaultFont)
                     )
             }
             Spacer()
-            Button(action: {} ,label: {GmailIcons.starIcon})
-                .font(GmailFont.defaultFont2)
-                .foregroundColor(GmailColor.gray)
+            Button(action: {
+                viewModel.star(mail)
+            }, label: {
+                mail.isStarred ? GmailIcons.starIconFill : GmailIcons.starIcon
+            })
+            .font(GmailFont.defaultFont2)
+            .foregroundColor(mail.isStarred ? .yellow : GmailColor.gray)
+
         }.opacity(0.7)
     }
-    
+
     private var senderSection: some View {
         HStack {
             profilePictureThumbnail(with: mail)
@@ -78,56 +86,55 @@ extension EmailBodyView {
                     Text("\(mail.sender)").font(GmailFont.defaultFont2)
                     Text("\(mail.time)").font(GmailFont.defaultFont2)
                 }
-                HStack() {
+                HStack {
                     Text(GmailStrings.toMe)
                     Spacer().frame(width: 4)
                     GmailIcons.chevronDownIcon
                         .resizable()
                         .frame(
-                            width: 8, 
+                            width: 8,
                             height: 5
                         )
                 }.font(.caption2)
             }
             Spacer()
-            Button(action: {} ,label: {GmailIcons.returnIcon})
+            Button(action: {}, label: { GmailIcons.returnIcon })
                 .font(GmailFont.defaultFont2)
-            
+
             Spacer().frame(width: defaultSpacing)
-            
-            Button(action: {} ,label: {GmailIcons.ellipsisIcon})
+
+            Button(action: {}, label: { GmailIcons.ellipsisIcon })
                 .font(GmailFont.defaultFont2)
 
         }.foregroundColor(GmailColor.gray)
     }
-    
+
     private var replyForwardSection: some View {
         HStack {
             replyForwardButton(
-                text: GmailStrings.replyText, 
-                icon: GmailIcons.replyIcon, 
+                text: GmailStrings.replyText,
+                icon: GmailIcons.replyIcon,
                 action: nil
             )
             Spacer()
             replyForwardButton(
-                text: GmailStrings.forwardText, 
-                icon: GmailIcons.forwardIcon, 
+                text: GmailStrings.forwardText,
+                icon: GmailIcons.forwardIcon,
                 action: nil
             )
         }
     }
-    
-    
-    @ViewBuilder func replyForwardButton(text: String, icon: Image, action: (()-> Void)?) -> some View {
-         Button(
-            action: action ?? {}, 
+
+    @ViewBuilder func replyForwardButton(text: String, icon: Image, action: (() -> Void)?) -> some View {
+        Button(
+            action: action ?? {},
             label: {
                 RoundedRectangle(cornerRadius: 5)
                     .stroke()
                     .foregroundColor(.gray)
                     .opacity(0.5)
                     .frame(width: 168, height: 32)
-                    .overlay(  
+                    .overlay(
                         HStack {
                             icon
                             Text(text)
@@ -135,13 +142,13 @@ extension EmailBodyView {
                         .font(GmailFont.defaultFont2)
                         .fontWeight(.bold)
                         .foregroundColor(GmailColor.gray)
-                    ) 
+                    )
             }
         )
     }
-    
-    @ViewBuilder func profilePictureThumbnail(with mail: InboxMails.Mail?)  -> some View {
-        if let profilePictureName = mail?.profilePicture  {
+
+    @ViewBuilder func profilePictureThumbnail(with mail: InboxMails.Mail?) -> some View {
+        if let profilePictureName = mail?.profilePicture {
             Image(profilePictureName)
                 .resizable()
                 .scaledToFill()
@@ -154,21 +161,20 @@ extension EmailBodyView {
             Circle()
                 .fill(mail?.defaultColor ?? .white)
                 .frame(
-                    width: thumbnailWidth, 
+                    width: thumbnailWidth,
                     height: thumbnailWidth
                 )
-                .overlay() {
+                .overlay {
                     Text("\(placeHolder)")
                         .font(GmailFont.defaultTriple)
                         .foregroundColor(.white)
                 }.frame(width: thumbnailWidth)
         }
     }
-    
 }
 
 struct EmailBodyView_Previews: PreviewProvider {
     static var previews: some View {
-        EmailBodyView(mail: InboxMailsViewModel().mails[0], viewModel: InboxMailsViewModel())
+        EmailBodyView(mail: InboxMailsViewModel().mails[0], viewModel: InboxMailsViewModel(), showToolBarService: ShowToolBarService())
     }
 }

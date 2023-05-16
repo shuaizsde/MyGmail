@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CameraView: View {
     var body: some View {
-        //TODO: Now it's just a image
+        // TODO: Now it's just a image
         Image("cameraView")
             .resizable()
             .scaledToFill()
