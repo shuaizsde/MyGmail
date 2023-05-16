@@ -3,6 +3,7 @@
 Simon Zhang's Gmail demo project with SwiftUI
 
 ***05/16 Update: Implemented tapBar and SideMenu buttonOnTap Animations as gmail does:
+
 https://github.com/zhang86036055/MyGmail/assets/77553874/2d6a76bf-fd25-4abd-8f55-12179c557acf
 
 Summary:
