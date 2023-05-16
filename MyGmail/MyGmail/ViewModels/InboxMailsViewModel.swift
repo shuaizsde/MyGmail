@@ -17,7 +17,7 @@ class InboxMailsViewModel: ObservableObject {
             profilePicture: "simon",
             sender: "Simon Zhang",
             time: "11:24 AM",
-            subject: "*README: Simon Resume *",
+            subject: "*Simon Resume *",
             content: """
             3+ years of experience full stack software developer with a versatile skillset. Developed products with 2 billion+ daily active users, proficient in IOS and Web development with Swift , Objective-C, Java and Javascript. Experienced in producing complex projects with programming, designing, management skills. A committed team player who consistently delivers results.
 
@@ -41,9 +41,9 @@ class InboxMailsViewModel: ObservableObject {
             profilePicture: "cecillia",
             sender: "Cecilia D'Costa",
             time: "10:15 AM",
-            subject: "Re: Google Team Match Update",
+            subject: "Re: Team Match Update",
             content: """
-            Thanks, Simon. I have your call scheduled for Wednesday. Doc is updated with the details. Please be sure to take some time to review the Team Match Call Prep Resource
+            Thanks, Simon. I have your call scheduled for ***. Doc is updated with the details. Please be sure to take some time to review the *****
             and specifically practice/prep for the points listed below. Please let me know if you have any questions and let me know how the call goes once completed. 
             """,
             isUnread: false, 
@@ -57,7 +57,7 @@ class InboxMailsViewModel: ObservableObject {
             time: "06:11 AM",
             subject: "Good luck on your interview",
             content: """
-            Good luck baby, you are my best bae!!! Love you (heart)
+            Good luck baby, you are my hero !!! Love you 
             """,
             isUnread: false, 
             isPrimary: true,
@@ -67,21 +67,39 @@ class InboxMailsViewModel: ObservableObject {
             profilePicture: nil,
             sender: "SPAM",
             time: "02:48 AM",
-            subject: "from unknown sender",
+            subject: "Delivered: Your Amazon.com order #114-7107059-2488333",
             content: """
-            put me into spam,put me into spam,put me into spam,put me into spam,put me into spam,put me into spam,put me into spam,put me into spam,put me into spam,put me into spam,
+            Hi SZhang12345,
+            Your package has been delivered to the mailroom.,
+            Order info
+            1 item
+            Order #114-7102351239-212345
+            Return or replace items in Your Orders.
             """,
             isSpam: true
         ),
         Mail(
             profilePicture: nil,
-            sender: "Google",
-            time: "May 04",
-            subject: "Google Team Match Update",
+            sender: "SPAM",
+            time: "02:48 AM",
+            subject: "Delivered: Your Amazon.com order #114-7107059-2488333",
             content: """
-            Hi Simon Zhang,Thanks for your interest in a role at Google! We received your application and will be in touch soon about next steps.
-            Thanks,
-            Google Recruiting
+            Hello,
+                I've been trying to contact you. Did you get the message I sent you earlier? I have a profitable idea to share with you. Reply now for more details.
+             
+            Best Regards
+            Peggy Chan.
+            
+            """,
+            isSpam: true
+        ),
+        Mail(
+            profilePicture: nil,
+            sender: "-CVS Rewards",
+            time: "May 04",
+            subject: ">>simon123!! -You-have won an $90-CVS-Gift-Card",
+            content: """
+            Your_Name _ Came Up For_a RTIC backpackCooler __ Reward
             """,
             isTrash: true
         ),
@@ -89,9 +107,13 @@ class InboxMailsViewModel: ObservableObject {
             profilePicture: "person5",
             sender: "John Smith",
             time: "May 02",
-            subject: "Test Test",
+            subject: "website package",
             content: """
-            To have this test, you swallow a string with a weighted gelatin capsule on the end. The string is pulled out 4 hours later. Any bile, blood, or mucus attached to the string is examined under the microscope. This is done to look for cells and parasites or parasite eggs.
+            I am XXX, Web Development Manager and I work with 150+experienced IT professionals who are into:
+            Website designing & development, Magento, Wordpress, Joomla, PHP Development, Logo Design & Digital Marketing.
+            If you are interested please share your requirements so that we can assist your Further. 
+            Kind Regards,
+            xxx
             """,
             isPrimary: true,
             isSocial: true
@@ -109,18 +131,23 @@ class InboxMailsViewModel: ObservableObject {
         ),
         Mail(
             profilePicture: "person7",
-            sender: "John Smith3",
+            sender: "John Smith 3",
             time: "April 26",
-            subject: "Test Test",
+            subject: "Letter of complaint",
             content: """
-            To have this test, you swallow a string with a weighted gelatin capsule on the end. The string is pulled out 4 hours later. Any bile, blood, or mucus attached to the string is examined under the microscope. This is done to look for cells and parasites or parasite eggs.
+            On January 30th, 2020, I made a reservation at your restaurant located at 1234 Mulberry Lane for a birthday dinner for four people. This letter is intended to bring certain issues to your attention.
+            Unfortunately, we did not enjoy our dinner due to the fact that the food was very slow to arrive and we received the wrong dishes. It’s understandable that it was a busy time at your restaurant, but the quality of the service was not as expected.
+            To resolve this problem, I would appreciate it if you could provide compensation in the form of a gift voucher or discount on a future meal. 
+            I’m looking forward to your reply.
+            With regards,
+            [Your name]
             """,
             isUnread: true,
             isSocial: true
         ),
         Mail(
             profilePicture: "person8",
-            sender: "John Smith4",
+            sender: "John Smith 4",
             time: "April 24",
             subject: "Test Test",
             content: """
@@ -149,10 +176,10 @@ class InboxMailsViewModel: ObservableObject {
             profilePicture: "simon",
             sender: "You",
             time: "10:15 AM",
-            subject: "Re: Google Team Match Update",
+            subject: "Re: Team Match Update",
             content: """
-            Thanks, Simon. I have your call scheduled for Wednesday. Doc is updated with the details. Please be sure to take some time to review the Team Match Call Prep Resource
-            and specifically practice/prep for the points listed below. Please let me know if you have any questions and let me know how the call goes once completed. 
+            Sounds great! I will do my best
+            Simon
             """,
             isUnread: false,
             isSent: true
@@ -163,7 +190,8 @@ class InboxMailsViewModel: ObservableObject {
             time: "06:11 AM",
             subject: "Re:Good luck on your interview",
             content: """
-            Good luck baby, you are my best bae!!! Love you (heart)
+            Let's ROCK!!!
+            Simon
             """,
             isUnread: false,
             isSent: true
@@ -182,11 +210,14 @@ class InboxMailsViewModel: ObservableObject {
             profilePicture: "person7",
             sender: "Cara Sue",
             time: "May 04",
-            subject: "Google Team Match Update",
+            subject: "Something Update",
             content: """
-            Hi Simon Zhang,Thanks for your interest in a role at Google! We received your application and will be in touch soon about next steps.
-            Thanks,
-            Google Recruiting
+            I’m sure your schedule is very busy, so this email is simply to remind you of your upcoming interview with [name] who is a candidate for [name of position].
+            The interview will be at [time] on [date] in [location].
+            Please let me know if there’s anything I can help you with to prepare to interview this candidate.
+            Best,
+            [Your name]
+            
             """,
             isUnread: false,
             isDraft: true
@@ -197,7 +228,12 @@ class InboxMailsViewModel: ObservableObject {
             time: "May 02",
             subject: "Test Test",
             content: """
-            To have this test, you swallow a string with a weighted gelatin capsule on the end. The string is pulled out 4 hours later. Any bile, blood, or mucus attached to the string is examined under the microscope. This is done to look for cells and parasites or parasite eggs.
+            Please accept my deepest apologies on behalf of [company or business name] for the poor experience you had at our restaurant.
+            I want to thank you for bringing these issues to my attention and please know that we are making every effort to correct our mistakes so events like these don’t happen in the future.
+            As a token of our apology, please accept a gift card in the amount of $50.00 that can be used at our restaurant in the future.
+            I hope to greet you again soon at [company or business name].
+            Yours sincerely,
+            YYY
             """,
             isPrimary: true
         ),
