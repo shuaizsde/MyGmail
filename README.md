@@ -4,7 +4,10 @@ Simon Zhang's Gmail demo project with SwiftUI
 
 Summary:
 Final Video
-https://github.com/zhang86036055/MyGmail/assets/77553874/0f95310e-a4c6-491f-8551-f0472c1c7eb5
+
+https://github.com/zhang86036055/MyGmail/assets/77553874/caa83201-dbe1-4980-bcb7-ed0318593588
+
+
 
 ***Designed/Implemented Gmail views:***
 1. InboxList, 
@@ -40,7 +43,10 @@ https://github.com/zhang86036055/MyGmail/assets/77553874/0f95310e-a4c6-491f-8551
 Progress:
 --------------------------------------------------------------------
 
-MileStone 3 Demo (Day3)
+MileStone 4 Demo (Day4)
+https://github.com/zhang86036055/MyGmail/assets/77553874/0f95310e-a4c6-491f-8551-f0472c1c7eb5
+
+MileStone 3 (Day3)
 - Customized Navigation menu for email content view header
 - Added more buttons and icons as well as their onTapture actions 
 - Add more fields e.g. isUnread, isSent on email Model struct for furthur uses
