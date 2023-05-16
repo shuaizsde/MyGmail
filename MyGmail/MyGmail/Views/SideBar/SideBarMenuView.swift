@@ -54,7 +54,7 @@ extension SideBarMenuView {
                     width: GmailSize.defaultTripple,
                     height: GmailSize.defaultTripple
                 )
-            Text("Gmail")
+            Text("My Gmail")
                 .font(GmailFont.defaultTriple)
                 .foregroundColor(.gray)
         }
