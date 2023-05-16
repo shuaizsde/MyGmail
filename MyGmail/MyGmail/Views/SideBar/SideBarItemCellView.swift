@@ -10,7 +10,7 @@ import SwiftUI
 struct SideBarItemCellView: View {
     @ObservedObject var mailViewModel: InboxMailsViewModel
     @Binding var slideInMenuService: SlideInMenuService
-
+    @State private var isPressed = false
     var cell: CellItem
     var iconOnTap: (CellItem) -> Void
 
@@ -41,13 +41,23 @@ struct SideBarItemCellView: View {
             slideInMenuService.isPresented.toggle()
         }
         .foregroundColor(cell.isSelected ? GmailColor.red : GmailColor.textGray)
-        .background(
-            RoundedRectangle(cornerRadius: 20)
-                .fill(cell.isSelected ? GmailColor.red : Color.white)
-                .opacity(0.1)
-                .frame(width: 300, height: 44)
-                .offset(CGSize(width: -20, height: 0))
-        )
         .font(GmailFont.defaultFont2)
+        .background(){
+            RoundedRectangle(cornerRadius: 20)
+              .fill(isPressed ? GmailColor.red : Color.white)
+              .opacity(0.1)
+              .frame(width: 300, height: 44)
+              .offset(CGSize(width: -20, height: 0))
+        }
+        .pressEvents {
+            // On press
+            withAnimation(.easeInOut(duration: 0.1)) {
+                isPressed = true
+            }
+        } onRelease: {
+            withAnimation {
+                isPressed = false
+            }
+        }
     }
 }

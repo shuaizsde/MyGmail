@@ -31,6 +31,7 @@
 		1CC147662A118EB20035849F /* FilterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC147652A118EB20035849F /* FilterService.swift */; };
 		1CC1476C2A1272EE0035849F /* StaticFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC1476B2A1272EE0035849F /* StaticFields.swift */; };
 		1CC1476E2A1294420035849F /* SideBarItemCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC1476D2A1294420035849F /* SideBarItemCellView.swift */; };
+		1CC147722A13ED370035849F /* ButtonPressActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC147712A13ED370035849F /* ButtonPressActions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +60,7 @@
 		1CC147652A118EB20035849F /* FilterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterService.swift; sourceTree = "<group>"; };
 		1CC1476B2A1272EE0035849F /* StaticFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticFields.swift; sourceTree = "<group>"; };
 		1CC1476D2A1294420035849F /* SideBarItemCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarItemCellView.swift; sourceTree = "<group>"; };
+		1CC147712A13ED370035849F /* ButtonPressActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonPressActions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +121,7 @@
 				1CC147652A118EB20035849F /* FilterService.swift */,
 				1C2AC3592A0A71E1004C0777 /* SlideInView.swift */,
 				1CC1476B2A1272EE0035849F /* StaticFields.swift */,
+				1CC147712A13ED370035849F /* ButtonPressActions.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -291,6 +294,7 @@
 				1C2AC3692A102AFD004C0777 /* SideMenuItems.swift in Sources */,
 				1C2AC3632A0AB1BA004C0777 /* InboxTableItemView.swift in Sources */,
 				1C2AC3672A10270A004C0777 /* SideMenuItemViewModel.swift in Sources */,
+				1CC147722A13ED370035849F /* ButtonPressActions.swift in Sources */,
 				1C2AC3712A10A866004C0777 /* CustomNavigationLink.swift in Sources */,
 				1C2AC3732A10A937004C0777 /* CustomNavBarContainerView.swift in Sources */,
 				1C2AC3602A0A788F004C0777 /* SlideInMenuService.swift in Sources */,

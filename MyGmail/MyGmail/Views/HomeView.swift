@@ -9,7 +9,8 @@ import SwiftUI
 
 struct HomeView: View {
     private let unreadBubbleOffset = CGSize(width: 10.0, height: -8)
-
+    @State private var isPressed = false
+    @State private var isPressed2 = false
     @ObservedObject var model: InboxMailsViewModel
     @ObservedObject var showToolBarService: ShowToolBarService
 
@@ -32,6 +33,7 @@ struct HomeView: View {
     }
 
     @ViewBuilder func createToolBarButtons() -> some View {
+    
         HStack {
             Button(action: {
                 isCameraView = false
@@ -54,12 +56,49 @@ struct HomeView: View {
                         .offset(unreadBubbleOffset)
                 }
             })
+            .background(){
+                Circle()
+                    .foregroundColor(isPressed ? Color.red : nil)
+                    .opacity(0.1)
+                    .frame(width: isPressed ? 250 : 0,
+                           height: isPressed ? 250.0 : 0
+                    )
+                    .mask(Rectangle().frame(width: 500, height: 80).offset(y:12))
+            }
+            .pressEvents {
+                // On press
+                withAnimation(.easeInOut(duration: 0.1)) {
+                    isPressed = true
+                }
+            } onRelease: {
+                withAnimation {
+                    isPressed = false
+                }
+            }
 
             Spacer()
             Button(
                 action: { isCameraView = true },
                 label: { GmailIcons.videoIcon.foregroundColor(GmailColor.gray) }
-            )
+            ).background(){
+                Circle()
+                    .foregroundColor(isPressed2 ? Color.red : nil)
+                    .opacity(0.1)
+                    .frame(width: isPressed2 ? 250 : 0,
+                           height: isPressed2 ? 250.0 : 0
+                    )
+                    .mask(Rectangle().frame(width: 500, height: 80).offset(y:12))
+            }
+            .pressEvents {
+                // On press
+                withAnimation(.easeInOut(duration: 0.1)) {
+                    isPressed2 = true
+                }
+            } onRelease: {
+                withAnimation {
+                    isPressed2 = false
+                }
+            }
         }.padding(80)
     }
 }
