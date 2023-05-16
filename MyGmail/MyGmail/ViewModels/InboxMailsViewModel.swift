@@ -32,6 +32,7 @@ class InboxMailsViewModel: ObservableObject {
 
             ...
             """,
+            isUnread: false, 
             isPrimary: true,
             isStarred: true,
             isImportant: true
@@ -45,6 +46,7 @@ class InboxMailsViewModel: ObservableObject {
             Thanks, Simon. I have your call scheduled for Wednesday. Doc is updated with the details. Please be sure to take some time to review the Team Match Call Prep Resource
             and specifically practice/prep for the points listed below. Please let me know if you have any questions and let me know how the call goes once completed. 
             """,
+            isUnread: false, 
             isPrimary: true,
             isStarred: true,
             isImportant: true
@@ -57,6 +59,7 @@ class InboxMailsViewModel: ObservableObject {
             content: """
             Good luck baby, you are my best bae!!! Love you (heart)
             """,
+            isUnread: false, 
             isPrimary: true,
             isStarred: true
         ),
@@ -236,6 +239,8 @@ class InboxMailsViewModel: ObservableObject {
         var isUnderCatagory = false
         for mail in model.mails {
             switch menuButton(rawValue: catagory) {
+            case .allInboxes:
+                isUnderCatagory = !mail.isTrash && !mail.isSpam && !mail.isTrash && !mail.isArchived
             case .primary:
                 isUnderCatagory = mail.isPrimary
             case .social:

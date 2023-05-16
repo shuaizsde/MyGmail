@@ -45,7 +45,7 @@ struct HomeView: View {
                             height: GmailSize.defaultDouble
                         )
                         .overlay(
-                            Text("\(model.unreads)")
+                            Text("\(model.unreads - model.getUnreads(of: "Spam") - model.getUnreads(of: "Trash"))")
                                 .fontWeight(.bold)
                                 .foregroundColor(.white)
                                 .font(GmailFont.defaultFont)

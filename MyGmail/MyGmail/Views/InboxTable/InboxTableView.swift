@@ -40,6 +40,7 @@ struct InboxTableView: View {
                                     action: {
                                         withAnimation(.easeInOut) {
                                             model.archive(mail)
+                                            model.read(mail)
                                         }
                                     }, label: { GmailIcons.swipeDownIcon }
                                 )

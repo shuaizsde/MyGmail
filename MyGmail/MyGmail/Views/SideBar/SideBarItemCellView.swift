@@ -24,7 +24,7 @@ struct SideBarItemCellView: View {
 
             let count = mailViewModel.getUnreads(of: cell.title)
             RoundedRectangle(cornerRadius: 10)
-                .foregroundColor(count >= 10 ? GmailColor.gray : GmailColor.green)
+                .foregroundColor(GmailColor.green)
                 .frame(
                     width: 48,
                     height: 18

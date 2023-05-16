@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct SideBarMenuView: View {
-    @ObservedObject public var model: SideMenuItemViewModel
+    @ObservedObject var model: SideMenuItemViewModel
     @ObservedObject var mailViewModel: InboxMailsViewModel
-
     @ObservedObject var showToolBarService: ShowToolBarService
-    @State public var slideInMenuService: SlideInMenuService
+
+    @State var slideInMenuService: SlideInMenuService
 
     var body: some View {
         VStack {

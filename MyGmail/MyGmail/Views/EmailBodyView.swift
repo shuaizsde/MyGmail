@@ -10,13 +10,14 @@ import SwiftUI
 struct EmailBodyView: View {
     let mail: InboxMails.Mail
 
-    let thumbnailWidth = 40.0
-    let defaultSpacing = 20.0
-    let largeSpacing = 50.0
-    let defaultOpacity = 0.6
+    private let thumbnailWidth = 40.0
+    private let defaultSpacing = 20.0
+    private let largeSpacing = 50.0
+    private let defaultOpacity = 0.6
 
     @ObservedObject var viewModel: InboxMailsViewModel
     @ObservedObject var showToolBarService: ShowToolBarService
+
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
