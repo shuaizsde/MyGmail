@@ -17,10 +17,11 @@ struct MyGmailApp: App {
     var body: some Scene {
         WindowGroup {
             Group {
-                HomeView(model: inboxViewModel, showToolBarService: showToolBarService)
+                HomeView()
             }.environmentObject(slideInMenuService)
                 .environmentObject(showToolBarService)
                 .environmentObject(filterService)
+                .environmentObject(inboxViewModel)
                 .slideInView(
                     isActive: $slideInMenuService.isPresented,
                     edge: .leading,
@@ -32,11 +33,11 @@ struct MyGmailApp: App {
                     )
                 ) {
                     SideBarMenuView(
-                        model: SideMenuItemViewModel(filterService: filterService),
-                        mailViewModel: inboxViewModel,
-                        showToolBarService: showToolBarService,
-                        slideInMenuService: slideInMenuService
+                        model: SideMenuItemViewModel(filterService: filterService)
                     )
+                    .environmentObject(slideInMenuService)
+                    .environmentObject(showToolBarService)
+                    .environmentObject(inboxViewModel)
                 }
         }
     }

@@ -11,8 +11,8 @@ struct HomeView: View {
     private let unreadBubbleOffset = CGSize(width: 10.0, height: -8)
     @State private var isPressed = false
     @State private var isPressed2 = false
-    @ObservedObject var model: InboxMailsViewModel
-    @ObservedObject var showToolBarService: ShowToolBarService
+    @EnvironmentObject var model: InboxMailsViewModel
+    @EnvironmentObject var showToolBarService: ShowToolBarService
 
     @State var isCameraView = false
 
@@ -21,7 +21,7 @@ struct HomeView: View {
             if isCameraView {
                 CameraView()
             } else {
-                InboxTableView(showToolBarService: showToolBarService, model: model)
+                InboxTableView(model: model)
             }
         }.toolbar {
             if showToolBarService.showToolBar {
@@ -105,6 +105,6 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView(model: InboxMailsViewModel(), showToolBarService: ShowToolBarService())
+        HomeView()
     }
 }

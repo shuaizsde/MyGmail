@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SideBarItemCellView: View {
     @ObservedObject var mailViewModel: InboxMailsViewModel
-    @Binding var slideInMenuService: SlideInMenuService
+    @EnvironmentObject var slideInMenuService: SlideInMenuService
     @State private var isPressed = false
     var cell: CellItem
     var iconOnTap: (CellItem) -> Void

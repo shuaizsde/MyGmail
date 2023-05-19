@@ -13,8 +13,6 @@ struct InboxTableView: View {
     private let composeButtonOffsetX = 320.0
     private let composeButtonOffsetY = 640.0
 
-    @ObservedObject var showToolBarService: ShowToolBarService
-
     @EnvironmentObject private var slideInMenuService: SlideInMenuService
     @EnvironmentObject private var filterService: FilterService
 
@@ -101,7 +99,7 @@ extension InboxTableView {
         ZStack {
             // Hide chevron visibility
             CustomNavigationLink(
-                destination: EmailBodyView(mail: cell, viewModel: model, showToolBarService: showToolBarService).toolbar(.hidden, for: .bottomBar),
+                destination: EmailBodyView(mail: cell, viewModel: model),
                 label: { EmptyView() }
             )
             .opacity(0.0)
@@ -126,7 +124,6 @@ extension InboxTableView {
 
             if abs(horizontalAmount) > abs(verticalAmount), horizontalAmount > 0 {
                 slideInMenuService.isPresented.toggle()
-                showToolBarService.showToolBar = false
             }
         }
     }
@@ -134,6 +131,6 @@ extension InboxTableView {
 
 struct InboxTableView_Previews: PreviewProvider {
     static var previews: some View {
-        InboxTableView(showToolBarService: ShowToolBarService(), model: InboxMailsViewModel())
+        InboxTableView(model: InboxMailsViewModel())
     }
 }

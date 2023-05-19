@@ -16,7 +16,7 @@ struct EmailBodyView: View {
     private let defaultOpacity = 0.6
 
     @ObservedObject var viewModel: InboxMailsViewModel
-    @ObservedObject var showToolBarService: ShowToolBarService
+    @EnvironmentObject var showToolBarService: ShowToolBarService
 
     var body: some View {
         ScrollView {
@@ -176,6 +176,6 @@ extension EmailBodyView {
 
 struct EmailBodyView_Previews: PreviewProvider {
     static var previews: some View {
-        EmailBodyView(mail: InboxMailsViewModel().mails[0], viewModel: InboxMailsViewModel(), showToolBarService: ShowToolBarService())
+        EmailBodyView(mail: InboxMailsViewModel().mails[0], viewModel: InboxMailsViewModel())
     }
 }

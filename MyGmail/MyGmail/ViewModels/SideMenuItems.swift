@@ -8,30 +8,8 @@
 import SwiftUI
 
 struct SideMenuItems {
-    private(set) var cells: [CellItem]
-
-    var chosenCellIndex: Int? {
-        get { cells.indices.filter { cells[$0].isSelected }.oneAndOnly }
-        set { cells.indices.forEach { cells[$0].isSelected = ($0 == newValue) } }
-    }
-
-    mutating func select(_ cell: CellItem) {
-        guard let selected = cells.firstIndex(where: { $0.id == cell.id }) else {
-            return
-        }
-        if chosenCellIndex == nil {
-            chosenCellIndex = selected
-            cells[selected].isSelected = true
-            return
-        } else if chosenCellIndex != selected {
-            cells[chosenCellIndex!].isSelected = false
-            chosenCellIndex = selected
-            cells[selected].isSelected = true
-        }
-    }
-
-    init() {
-        cells = [CellItem]()
+    private(set) var cells: [CellItem] = {
+        var cells = [CellItem]()
         // Section 1
         cells.append(CellItem(id: 0, profilePicture: "tray", title: "All Inboxes", unreads: 5))
         cells.append(CellItem(id: 1, profilePicture: "timelapse", title: "Primary"))
@@ -54,6 +32,27 @@ struct SideMenuItems {
         cells.append(CellItem(id: 15, profilePicture: "gear", title: "Settings"))
         cells.append(CellItem(id: 16, profilePicture: "character.bubble", title: "Send feedback"))
         cells.append(CellItem(id: 17, profilePicture: "questionmark.circle", title: "Help"))
+        return cells
+    }()
+
+    var chosenCellIndex: Int? {
+        get { cells.indices.filter { cells[$0].isSelected }.oneAndOnly }
+        set { cells.indices.forEach { cells[$0].isSelected = ($0 == newValue) } }
+    }
+
+    mutating func select(_ cell: CellItem) {
+        guard let selected = cells.firstIndex(where: { $0.id == cell.id }) else {
+            return
+        }
+        if chosenCellIndex == nil {
+            chosenCellIndex = selected
+            cells[selected].isSelected = true
+            return
+        } else if chosenCellIndex != selected {
+            cells[chosenCellIndex!].isSelected = false
+            chosenCellIndex = selected
+            cells[selected].isSelected = true
+        }
     }
 }
 

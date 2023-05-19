@@ -9,10 +9,10 @@ import SwiftUI
 
 struct SideBarMenuView: View {
     @ObservedObject var model: SideMenuItemViewModel
-    @ObservedObject var mailViewModel: InboxMailsViewModel
-    @ObservedObject var showToolBarService: ShowToolBarService
-
-    @State var slideInMenuService: SlideInMenuService
+    @EnvironmentObject var mailViewModel: InboxMailsViewModel
+    
+    @EnvironmentObject var showToolBarService: ShowToolBarService
+    @EnvironmentObject var slideInMenuService: SlideInMenuService
 
     var body: some View {
         VStack {
@@ -74,7 +74,6 @@ extension SideBarMenuView {
             ForEach(model.cells.filter(filter), id: \.id) {
                 SideBarItemCellView(
                     mailViewModel: mailViewModel,
-                    slideInMenuService: $slideInMenuService,
                     cell: $0
                 ) { tapOnCell($0) }
             }
@@ -90,8 +89,7 @@ extension SideBarMenuView {
 struct SideBarMenuView_Previews: PreviewProvider {
     static var previews: some View {
         SideBarMenuView(
-            model: SideMenuItemViewModel(filterService: FilterService()), mailViewModel: InboxMailsViewModel(), showToolBarService: ShowToolBarService(),
-            slideInMenuService: SlideInMenuService()
+            model: SideMenuItemViewModel(filterService: FilterService())
         )
     }
 }
