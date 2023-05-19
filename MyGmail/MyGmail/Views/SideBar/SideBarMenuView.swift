@@ -9,10 +9,9 @@ import SwiftUI
 
 struct SideBarMenuView: View {
     @ObservedObject var model: SideMenuItemViewModel
-    @EnvironmentObject var mailViewModel: InboxMailsViewModel
     
+    @EnvironmentObject var mailViewModel: InboxMailsViewModel
     @EnvironmentObject var showToolBarService: ShowToolBarService
-    @EnvironmentObject var slideInMenuService: SlideInMenuService
 
     var body: some View {
         VStack {

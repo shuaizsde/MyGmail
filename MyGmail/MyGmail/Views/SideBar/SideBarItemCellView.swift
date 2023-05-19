@@ -11,15 +11,18 @@ struct SideBarItemCellView: View {
     @ObservedObject var mailViewModel: InboxMailsViewModel
     @EnvironmentObject var slideInMenuService: SlideInMenuService
     @State private var isPressed = false
-    var cell: CellItem
-    var iconOnTap: (CellItem) -> Void
+    
+    let cell: CellItem
+    let iconOnTap: (CellItem) -> Void
 
     var body: some View {
         HStack {
             Image(systemName: cell.profilePicture)
+                .font(GmailFont.defaultFont2)
             Spacer().frame(width: 35)
 
             Text(cell.title)
+                .font(GmailFont.defaultFont2)
             Spacer()
 
             let count = mailViewModel.getUnreads(of: cell.title)
@@ -36,12 +39,9 @@ struct SideBarItemCellView: View {
                 )
                 .opacity(count == 0 ? 0 : 1)
         }
-        .onTapGesture {
-            iconOnTap(cell)
-            slideInMenuService.isPresented.toggle()
-        }
+        // Text Color 
         .foregroundColor(cell.isSelected ? GmailColor.red : GmailColor.textGray)
-        .font(GmailFont.defaultFont2)
+        // Background Color
         .background(){
             RoundedRectangle(cornerRadius: 20)
               .fill(isPressed ? GmailColor.red : Color.white)
@@ -49,15 +49,23 @@ struct SideBarItemCellView: View {
               .frame(width: 300, height: 44)
               .offset(CGSize(width: -20, height: 0))
         }
-        .pressEvents {
-            // On press
-            withAnimation(.easeInOut(duration: 0.1)) {
-                isPressed = true
-            }
-        } onRelease: {
-            withAnimation {
-                isPressed = false
-            }
+        // Action
+        .onTapGesture {
+            iconOnTap(cell)
+            slideInMenuService.isPresented.toggle()
         }
+        // Animation
+        .pressEvents(
+            onPress: {
+                withAnimation(.easeInOut(duration: 0.1)) {
+                    isPressed = true
+                }
+            },
+            onRelease: {
+                withAnimation {
+                    isPressed = false
+                }
+            }
+        )
     }
 }

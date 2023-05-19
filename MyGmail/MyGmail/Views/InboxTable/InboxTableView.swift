@@ -16,11 +16,11 @@ struct InboxTableView: View {
     @EnvironmentObject private var slideInMenuService: SlideInMenuService
     @EnvironmentObject private var filterService: FilterService
 
-    @ObservedObject var model: InboxMailsViewModel
+    @EnvironmentObject var viewModel: InboxMailsViewModel
     @State var searchString = ""
 
     private var searchResults: [InboxMailsViewModel.Mail] {
-        let filtedMails = model.mails.filter(filterService.currentFilter)
+        let filtedMails = viewModel.mails.filter(filterService.currentFilter)
         guard !searchString.isEmpty else {
             return filtedMails
         }
@@ -37,8 +37,8 @@ struct InboxTableView: View {
                                 Button(
                                     action: {
                                         withAnimation(.easeInOut) {
-                                            model.archive(mail)
-                                            model.read(mail)
+                                            viewModel.archive(mail)
+                                            viewModel.read(mail)
                                         }
                                     }, label: { GmailIcons.swipeDownIcon }
                                 )
@@ -99,15 +99,15 @@ extension InboxTableView {
         ZStack {
             // Hide chevron visibility
             CustomNavigationLink(
-                destination: EmailBodyView(mail: cell, viewModel: model),
+                destination: EmailBodyView(mail: cell, viewModel: viewModel),
                 label: { EmptyView() }
             )
             .opacity(0.0)
 
             InboxTableItemView(
                 mail: cell,
-                starOnTapped: { model.star(cell) },
-                chevronOnTapped: { model.important(cell) }
+                starOnTapped: { viewModel.star(cell) },
+                chevronOnTapped: { viewModel.important(cell) }
             )
             .frame(height: 50)
         }
@@ -131,6 +131,6 @@ extension InboxTableView {
 
 struct InboxTableView_Previews: PreviewProvider {
     static var previews: some View {
-        InboxTableView(model: InboxMailsViewModel())
+        InboxTableView()
     }
 }

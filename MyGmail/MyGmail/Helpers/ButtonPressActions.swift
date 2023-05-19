@@ -26,7 +26,6 @@ struct ButtonPress: ViewModifier {
     }
 }
 
-
 extension View {
     func pressEvents(onPress: @escaping (() -> Void), onRelease: @escaping (() -> Void)) -> some View {
         modifier(ButtonPress(onPress: {

@@ -8,38 +8,54 @@
 import SwiftUI
 
 struct HomeView: View {
-    private let unreadBubbleOffset = CGSize(width: 10.0, height: -8)
     @State private var isPressed = false
     @State private var isPressed2 = false
-    @EnvironmentObject var model: InboxMailsViewModel
+    
     @EnvironmentObject var showToolBarService: ShowToolBarService
-
+    
     @State var isCameraView = false
-
+    
     var body: some View {
         VStack {
             if isCameraView {
                 CameraView()
             } else {
-                InboxTableView(model: model)
+                InboxTableView()
             }
         }.toolbar {
             if showToolBarService.showToolBar {
                 ToolbarItemGroup(placement: .bottomBar) {
-                    createToolBarButtons()
+                    HStack {
+                        switchButton(icon: GmailIcons.envelopeIcon, isPressed: $isPressed) {
+                            self.isCameraView = false
+                        }
+                        Spacer()
+                        switchButton(icon: GmailIcons.videoIcon, isPressed: $isPressed2) {
+                            self.isCameraView = true
+                        }
+                    }
+                        .padding(80)
                 }
             }
         }
     }
+}
 
-    @ViewBuilder func createToolBarButtons() -> some View {
+
+struct switchButton: View {
+    private let unreadBubbleOffset = CGSize(width: 10.0, height: -8)
+    @EnvironmentObject var viewModel: InboxMailsViewModel
     
-        HStack {
-            Button(action: {
-                isCameraView = false
-            }, label: {
-                ZStack {
-                    GmailIcons.envelopeIcon.foregroundColor(GmailColor.gray)
+    let icon: Image
+    @Binding var isPressed: Bool
+    let action: () -> Void
+    
+    var body: some View {
+        Button(action: action, label: {
+            ZStack {
+                icon.foregroundColor(GmailColor.gray)
+                // Unread Bubble
+                if icon == GmailIcons.envelopeIcon {
                     Circle()
                         .fill(GmailColor.red)
                         .frame(
@@ -47,60 +63,40 @@ struct HomeView: View {
                             height: GmailSize.defaultDouble
                         )
                         .overlay(
-                            Text("\(model.unreads - model.getUnreads(of: "Spam") - model.getUnreads(of: "Trash"))")
+                            Text("\(viewModel.unreads - viewModel.getUnreads(of: "Spam") - viewModel.getUnreads(of: "Trash"))")
                                 .fontWeight(.bold)
                                 .foregroundColor(.white)
                                 .font(GmailFont.defaultFont)
                         )
-                        .opacity(model.unreads - model.getUnreads(of: "Spam") - model.getUnreads(of: "Trash") > 0 ? 1.0 : 0)
+                        .opacity(viewModel.unreads - viewModel.getUnreads(of: "Spam") - viewModel.getUnreads(of: "Trash") > 0 ? 1.0 : 0)
                         .offset(unreadBubbleOffset)
                 }
-            })
-            .background(){
-                Circle()
-                    .foregroundColor(isPressed ? Color.red : nil)
-                    .opacity(0.1)
-                    .frame(width: isPressed ? 250 : 0,
-                           height: isPressed ? 250.0 : 0
-                    )
-                    .mask(Rectangle().frame(width: 500, height: 80).offset(y:12))
             }
-            .pressEvents {
-                // On press
+        })
+        .background(){
+            Circle()
+                .foregroundColor(isPressed ? Color.red : nil)
+                .opacity(0.1)
+                .frame(width: isPressed ? 250 : 0,
+                       height: isPressed ? 250.0 : 0
+                )
+                .mask(Rectangle().frame(width: 500, height: 80).offset(y:12))
+        }
+        .pressEvents(
+            onPress: {
                 withAnimation(.easeInOut(duration: 0.1)) {
                     isPressed = true
                 }
-            } onRelease: {
-                withAnimation {
+            },
+            onRelease: {
+                withAnimation(.easeInOut(duration: 0.1)) {
                     isPressed = false
                 }
             }
-
-            Spacer()
-            Button(
-                action: { isCameraView = true },
-                label: { GmailIcons.videoIcon.foregroundColor(GmailColor.gray) }
-            ).background(){
-                Circle()
-                    .foregroundColor(isPressed2 ? Color.red : nil)
-                    .opacity(0.1)
-                    .frame(width: isPressed2 ? 250 : 0,
-                           height: isPressed2 ? 250.0 : 0
-                    )
-                    .mask(Rectangle().frame(width: 500, height: 80).offset(y:12))
-            }
-            .pressEvents {
-                // On press
-                withAnimation(.easeInOut(duration: 0.1)) {
-                    isPressed2 = true
-                }
-            } onRelease: {
-                withAnimation {
-                    isPressed2 = false
-                }
-            }
-        }.padding(80)
+        )
     }
+    
+    
 }
 
 struct HomeView_Previews: PreviewProvider {
