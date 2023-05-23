@@ -1,28 +1,22 @@
 //
-//  ComposeMailView.swift
-//  MyGmail
+//  ContentView.swift
+//  XCAChatGPT
 //
-//  Created by Shuai Zhang on 5/13/23.
+//  Created by Alfian Losari on 01/02/23.
 //
 
 import SwiftUI
 import AVKit
 
-struct ComposeMailView: View {
-    
+struct ContentView: View {
+        
     @Environment(\.colorScheme) var colorScheme
-    @StateObject var vm = ViewModel(api: ChatGPTAPI(apiKey: "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"))
+    @ObservedObject var vm: ViewModel
     @FocusState var isTextFieldFocused: Bool
-    let composeContent = ComposeMailInfo(sender: "You", receiver: "Susan", content: "How are you doing?")
     
     var body: some View {
-        VStack {
-            Text(composeContent.sender)
-            Text(composeContent.receiver)
-            Text(composeContent.content)
-            chatListView
-                .navigationTitle("XCA ChatGPT")
-        }
+        chatListView
+            .navigationTitle("XCA ChatGPT")
     }
     
     var chatListView: some View {
@@ -115,23 +109,13 @@ struct ComposeMailView: View {
         .padding(.top, 12)
     }
     
-     func presetMessage() -> String {
-        return "create a email which sender is \(composeContent.sender), receiver is \(composeContent.receiver), rewrite email content,\(composeContent.content) with below comments: \($vm.inputMessage)"
-    }
-    
     private func scrollToBottom(proxy: ScrollViewProxy) {
         guard let id = vm.messages.last?.id else { return }
         proxy.scrollTo(id, anchor: .bottomTrailing)
     }
 }
 
-struct ComposeMailInfo {
-    var sender: String
-    var receiver: String
-    var content: String
-}
-
-struct ComposeMailView_Previews: PreviewProvider {
+struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
             ContentView(vm: ViewModel(api: ChatGPTAPI(apiKey: "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")))

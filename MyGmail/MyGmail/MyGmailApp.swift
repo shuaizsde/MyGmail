@@ -13,7 +13,7 @@ struct MyGmailApp: App {
     @StateObject private var showToolBarService = ShowToolBarService()
     @StateObject private var filterService = FilterService()
     @StateObject private var inboxViewModel = InboxMailsViewModel()
-
+    @StateObject var vm = ViewModel(api: ChatGPTAPI(apiKey: "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"))
     var body: some Scene {
         WindowGroup {
             Group {
@@ -38,6 +38,7 @@ struct MyGmailApp: App {
                     .environmentObject(slideInMenuService)
                     .environmentObject(showToolBarService)
                     .environmentObject(inboxViewModel)
+                    .environmentObject(vm)
                 }
         }
     }

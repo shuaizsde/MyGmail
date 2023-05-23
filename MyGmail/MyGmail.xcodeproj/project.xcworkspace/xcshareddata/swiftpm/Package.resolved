@@ -1,0 +1,41 @@
+{
+  "pins" : [
+    {
+      "identity" : "gptencoder",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/alfianlosari/GPTEncoder.git",
+      "state" : {
+        "revision" : "a86968867ab4380e36b904a14c42215f71efe8b4",
+        "version" : "1.0.4"
+      }
+    },
+    {
+      "identity" : "highlighterswift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/alfianlosari/HighlighterSwift",
+      "state" : {
+        "branch" : "main",
+        "revision" : "c15eea4e5e8f18b0a2d2173830fcaa250f742bc0"
+      }
+    },
+    {
+      "identity" : "swift-cmark",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-cmark.git",
+      "state" : {
+        "revision" : "29d9c97e6310b87c4799268eaa2fc76164b2dbd8",
+        "version" : "0.2.0"
+      }
+    },
+    {
+      "identity" : "swift-markdown",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-markdown",
+      "state" : {
+        "revision" : "68b2fed9fb12fb71ac81e537f08bed430b189e35",
+        "version" : "0.2.0"
+      }
+    }
+  ],
+  "version" : 2
+}
