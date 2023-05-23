@@ -33,10 +33,9 @@ struct CustomNavigationLink_Previews: PreviewProvider {
     static var previews: some View {
         CustomNavView {
             CustomNavigationLink(
-                destination: Text("Destination"))
-            {
-                Text("Click ME")
-            }
+                destination: Text("Destination")) {
+                    Text("Click ME")
+                }
         }
     }
 }

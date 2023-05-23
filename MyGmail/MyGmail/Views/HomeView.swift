@@ -10,11 +10,11 @@ import SwiftUI
 struct HomeView: View {
     @State private var isPressed = false
     @State private var isPressed2 = false
-    
+
     @EnvironmentObject var showToolBarService: ShowToolBarService
-    
+
     @State var isCameraView = false
-    
+
     var body: some View {
         VStack {
             if isCameraView {
@@ -26,30 +26,29 @@ struct HomeView: View {
             if showToolBarService.showToolBar {
                 ToolbarItemGroup(placement: .bottomBar) {
                     HStack {
-                        switchButton(icon: GmailIcons.envelopeIcon, isPressed: $isPressed) {
+                        SwitchButton(icon: GmailIcons.envelopeIcon, isPressed: $isPressed) {
                             self.isCameraView = false
                         }
                         Spacer()
-                        switchButton(icon: GmailIcons.videoIcon, isPressed: $isPressed2) {
+                        SwitchButton(icon: GmailIcons.videoIcon, isPressed: $isPressed2) {
                             self.isCameraView = true
                         }
                     }
-                        .padding(80)
+                    .padding(80)
                 }
             }
         }
     }
 }
 
-
-struct switchButton: View {
+struct SwitchButton: View {
     private let unreadBubbleOffset = CGSize(width: 10.0, height: -8)
     @EnvironmentObject var viewModel: InboxMailsViewModel
-    
+
     let icon: Image
     @Binding var isPressed: Bool
     let action: () -> Void
-    
+
     var body: some View {
         Button(action: action, label: {
             ZStack {
@@ -73,14 +72,14 @@ struct switchButton: View {
                 }
             }
         })
-        .background(){
+        .background {
             Circle()
                 .foregroundColor(isPressed ? Color.red : nil)
                 .opacity(0.1)
                 .frame(width: isPressed ? 250 : 0,
                        height: isPressed ? 250.0 : 0
                 )
-                .mask(Rectangle().frame(width: 500, height: 80).offset(y:12))
+                .mask(Rectangle().frame(width: 500, height: 80).offset(y: 12))
         }
         .pressEvents(
             onPress: {
@@ -95,8 +94,6 @@ struct switchButton: View {
             }
         )
     }
-    
-    
 }
 
 struct HomeView_Previews: PreviewProvider {

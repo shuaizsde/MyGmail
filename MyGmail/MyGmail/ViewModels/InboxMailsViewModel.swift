@@ -19,20 +19,18 @@ class InboxMailsViewModel: ObservableObject {
             time: "11:24 AM",
             subject: "*Simon Resume *",
             content: """
-            3+ years of experience full stack software developer with a versatile skillset. Developed products with 2 billion+ daily active users, proficient in IOS and Web development with Swift , Objective-C, Java and Javascript. Experienced in producing complex projects with programming, designing, management skills. A committed team player who consistently delivers results.
+            3+ years of experience full stack software developer with a versatile skillset. Developed products with
+            2 billion+ daily active users,/n proficient in IOS and Web development with Swift , Objective-C, Java and
+            Javascript. Experienced in producing complex projects with programming, designing, management skills. A committed
+            team player who consistently delivers results.
 
             WORK EXPERIENCE
             Whatsapp, Meta
             Whatsapp Communities, Software Engineer IC4 MountainView,CA | July2022-current
-            Worked as production software engineer on WhatsApp 2023 flagship product: WA Communities. Led the creation of multiple key features that catered to over 2 billion+ daily active users.
-            Initiated the development process by drafting prototype features from scratch, including UI designs and specification documents. Implemented demos into production and conducted A/B testing to prove the effectiveness of the improvements. Presented the results to team managers to advance the features to reality.
-            Responsible for managing several categories on a daily basis, including UI tests, end-to-end(e2e) tests, internationalization(i18n) and accessibility(a11y) bugs, code refactoring and migration for Better Engineering. Served on-call for Severity-One issues.
-            Collaborated with external teams to align work on various factors, such as Server Queries, Logging, AB-properties, UX workflow, and other related items.
-            Released features: "Community Creation Flow", "Subgroup Manager", "Community Navigation Menu", "Orphaned Participants Cleaner", "Announcement Group Improvement", "Community Introduction Views(NUX)" and 3 more.(by 03/29/23)
 
             ...
             """,
-            isUnread: false, 
+            isUnread: false,
             isPrimary: true,
             isStarred: true,
             isImportant: true
@@ -43,10 +41,11 @@ class InboxMailsViewModel: ObservableObject {
             time: "10:15 AM",
             subject: "Re: Team Match Update",
             content: """
-            Thanks, Simon. I have your call scheduled for ***. Doc is updated with the details. Please be sure to take some time to review the *****
-            and specifically practice/prep for the points listed below. Please let me know if you have any questions and let me know how the call goes once completed. 
+            Thanks, Simon. I have your call scheduled for ***. Doc is updated with the details. Please be sure to take some
+            time to review the *****and specifically practice/prep for the points listed below. Please let me know if you
+            have any questions and let me know how the call goes once completed.
             """,
-            isUnread: false, 
+            isUnread: false,
             isPrimary: true,
             isStarred: true,
             isImportant: true
@@ -57,9 +56,9 @@ class InboxMailsViewModel: ObservableObject {
             time: "06:11 AM",
             subject: "Good luck on your interview",
             content: """
-            Good luck baby, you are my hero !!! Love you 
+            Good luck baby, you are my hero !!! Love you
             """,
-            isUnread: false, 
+            isUnread: false,
             isPrimary: true,
             isStarred: true
         ),
@@ -85,11 +84,12 @@ class InboxMailsViewModel: ObservableObject {
             subject: "Delivered: Your Amazon.com order #114-7107059-2488333",
             content: """
             Hello,
-                I've been trying to contact you. Did you get the message I sent you earlier? I have a profitable idea to share with you. Reply now for more details.
-             
+                I've been trying to contact you. Did you get the message I sent you earlier? I have a profitable idea
+            to share with you. Reply now for more details.
+
             Best Regards
             Peggy Chan.
-            
+
             """,
             isSpam: true
         ),
@@ -110,8 +110,8 @@ class InboxMailsViewModel: ObservableObject {
             subject: "website package",
             content: """
             I am XXX, Web Development Manager and I work with 150+experienced IT professionals who are into:
-            Website designing & development, Magento, Wordpress, Joomla, PHP Development, Logo Design & Digital Marketing.
-            If you are interested please share your requirements so that we can assist your Further. 
+            Website designing & development, Magento, Wordpress, Joomla, PHP Development, Logo Design & Digital
+            Marketing.If you are interested please share your requirements so that we can assist your Further.
             Kind Regards,
             xxx
             """,
@@ -124,7 +124,9 @@ class InboxMailsViewModel: ObservableObject {
             time: "April 28",
             subject: "Test Test",
             content: """
-            To have this test, you swallow a string with a weighted gelatin capsule on the end. The string is pulled out 4 hours later. Any bile, blood, or mucus attached to the string is examined under the microscope. This is done to look for cells and parasites or parasite eggs.
+            To have this test, you swallow a string with a weighted gelatin capsule on the end. The string is pulled out
+            4 hours later. Any bile, blood, or mucus attached to the string is examined under the microscope. This is done
+            to look for cells and parasites or parasite eggs.
             """,
             isPrimary: true,
             isSocial: true
@@ -135,9 +137,12 @@ class InboxMailsViewModel: ObservableObject {
             time: "April 26",
             subject: "Letter of complaint",
             content: """
-            On January 30th, 2020, I made a reservation at your restaurant located at 1234 Mulberry Lane for a birthday dinner for four people. This letter is intended to bring certain issues to your attention.
-            Unfortunately, we did not enjoy our dinner due to the fact that the food was very slow to arrive and we received the wrong dishes. It’s understandable that it was a busy time at your restaurant, but the quality of the service was not as expected.
-            To resolve this problem, I would appreciate it if you could provide compensation in the form of a gift voucher or discount on a future meal. 
+            On January 30th, 2020, I made a reservation at your restaurant located at 1234 Mulberry Lane for a birthday dinner
+            for four people. This letter is intended to bring certain issues to your attention.
+            Unfortunately, we did not enjoy our dinner due to the fact that the food was very slow to arrive and we received
+            the wrong dishes. It’s understandable that it was a busy time at your restaurant, but the quality of the service
+            was not as expected.To resolve this problem, I would appreciate it if you could provide compensation in the form of a
+            gift voucher or discount on a future meal.
             I’m looking forward to your reply.
             With regards,
             [Your name]
@@ -151,7 +156,9 @@ class InboxMailsViewModel: ObservableObject {
             time: "April 24",
             subject: "Test Test",
             content: """
-            To have this test, you swallow a string with a weighted gelatin capsule on the end. The string is pulled out 4 hours later. Any bile, blood, or mucus attached to the string is examined under the microscope. This is done to look for cells and parasites or parasite eggs.
+            To have this test, you swallow a string with a weighted gelatin capsule on the end. The string is pulled out 4 hours later.
+            Any bile, blood, or mucus attached to the string is examined under the microscope. This is done to look for cells and parasites
+            or parasite eggs.
             """,
             isUnread: true,
             isSpam: true
@@ -163,8 +170,9 @@ class InboxMailsViewModel: ObservableObject {
             time: "11:24 AM",
             subject: "First Email from Simon",
             content: """
-            Hi there, I’m emailing you today to let you know we have created a new project called myGmail. In this article, you’ll learn how to do it by yourself with SwiftUI
-            If you know anybody else who’ll find this useful, please forward the email to them.Let us know if you face any problems accessing the project 
+            Hi there, I’m emailing you today to let you know we have created a new project called myGmail. In this article, you’ll learn
+            how to do it by yourself with SwiftUI If you know anybody else who’ll find this useful, please forward the email to them. Let
+            us know if you face any problems accessing the project
             by replying to this email. We’ll get back to you ASAP and ensure you gain access to it immediately.
             Thank you
             """,
@@ -217,7 +225,7 @@ class InboxMailsViewModel: ObservableObject {
             Please let me know if there’s anything I can help you with to prepare to interview this candidate.
             Best,
             [Your name]
-            
+
             """,
             isUnread: false,
             isDraft: true
@@ -243,10 +251,12 @@ class InboxMailsViewModel: ObservableObject {
             time: "April 28",
             subject: "Test Test",
             content: """
-            To have this test, you swallow a string with a weighted gelatin capsule on the end. The string is pulled out 4 hours later. Any bile, blood, or mucus attached to the string is examined under the microscope. This is done to look for cells and parasites or parasite eggs.
+            To have this test, you swallow a string with a weighted gelatin capsule on the end. The string is pulled out 4 hours later.
+            Any bile, blood, or mucus attached to the string is examined under the microscope. This is done to look for cells and
+            parasites or parasite eggs.
             """,
             isSpam: true
-        ),
+        )
     ]
 
     @Published private var model = createInboxMails()

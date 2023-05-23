@@ -22,7 +22,7 @@ class SideMenuItemViewModel: ObservableObject {
 
     func select(_ cell: CellItem) {
         model.select(cell)
-        
+
         switch menuButton(rawValue: cell.title) {
         case .allInboxes:
             filterService.currentFilter = { !$0.isSent && !$0.isArchived && !$0.isSpam && !$0.isTrash }

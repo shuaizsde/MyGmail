@@ -2,7 +2,7 @@
 //  ChatGPTAPIModels.swift
 //  XCAChatGPT
 //
-//  Created by Alfian Losari on 03/03/23.
+//  Created by Shuai Zhang on 05/23/23.
 //
 
 import Foundation
@@ -13,7 +13,7 @@ struct Message: Codable {
 }
 
 extension Array where Element == Message {
-    
+
     var contentCount: Int { reduce(0, { $0 + $1.content.count })}
 }
 
@@ -62,4 +62,3 @@ struct StreamMessage: Decodable {
     let role: String?
     let content: String?
 }
-

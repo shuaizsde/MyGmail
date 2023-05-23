@@ -11,7 +11,7 @@ import SwiftUI
 struct ButtonPress: ViewModifier {
     var onPress: () -> Void
     var onRelease: () -> Void
-    
+
     func body(content: Content) -> some View {
         content
             .simultaneousGesture(

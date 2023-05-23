@@ -11,7 +11,7 @@ struct SideBarItemCellView: View {
     @ObservedObject var mailViewModel: InboxMailsViewModel
     @EnvironmentObject var slideInMenuService: SlideInMenuService
     @State private var isPressed = false
-    
+
     let cell: CellItem
     let iconOnTap: (CellItem) -> Void
 
@@ -42,7 +42,7 @@ struct SideBarItemCellView: View {
         // Text Color 
         .foregroundColor(cell.isSelected ? GmailColor.red : GmailColor.textGray)
         // Background Color
-        .background(){
+        .background {
             RoundedRectangle(cornerRadius: 20)
               .fill(isPressed ? GmailColor.red : Color.white)
               .opacity(0.1)

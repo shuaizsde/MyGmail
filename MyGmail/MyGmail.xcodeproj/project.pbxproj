@@ -42,7 +42,6 @@
 		1CD0B3C22A1D22C400B99BE8 /* ChatGPTAPIModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD0B3B72A1D22C400B99BE8 /* ChatGPTAPIModels.swift */; };
 		1CD0B3C32A1D22C400B99BE8 /* ResponseParsingTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD0B3B82A1D22C400B99BE8 /* ResponseParsingTask.swift */; };
 		1CD0B3C42A1D22C400B99BE8 /* MarkdownAttributedStringParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD0B3B92A1D22C400B99BE8 /* MarkdownAttributedStringParser.swift */; };
-		1CD0B3C52A1D22C400B99BE8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD0B3BA2A1D22C400B99BE8 /* ContentView.swift */; };
 		1CD0B3C82A1D22FE00B99BE8 /* GPTEncoder in Frameworks */ = {isa = PBXBuildFile; productRef = 1CD0B3C72A1D22FE00B99BE8 /* GPTEncoder */; };
 		1CD0B3CB2A1D231800B99BE8 /* Markdown in Frameworks */ = {isa = PBXBuildFile; productRef = 1CD0B3CA2A1D231800B99BE8 /* Markdown */; };
 		1CD0B3CE2A1D232900B99BE8 /* Highlighter in Frameworks */ = {isa = PBXBuildFile; productRef = 1CD0B3CD2A1D232900B99BE8 /* Highlighter */; };
@@ -88,7 +87,6 @@
 		1CD0B3B72A1D22C400B99BE8 /* ChatGPTAPIModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatGPTAPIModels.swift; sourceTree = "<group>"; };
 		1CD0B3B82A1D22C400B99BE8 /* ResponseParsingTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseParsingTask.swift; sourceTree = "<group>"; };
 		1CD0B3B92A1D22C400B99BE8 /* MarkdownAttributedStringParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkdownAttributedStringParser.swift; sourceTree = "<group>"; };
-		1CD0B3BA2A1D22C400B99BE8 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		1CD0B3D02A1D23BF00B99BE8 /* TokenizerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenizerViewModel.swift; sourceTree = "<group>"; };
 		1CD0B3D12A1D23BF00B99BE8 /* TokenizerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenizerView.swift; sourceTree = "<group>"; };
 		1CD0B3D52A1D23BF00B99BE8 /* TextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
@@ -235,7 +233,6 @@
 				1CD0B3B72A1D22C400B99BE8 /* ChatGPTAPIModels.swift */,
 				1CD0B3B82A1D22C400B99BE8 /* ResponseParsingTask.swift */,
 				1CD0B3B92A1D22C400B99BE8 /* MarkdownAttributedStringParser.swift */,
-				1CD0B3BA2A1D22C400B99BE8 /* ContentView.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -260,7 +257,6 @@
 				1C2AC33E2A09E6AE004C0777 /* Sources */,
 				1C2AC33F2A09E6AE004C0777 /* Frameworks */,
 				1C2AC3402A09E6AE004C0777 /* Resources */,
-				1CC147702A133EA00035849F /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -326,27 +322,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		1CC147702A133EA00035849F /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"Warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		1C2AC33E2A09E6AE004C0777 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -379,7 +354,6 @@
 				1CD0B3D72A1D23BF00B99BE8 /* TokenizerViewModel.swift in Sources */,
 				1C2AC3692A102AFD004C0777 /* SideMenuItems.swift in Sources */,
 				1C2AC3632A0AB1BA004C0777 /* InboxTableItemView.swift in Sources */,
-				1CD0B3C52A1D22C400B99BE8 /* ContentView.swift in Sources */,
 				1CD0B3C12A1D22C400B99BE8 /* CodeBlockView.swift in Sources */,
 				1C2AC3672A10270A004C0777 /* SideMenuItemViewModel.swift in Sources */,
 				1CC147722A13ED370035849F /* ButtonPressActions.swift in Sources */,

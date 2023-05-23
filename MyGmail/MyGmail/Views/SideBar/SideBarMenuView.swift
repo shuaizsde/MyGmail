@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SideBarMenuView: View {
     @ObservedObject var model: SideMenuItemViewModel
-    
+
     @EnvironmentObject var mailViewModel: InboxMailsViewModel
     @EnvironmentObject var showToolBarService: ShowToolBarService
 

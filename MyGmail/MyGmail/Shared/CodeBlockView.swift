@@ -2,7 +2,7 @@
 //  CodeBlockView.swift
 //  XCAChatGPT
 //
-//  Created by Alfian Losari on 19/04/23.
+//  Created by Shuai Zhang on 05/23/23.
 //
 
 import SwiftUI
@@ -13,17 +13,17 @@ enum HighlighterConstants {
 }
 
 struct CodeBlockView: View {
-    
+
     let parserResult: ParserResult
     @State var isCopied = false
-    
+
     var body: some View {
         VStack(alignment: .leading) {
             header
                 .padding(.horizontal)
                 .padding(.vertical, 8)
                 .background(Color(red: 9/255, green: 49/255, blue: 69/255))
-            
+
             ScrollView(.horizontal, showsIndicators: true) {
                 Text(parserResult.attributedString)
                     .padding(.horizontal, 16)
@@ -33,7 +33,7 @@ struct CodeBlockView: View {
         .background(HighlighterConstants.color)
         .cornerRadius(8)
     }
-    
+
     var header: some View {
         HStack {
             if let codeBlockLanguage = parserResult.codeBlockLanguage {
@@ -45,7 +45,7 @@ struct CodeBlockView: View {
             button
         }
     }
-    
+
     @ViewBuilder
     var button: some View {
         if isCopied {
@@ -79,7 +79,7 @@ struct CodeBlockView: View {
 }
 
 struct CodeBlockView_Previews: PreviewProvider {
-    
+
     static var markdownString = """
     ```swift
     let api = ChatGPTAPI(apiKey: "API_KEY")
@@ -96,16 +96,14 @@ struct CodeBlockView_Previews: PreviewProvider {
     }
     ```
     """
-    
+
     static let parserResult: ParserResult = {
         let document = Document(parsing: markdownString)
         var parser = MarkdownAttributedStringParser()
         return parser.parserResults(from: document)[0]
     }()
-    
+
     static var previews: some View {
         CodeBlockView(parserResult: parserResult)
     }
 }
-
-

@@ -2,7 +2,7 @@
 //  MessageRowView.swift
 //  XCAChatGPT
 //
-//  Created by Alfian Losari on 02/02/23.
+//  Created by Shuai Zhang on 05/23/23.
 //
 
 import SwiftUI
@@ -11,11 +11,11 @@ import Markdown
 #endif
 
 struct MessageRowView: View {
-    
+
     @Environment(\.colorScheme) private var colorScheme
     let message: MessageRow
     let retryCallback: (MessageRow) -> Void
-    
+
     var imageSize: CGSize {
         #if os(iOS) || os(macOS)
         CGSize(width: 25, height: 25)
@@ -25,11 +25,11 @@ struct MessageRowView: View {
         CGSize(width: 80, height: 80)
         #endif
     }
-    
+
     var body: some View {
         VStack(spacing: 0) {
             messageRow(rowType: message.send, image: message.sendImage, bgColor: colorScheme == .light ? .white : Color(red: 52/255, green: 53/255, blue: 65/255, opacity: 0.5))
-            
+
             if let response = message.response {
                 Divider()
                 messageRow(rowType: response, image: message.responseImage, bgColor: colorScheme == .light ? .gray.opacity(0.1) : Color(red: 52/255, green: 53/255, blue: 65/255, opacity: 1), responseError: message.responseError, showDotLoading: message.isInteractingWithChatGPT)
@@ -37,13 +37,13 @@ struct MessageRowView: View {
             }
         }
     }
-    
+
     func messageRow(rowType: MessageRowType, image: String, bgColor: Color, responseError: String? = nil, showDotLoading: Bool = false) -> some View {
         #if os(watchOS)
         VStack(alignment: .leading, spacing: 8) {
             messageRowContent(rowType: rowType, image: image, responseError: responseError, showDotLoading: showDotLoading)
         }
-        
+
         .padding(16)
         .frame(maxWidth: .infinity, alignment: .leading)
         .background(bgColor)
@@ -60,7 +60,7 @@ struct MessageRowView: View {
         .background(bgColor)
         #endif
     }
-    
+
     @ViewBuilder
     func messageRowContent(rowType: MessageRowType, image: String, responseError: String? = nil, showDotLoading: Bool = false) -> some View {
         if image.hasPrefix("http"), let url = URL(string: image) {
@@ -77,12 +77,12 @@ struct MessageRowView: View {
                 .resizable()
                 .frame(width: imageSize.width, height: imageSize.height)
         }
-        
+
         VStack(alignment: .leading) {
             switch rowType {
             case .attributed(let attributedOutput):
                 attributedView(results: attributedOutput.results)
-                
+
             case .rawText(let text):
                 if !text.isEmpty {
                     #if os(tvOS)
@@ -96,19 +96,19 @@ struct MessageRowView: View {
                     #endif
                 }
             }
-            
+
             if let error = responseError {
                 Text("Error: \(error)")
                     .foregroundColor(.red)
                     .multilineTextAlignment(.leading)
-                
+
                 Button("Regenerate response") {
                     retryCallback(message)
                 }
                 .foregroundColor(.accentColor)
                 .padding(.top)
             }
-            
+
             if showDotLoading {
                 #if os(tvOS)
                 ProgressView()
@@ -118,11 +118,11 @@ struct MessageRowView: View {
                 DotLoadingView()
                     .frame(width: 60, height: 30)
                 #endif
-                
+
             }
         }
     }
-    
+
     func attributedView(results: [ParserResult]) -> some View {
         VStack(alignment: .leading, spacing: 0) {
             ForEach(results) { parsed in
@@ -145,20 +145,20 @@ struct MessageRowView: View {
             }
         }
     }
-    
+
     #if os(tvOS)
     private func rowsFor(text: String) -> [String] {
         var rows = [String]()
         let maxLinesPerRow = 8
         var currentRowText = ""
         var currentLineSum = 0
-        
+
         for char in text {
             currentRowText += String(char)
             if char == "\n" {
                 currentLineSum += 1
             }
-            
+
             if currentLineSum >= maxLinesPerRow {
                 rows.append(currentRowText)
                 currentLineSum = 0
@@ -169,8 +169,7 @@ struct MessageRowView: View {
         rows.append(currentRowText)
         return rows
     }
-    
-    
+
     func responseTextView(text: String) -> some View {
         ForEach(rowsFor(text: text), id: \.self) { text in
             Text(text)
@@ -179,40 +178,40 @@ struct MessageRowView: View {
         }
     }
     #endif
-    
+
 }
 
 struct MessageRowView_Previews: PreviewProvider {
-    
+
     static let message = MessageRow(
         isInteractingWithChatGPT: true, sendImage: "profile",
         send: .rawText("What is SwiftUI?"),
         responseImage: "openai",
         response: responseMessageRowType)
-    
+
     static let message2 = MessageRow(
         isInteractingWithChatGPT: false, sendImage: "profile",
         send: .rawText("What is SwiftUI?"),
         responseImage: "openai",
         response: .rawText(""),
         responseError: "ChatGPT is currently not available")
-        
+
     static var previews: some View {
         NavigationStack {
             ScrollView {
-                MessageRowView(message: message, retryCallback: { messageRow in
-                    
+                MessageRowView(message: message, retryCallback: { _ in
+
                 })
-                    
-                MessageRowView(message: message2, retryCallback: { messageRow in
-                    
+
+                MessageRowView(message: message2, retryCallback: { _ in
+
                 })
-                  
+
             }
             .previewLayout(.sizeThatFits)
         }
     }
-    
+
     static var responseMessageRowType: MessageRowType {
         #if os(iOS)
         let document = Document(parsing: rawString)
@@ -223,7 +222,7 @@ struct MessageRowView_Previews: PreviewProvider {
         MessageRowType.rawText(rawString)
         #endif
     }
-    
+
     static var rawString: String {
         #if os(iOS)
         """
@@ -298,5 +297,3 @@ struct MessageRowView_Previews: PreviewProvider {
         #endif
     }
 }
-
-

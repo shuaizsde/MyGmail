@@ -56,8 +56,7 @@ public struct SlideInView<Content: View, Container: View>: View {
                 paddingPercentage: CGFloat = 0.35,
                 options: SlideInViewOptions = SlideInViewOptions(),
                 content: @escaping () -> Content,
-                container: @escaping () -> Container)
-    {
+                container: @escaping () -> Container) {
         _isActive = isActive
         self.edge = edge
         self.paddingPercentage = paddingPercentage
@@ -157,8 +156,7 @@ public struct SlideInViewOptions {
     public init(paddingColor: Color = Color(.label),
                 paddingColorOpacity: CGFloat = 0.1,
                 shouldDismissUponSwipe: Bool = true,
-                shouldDismissUponExternalTap: Bool = true)
-    {
+                shouldDismissUponExternalTap: Bool = true) {
         self.paddingColor = paddingColor
         self.paddingColorOpacity = paddingColorOpacity
         self.shouldDismissUponSwipe = shouldDismissUponSwipe
