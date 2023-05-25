@@ -19,9 +19,9 @@ class ChatGPTAPI: @unchecked Sendable {
     }
 
     let dateFormatter: DateFormatter = {
-        let df = DateFormatter()
-        df.dateFormat = "YYYY-MM-dd"
-        return df
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YYYY-MM-dd"
+        return dateFormatter
     }()
 
     private let jsonDecoder: JSONDecoder = {

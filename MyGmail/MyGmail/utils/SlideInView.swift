@@ -29,7 +29,7 @@ public struct SlideInView<Content: View, Container: View>: View {
     ///         .edgesIgnoringSafeArea(.bottom)
     /// } container: {
     ///     NavigationView {
-    ///         HomeView()
+    ///         Home()
     ///     }
     ///     .navigationViewStyle(.stack)
     /// }
@@ -177,7 +177,7 @@ public extension View {
     /// Use it:
     /// ```
     /// NavigationView {
-    ///     HomeView()
+    ///     Home()
     /// }
     /// .navigationViewStyle(.stack)
     /// .slideInView(isActive: $slideInViewManager.isActive) {

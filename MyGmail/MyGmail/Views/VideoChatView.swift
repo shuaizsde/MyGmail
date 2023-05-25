@@ -2,7 +2,7 @@
 
 import SwiftUI
 
-struct CameraView: View {
+struct VideoChatView: View {
     var body: some View {
         // TODO: Now it's just a image
         Image("cameraView")
@@ -16,6 +16,6 @@ struct CameraView: View {
 
 struct CameraView_Previews: PreviewProvider {
     static var previews: some View {
-        CameraView()
+        VideoChatView()
     }
 }

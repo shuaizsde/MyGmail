@@ -3,9 +3,9 @@
 import AVKit
 import SwiftUI
 
-struct ComposeMailView: View {
+struct NewEmailView: View {
     @Environment(\.colorScheme) var colorScheme
-    @StateObject var vm = ViewModel(api: ChatGPTAPI(apiKey: "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"))
+    @StateObject var vm = GPTViewModel(api: ChatGPTAPI(apiKey: "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"))
     @FocusState var isTextFieldFocused: Bool
 
     @EnvironmentObject var showToolBarService: ShowToolBarService
@@ -111,7 +111,7 @@ extension View {
 
 struct ComposeMailView_Previews: PreviewProvider {
     static var previews: some View {
-        ComposeMailView()
+        NewEmailView()
     }
 }
 

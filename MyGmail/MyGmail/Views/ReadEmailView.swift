@@ -2,7 +2,7 @@
 
 import SwiftUI
 
-struct EmailBodyView: View {
+struct ReadEmailView: View {
     let mail: InboxMails.Mail
 
     private let thumbnailWidth = 40.0
@@ -47,7 +47,7 @@ struct EmailBodyView: View {
     }
 }
 
-extension EmailBodyView {
+extension ReadEmailView {
     private var titleSection: some View {
         HStack {
             HStack(alignment: .center) {
@@ -166,6 +166,6 @@ extension EmailBodyView {
 
 struct EmailBodyView_Previews: PreviewProvider {
     static var previews: some View {
-        EmailBodyView(mail: InboxMailsViewModel().mails[0], viewModel: InboxMailsViewModel())
+        ReadEmailView(mail: InboxMailsViewModel().mails[0], viewModel: InboxMailsViewModel())
     }
 }

@@ -60,7 +60,7 @@ struct InboxTableView: View {
 extension InboxTableView {
     @ViewBuilder
     func composeButton() -> some View {
-        CustomNavigationLink(destination: ComposeMailView()) {
+        CustomNavigationLink(destination: NewEmailView()) {
             Capsule()
                 .foregroundColor(.white)
                 .shadow(radius: 4, x: 3, y: 3)
@@ -92,7 +92,7 @@ extension InboxTableView {
         ZStack {
             // Hide chevron visibility
             CustomNavigationLink(
-                destination: EmailBodyView(mail: cell, viewModel: viewModel),
+                destination: ReadEmailView(mail: cell, viewModel: viewModel),
                 label: { EmptyView() })
                 .opacity(0.0)
 

@@ -2,7 +2,7 @@
 
 import SwiftUI
 
-struct HomeView: View {
+struct Home: View {
     @State private var isPressed = false
     @State private var isPressed2 = false
 
@@ -13,7 +13,7 @@ struct HomeView: View {
     var body: some View {
         VStack {
             if isCameraView {
-                CameraView()
+                VideoChatView()
             } else {
                 InboxTableView()
             }
@@ -91,6 +91,6 @@ struct SwitchButton: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
+        Home()
     }
 }

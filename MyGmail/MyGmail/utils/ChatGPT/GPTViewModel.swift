@@ -4,7 +4,7 @@ import AVKit
 import Foundation
 import SwiftUI
 
-class ViewModel: ObservableObject {
+class GPTViewModel: ObservableObject {
     @Published var isInteractingWithChatGPT = false
     @Published var messages: [MessageRow] = []
     @Published var inputMessage: String = ""
