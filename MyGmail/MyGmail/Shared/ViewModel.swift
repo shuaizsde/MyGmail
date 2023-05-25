@@ -10,55 +10,51 @@ import SwiftUI
 import AVKit
 
 class ViewModel: ObservableObject {
-
+    
     @Published var isInteractingWithChatGPT = false
     @Published var messages: [MessageRow] = []
     @Published var inputMessage: String = ""
-    let composeContent = ComposeMailInfo(sender: "You", receiver: "Susan", content: "Did you pass the interview?")
+    @Published var composeContent = ComposeMailInfo(sender: "", receiver: "", subject: "", content: "")
     var task: Task<Void, Never>?
-
-    #if !os(watchOS)
+    
     private var synthesizer: AVSpeechSynthesizer?
-    #endif
 
+    
     private let api: ChatGPTAPI
-
+    
     init(api: ChatGPTAPI, enableSpeech: Bool = false) {
         self.api = api
-        #if !os(watchOS)
         if enableSpeech {
             synthesizer = .init()
         }
-        #endif
     }
-
+    
+    func reply(text: String) -> String {
+        return "reply a email body from Simon Zhang, sender content: \(composeContent.content), my reply is: \(text) "
+    }
+    func create(text: String) -> String {
+        return "create email body,  rewrite content of: \(composeContent.content), sender name: \(composeContent.sender) receiver name: \(composeContent.receiver) "
+    }
+    
     @MainActor
     func sendTapped() async {
-        #if os(iOS)
         self.task = Task {
-            let text = inputMessage
+            let text = create(text: inputMessage)
             inputMessage = ""
-            await sendAttributed(text: create(text: text))
+            await sendAttributed(text: text)
         }
-        #else
-        let text = inputMessage
-        inputMessage = ""
-        await send(text: text)
-        #endif
     }
-
+    
     @MainActor
     func clearMessages() {
-        stopSpeaking()
         api.deleteHistoryList()
         withAnimation { [weak self] in
             self?.messages = []
         }
     }
-
+    
     @MainActor
     func retry(message: MessageRow) async {
-        #if os(iOS)
         self.task = Task {
             guard let index = messages.firstIndex(where: { $0.id == message.id }) else {
                 return
@@ -66,26 +62,18 @@ class ViewModel: ObservableObject {
             self.messages.remove(at: index)
             await sendAttributed(text: message.sendText)
         }
-        #else
-        guard let index = messages.firstIndex(where: { $0.id == message.id }) else {
-            return
-        }
-        self.messages.remove(at: index)
-        await send(text: message.sendText)
-        #endif
     }
-
+    
     func cancelStreamingResponse() {
         self.task?.cancel()
         self.task = nil
     }
-
-    #if os(iOS)
+    
     @MainActor
     private func sendAttributed(text: String) async {
         isInteractingWithChatGPT = true
         var streamText = ""
-
+        
         var messageRow = MessageRow(
             isInteractingWithChatGPT: true,
             sendImage: "profile",
@@ -93,30 +81,30 @@ class ViewModel: ObservableObject {
             responseImage: "openai",
             response: .rawText(streamText),
             responseError: nil)
-
+        
         do {
             let parsingTask = ResponseParsingTask()
             let attributedSend = await parsingTask.parse(text: text)
             try Task.checkCancellation()
             messageRow.send = .attributed(attributedSend)
-
+            
             self.messages.append(messageRow)
-
+            
             let parserThresholdTextCount = 500
             var currentTextCount = 0
             var currentOutput: AttributedOutput?
-
+            
             let stream = try await api.sendMessageStream(text: text)
             for try await text in stream {
                 streamText += text
                 currentTextCount += text.count
-
+                
                 if currentTextCount >= parserThresholdTextCount || text.contains("```") {
                     currentOutput = await parsingTask.parse(text: streamText)
                     try Task.checkCancellation()
                     currentTextCount = 0
                 }
-
+                
                 if let currentOutput = currentOutput, !currentOutput.results.isEmpty {
                     let suffixText = streamText.trimmingPrefix(currentOutput.string)
                     var results = currentOutput.results
@@ -134,7 +122,7 @@ class ViewModel: ObservableObject {
                         ParserResult(attributedString: AttributedString(stringLiteral: streamText), isCodeBlock: false, codeBlockLanguage: nil)
                     ]))
                 }
-
+                
                 self.messages[self.messages.count - 1] = messageRow
                 if let currentString = currentOutput?.string, currentString != streamText {
                     let output = await parsingTask.parse(text: streamText)
@@ -147,18 +135,16 @@ class ViewModel: ObservableObject {
         } catch {
             messageRow.responseError = error.localizedDescription
         }
-
+        
         if messageRow.response == nil {
             messageRow.response = .rawText(streamText)
         }
-
+        
         messageRow.isInteractingWithChatGPT = false
         self.messages[self.messages.count - 1] = messageRow
         isInteractingWithChatGPT = false
-        speakLastResponse()
     }
-    #endif
-
+    
     @MainActor
     private func send(text: String) async {
         isInteractingWithChatGPT = true
@@ -170,9 +156,9 @@ class ViewModel: ObservableObject {
             responseImage: "openai",
             response: .rawText(streamText),
             responseError: nil)
-
+        
         self.messages.append(messageRow)
-
+        
         do {
             let stream = try await api.sendMessageStream(text: text)
             for try await text in stream {
@@ -183,40 +169,17 @@ class ViewModel: ObservableObject {
         } catch {
             messageRow.responseError = error.localizedDescription
         }
-
+        self.inputMessage = messageRow.responseText ?? inputMessage
         messageRow.isInteractingWithChatGPT = false
         self.messages[self.messages.count - 1] = messageRow
         isInteractingWithChatGPT = false
-        speakLastResponse()
-
+        
     }
+}
 
-    func speakLastResponse() {
-        #if !os(watchOS)
-        guard let synthesizer, let responseText = self.messages.last?.responseText, !responseText.isEmpty else {
-            return
-        }
-        stopSpeaking()
-        let utterance = AVSpeechUtterance(string: responseText)
-        utterance.voice = .init(language: "en-US")
-        utterance.rate = 0.5
-        utterance.pitchMultiplier = 0.8
-        utterance.postUtteranceDelay = 0.2
-        synthesizer.speak(utterance )
-        #endif
-    }
-
-    func stopSpeaking() {
-        #if !os(watchOS)
-        synthesizer?.stopSpeaking(at: .immediate)
-        #endif
-    }
-
-    func reply(text: String) -> String {
-       return "reply a email from Simon Zhang, sender content: \(composeContent.content), my reply is: \(text) "
-   }
-    func create(text: String) -> String {
-       return "create a email,  rewrite content of: \(text), receiver is \(composeContent.receiver) "
-   }
-
+struct ComposeMailInfo {
+    var sender: String
+    var receiver: String
+    var subject: String
+    var content: String
 }
