@@ -1,9 +1,4 @@
-//
-//  CustomNavBarContainerView.swift
-//  MyGmail
-//
-//  Created by Shuai Zhang on 5/14/23.
-//
+/* * Copyright 2023 Simon Zhang. All rights reserved. */
 
 import SwiftUI
 
@@ -19,8 +14,7 @@ struct CustomNavBarContainerView<Content: View>: View {
             CustomNavBarView()
             content.frame(
                 maxWidth: .infinity,
-                maxHeight: .infinity
-            )
+                maxHeight: .infinity)
         }
     }
 }

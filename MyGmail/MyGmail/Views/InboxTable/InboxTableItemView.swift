@@ -1,9 +1,4 @@
-//
-//  InboxTableItemView.swift
-//  MyGmail
-//
-//  Created by Shuai Zhang on 5/9/23.
-//
+/* * Copyright 2023 Simon Zhang. All rights reserved. */
 
 import SwiftUI
 
@@ -73,15 +68,15 @@ struct InboxTableItemView: View {
         }
     }
 
-    @ViewBuilder func profilePictureThumbnail(with mail: InboxMails.Mail) -> some View {
+    @ViewBuilder
+    func profilePictureThumbnail(with mail: InboxMails.Mail) -> some View {
         if let profilePictureName = mail.profilePicture {
             Image(profilePictureName)
                 .resizable()
                 .scaledToFill()
                 .frame(
                     width: profilePictureFrameWidth,
-                    height: profilePictureFrameWidth
-                )
+                    height: profilePictureFrameWidth)
                 .clipShape(Circle())
                 .frame(width: 50)
         } else {
@@ -90,8 +85,7 @@ struct InboxTableItemView: View {
                 .fill(mail.defaultColor)
                 .frame(
                     width: profilePictureFrameWidth,
-                    height: profilePictureFrameWidth
-                )
+                    height: profilePictureFrameWidth)
                 .overlay {
                     Text("\(placeHolder)")
                         .font(GmailFont.defaultLargeProfile)
@@ -107,8 +101,7 @@ struct InboxTableItemView_Previews: PreviewProvider {
         InboxTableItemView(
             mail: InboxMailsViewModel().mails[5],
             starOnTapped: {},
-            chevronOnTapped: {}
-        )
-        .frame(height: 50)
+            chevronOnTapped: {})
+            .frame(height: 50)
     }
 }

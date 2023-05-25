@@ -1,9 +1,4 @@
-//
-//  SideMenuItems.swift
-//  MyGmail
-//
-//  Created by Shuai Zhang on 5/13/23.
-//
+/* * Copyright 2023 Simon Zhang. All rights reserved. */
 
 import SwiftUI
 

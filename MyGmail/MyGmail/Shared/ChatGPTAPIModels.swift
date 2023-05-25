@@ -1,9 +1,4 @@
-//
-//  ChatGPTAPIModels.swift
-//  XCAChatGPT
-//
-//  Created by Shuai Zhang on 05/23/23.
-//
+/* * Copyright 2023 Simon Zhang. All rights reserved. */
 
 import Foundation
 
@@ -13,7 +8,6 @@ struct Message: Codable {
 }
 
 extension Array where Element == Message {
-
     var contentCount: Int { reduce(0, { $0 + $1.content.count })}
 }
 

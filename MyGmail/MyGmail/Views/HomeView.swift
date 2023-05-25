@@ -1,9 +1,4 @@
-//
-//  HomeView.swift
-//  MyGmail
-//
-//  Created by Shuai Zhang on 5/10/23.
-//
+/* * Copyright 2023 Simon Zhang. All rights reserved. */
 
 import SwiftUI
 
@@ -59,8 +54,7 @@ struct SwitchButton: View {
                         .fill(GmailColor.red)
                         .frame(
                             width: GmailSize.defaultDouble,
-                            height: GmailSize.defaultDouble
-                        )
+                            height: GmailSize.defaultDouble)
                         .overlay(
                             Text("\(viewModel.unreads - viewModel.getUnreads(of: "Spam") - viewModel.getUnreads(of: "Trash"))")
                                 .fontWeight(.bold)
@@ -76,9 +70,9 @@ struct SwitchButton: View {
             Circle()
                 .foregroundColor(isPressed ? Color.red : nil)
                 .opacity(0.1)
-                .frame(width: isPressed ? 250 : 0,
-                       height: isPressed ? 250.0 : 0
-                )
+                .frame(
+                    width: isPressed ? 250 : 0,
+                    height: isPressed ? 250.0 : 0)
                 .mask(Rectangle().frame(width: 500, height: 80).offset(y: 12))
         }
         .pressEvents(
@@ -91,8 +85,7 @@ struct SwitchButton: View {
                 withAnimation(.easeInOut(duration: 0.1)) {
                     isPressed = false
                 }
-            }
-        )
+            })
     }
 }
 

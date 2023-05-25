@@ -1,50 +1,43 @@
-//
-//  ViewModel.swift
-//  XCAChatGPT
-//
-//  Created by Shuai Zhang on 05/23/23.
-//
+/* * Copyright 2023 Simon Zhang. All rights reserved. */
 
+import AVKit
 import Foundation
 import SwiftUI
-import AVKit
 
 class ViewModel: ObservableObject {
-    
     @Published var isInteractingWithChatGPT = false
     @Published var messages: [MessageRow] = []
     @Published var inputMessage: String = ""
     @Published var composeContent = ComposeMailInfo(sender: "", receiver: "", subject: "", content: "")
     var task: Task<Void, Never>?
-    
+
     private var synthesizer: AVSpeechSynthesizer?
 
-    
     private let api: ChatGPTAPI
-    
+
     init(api: ChatGPTAPI, enableSpeech: Bool = false) {
         self.api = api
         if enableSpeech {
             synthesizer = .init()
         }
     }
-    
+
     func reply(text: String) -> String {
-        return "reply a email body from Simon Zhang, sender content: \(composeContent.content), my reply is: \(text) "
+        "reply a email body from Simon Zhang, sender content: \(composeContent.content), my reply is: \(text) "
     }
     func create(text: String) -> String {
-        return "create email body,  rewrite content of: \(composeContent.content), sender name: \(composeContent.sender) receiver name: \(composeContent.receiver) "
+        "create email body,  rewrite content of: \(composeContent.content), sender name: \(composeContent.sender) receiver name: \(composeContent.receiver) "
     }
-    
+
     @MainActor
     func sendTapped() async {
-        self.task = Task {
+        task = Task {
             let text = create(text: inputMessage)
             inputMessage = ""
             await sendAttributed(text: text)
         }
     }
-    
+
     @MainActor
     func clearMessages() {
         api.deleteHistoryList()
@@ -52,10 +45,10 @@ class ViewModel: ObservableObject {
             self?.messages = []
         }
     }
-    
+
     @MainActor
     func retry(message: MessageRow) async {
-        self.task = Task {
+        task = Task {
             guard let index = messages.firstIndex(where: { $0.id == message.id }) else {
                 return
             }
@@ -63,17 +56,17 @@ class ViewModel: ObservableObject {
             await sendAttributed(text: message.sendText)
         }
     }
-    
+
     func cancelStreamingResponse() {
-        self.task?.cancel()
-        self.task = nil
+        task?.cancel()
+        task = nil
     }
-    
+
     @MainActor
     private func sendAttributed(text: String) async {
         isInteractingWithChatGPT = true
         var streamText = ""
-        
+
         var messageRow = MessageRow(
             isInteractingWithChatGPT: true,
             sendImage: "profile",
@@ -81,30 +74,30 @@ class ViewModel: ObservableObject {
             responseImage: "openai",
             response: .rawText(streamText),
             responseError: nil)
-        
+
         do {
             let parsingTask = ResponseParsingTask()
             let attributedSend = await parsingTask.parse(text: text)
             try Task.checkCancellation()
             messageRow.send = .attributed(attributedSend)
-            
-            self.messages.append(messageRow)
-            
+
+            messages.append(messageRow)
+
             let parserThresholdTextCount = 500
             var currentTextCount = 0
             var currentOutput: AttributedOutput?
-            
+
             let stream = try await api.sendMessageStream(text: text)
             for try await text in stream {
                 streamText += text
                 currentTextCount += text.count
-                
+
                 if currentTextCount >= parserThresholdTextCount || text.contains("```") {
                     currentOutput = await parsingTask.parse(text: streamText)
                     try Task.checkCancellation()
                     currentTextCount = 0
                 }
-                
+
                 if let currentOutput = currentOutput, !currentOutput.results.isEmpty {
                     let suffixText = streamText.trimmingPrefix(currentOutput.string)
                     var results = currentOutput.results
@@ -119,11 +112,11 @@ class ViewModel: ObservableObject {
                     messageRow.response = .attributed(.init(string: streamText, results: results))
                 } else {
                     messageRow.response = .attributed(.init(string: streamText, results: [
-                        ParserResult(attributedString: AttributedString(stringLiteral: streamText), isCodeBlock: false, codeBlockLanguage: nil)
+                        ParserResult(attributedString: AttributedString(stringLiteral: streamText), isCodeBlock: false, codeBlockLanguage: nil),
                     ]))
                 }
-                
-                self.messages[self.messages.count - 1] = messageRow
+
+                messages[messages.count - 1] = messageRow
                 if let currentString = currentOutput?.string, currentString != streamText {
                     let output = await parsingTask.parse(text: streamText)
                     try Task.checkCancellation()
@@ -135,16 +128,16 @@ class ViewModel: ObservableObject {
         } catch {
             messageRow.responseError = error.localizedDescription
         }
-        
+
         if messageRow.response == nil {
             messageRow.response = .rawText(streamText)
         }
-        
+
         messageRow.isInteractingWithChatGPT = false
-        self.messages[self.messages.count - 1] = messageRow
+        messages[messages.count - 1] = messageRow
         isInteractingWithChatGPT = false
     }
-    
+
     @MainActor
     private func send(text: String) async {
         isInteractingWithChatGPT = true
@@ -156,24 +149,23 @@ class ViewModel: ObservableObject {
             responseImage: "openai",
             response: .rawText(streamText),
             responseError: nil)
-        
-        self.messages.append(messageRow)
-        
+
+        messages.append(messageRow)
+
         do {
             let stream = try await api.sendMessageStream(text: text)
             for try await text in stream {
                 streamText += text
                 messageRow.response = .rawText(streamText.trimmingCharacters(in: .whitespacesAndNewlines))
-                self.messages[self.messages.count - 1] = messageRow
+                messages[messages.count - 1] = messageRow
             }
         } catch {
             messageRow.responseError = error.localizedDescription
         }
-        self.inputMessage = messageRow.responseText ?? inputMessage
+        inputMessage = messageRow.responseText ?? inputMessage
         messageRow.isInteractingWithChatGPT = false
-        self.messages[self.messages.count - 1] = messageRow
+        messages[messages.count - 1] = messageRow
         isInteractingWithChatGPT = false
-        
     }
 }
 

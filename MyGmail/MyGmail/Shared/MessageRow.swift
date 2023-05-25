@@ -1,9 +1,4 @@
-//
-//  MessageRow.swift
-//  XCAChatGPT
-//
-//  Created by Shuai Zhang on 05/23/23.
-//
+/* * Copyright 2023 Simon Zhang. All rights reserved. */
 
 import SwiftUI
 
@@ -27,7 +22,6 @@ enum MessageRowType {
 }
 
 struct MessageRow: Identifiable {
-
     let id = UUID()
 
     var isInteractingWithChatGPT: Bool
@@ -45,5 +39,4 @@ struct MessageRow: Identifiable {
     }
 
     var responseError: String?
-
 }

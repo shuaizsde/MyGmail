@@ -1,14 +1,9 @@
-//
-//  TokenizerViewModel.swift
-//  XCAChatGPT
-//
-//  Created by Shuai Zhang on 05/23/23.
-//
+/* * Copyright 2023 Simon Zhang. All rights reserved. */
 
 import Combine
 import Foundation
-import SwiftUI
 import GPTEncoder
+import SwiftUI
 
 struct TokenOutput {
     let text: String
@@ -22,7 +17,6 @@ enum OutputType: Identifiable {
 }
 
 class TokenizerViewModel: ObservableObject, @unchecked Sendable {
-
     let tokenizer = GPTEncoder()
 
     @Published var inputText = ""
@@ -33,7 +27,7 @@ class TokenizerViewModel: ObservableObject, @unchecked Sendable {
     @Published var outputType = OutputType.text
 
     var cancellables = Set<AnyCancellable>()
-    var task: Task<(), Never>?
+    var task: Task<Void, Never>?
 
     init() {
         startObserve()
@@ -68,7 +62,7 @@ class TokenizerViewModel: ObservableObject, @unchecked Sendable {
             }
         }
 
-        let tokens = self.tokenizer.encode(text: value)
+        let tokens = tokenizer.encode(text: value)
         let stringTokens = tokens.map { tokenizer.decode(tokens: [$0]) }
 
         Task { @MainActor [weak self] in
@@ -79,5 +73,4 @@ class TokenizerViewModel: ObservableObject, @unchecked Sendable {
             }
         }
     }
-
 }

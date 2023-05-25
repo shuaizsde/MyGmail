@@ -1,9 +1,4 @@
-//
-//  InboxMailsViewModel.swift
-//  MyGmail
-//
-//  Created by Shuai Zhang on 5/8/23.
-//
+/* * Copyright 2023 Simon Zhang. All rights reserved. */
 
 import Foundation
 
@@ -33,8 +28,7 @@ class InboxMailsViewModel: ObservableObject {
             isUnread: false,
             isPrimary: true,
             isStarred: true,
-            isImportant: true
-        ),
+            isImportant: true),
         Mail(
             profilePicture: "cecillia",
             sender: "Cecilia D'Costa",
@@ -48,8 +42,7 @@ class InboxMailsViewModel: ObservableObject {
             isUnread: false,
             isPrimary: true,
             isStarred: true,
-            isImportant: true
-        ),
+            isImportant: true),
         Mail(
             profilePicture: "person3",
             sender: "Jessica Lu",
@@ -60,8 +53,7 @@ class InboxMailsViewModel: ObservableObject {
             """,
             isUnread: false,
             isPrimary: true,
-            isStarred: true
-        ),
+            isStarred: true),
         Mail(
             profilePicture: nil,
             sender: "SPAM",
@@ -75,8 +67,7 @@ class InboxMailsViewModel: ObservableObject {
             Order #114-7102351239-212345
             Return or replace items in Your Orders.
             """,
-            isSpam: true
-        ),
+            isSpam: true),
         Mail(
             profilePicture: nil,
             sender: "SPAM",
@@ -91,8 +82,7 @@ class InboxMailsViewModel: ObservableObject {
             Peggy Chan.
 
             """,
-            isSpam: true
-        ),
+            isSpam: true),
         Mail(
             profilePicture: nil,
             sender: "-CVS Rewards",
@@ -101,8 +91,7 @@ class InboxMailsViewModel: ObservableObject {
             content: """
             Your_Name _ Came Up For_a RTIC backpackCooler __ Reward
             """,
-            isTrash: true
-        ),
+            isTrash: true),
         Mail(
             profilePicture: "person5",
             sender: "John Smith",
@@ -116,8 +105,7 @@ class InboxMailsViewModel: ObservableObject {
             xxx
             """,
             isPrimary: true,
-            isSocial: true
-        ),
+            isSocial: true),
         Mail(
             profilePicture: "person6",
             sender: "John Smith2",
@@ -129,8 +117,7 @@ class InboxMailsViewModel: ObservableObject {
             to look for cells and parasites or parasite eggs.
             """,
             isPrimary: true,
-            isSocial: true
-        ),
+            isSocial: true),
         Mail(
             profilePicture: "person7",
             sender: "John Smith 3",
@@ -148,8 +135,7 @@ class InboxMailsViewModel: ObservableObject {
             [Your name]
             """,
             isUnread: true,
-            isSocial: true
-        ),
+            isSocial: true),
         Mail(
             profilePicture: "person8",
             sender: "John Smith 4",
@@ -161,8 +147,7 @@ class InboxMailsViewModel: ObservableObject {
             or parasite eggs.
             """,
             isUnread: true,
-            isSpam: true
-        ),
+            isSpam: true),
 
         Mail(
             profilePicture: nil,
@@ -177,9 +162,7 @@ class InboxMailsViewModel: ObservableObject {
             Thank you
             """,
             isPrimary: true,
-            isPromotions: true
-
-        ),
+            isPromotions: true),
         Mail(
             profilePicture: "simon",
             sender: "You",
@@ -190,8 +173,7 @@ class InboxMailsViewModel: ObservableObject {
             Simon
             """,
             isUnread: false,
-            isSent: true
-        ),
+            isSent: true),
         Mail(
             profilePicture: "simon",
             sender: "You",
@@ -202,8 +184,7 @@ class InboxMailsViewModel: ObservableObject {
             Simon
             """,
             isUnread: false,
-            isSent: true
-        ),
+            isSent: true),
         Mail(
             profilePicture: nil,
             sender: "Annie Lee",
@@ -212,8 +193,7 @@ class InboxMailsViewModel: ObservableObject {
             content: """
             put me into spam,put me into spam,put me into spam,put me into spam,put me into spam,put me into spam,put me into spam,put me into spam,put me into spam,put me into spam,
             """,
-            isSpam: true
-        ),
+            isSpam: true),
         Mail(
             profilePicture: "person7",
             sender: "Cara Sue",
@@ -228,8 +208,7 @@ class InboxMailsViewModel: ObservableObject {
 
             """,
             isUnread: false,
-            isDraft: true
-        ),
+            isDraft: true),
         Mail(
             profilePicture: "person10",
             sender: "Tim Cook",
@@ -243,8 +222,7 @@ class InboxMailsViewModel: ObservableObject {
             Yours sincerely,
             YYY
             """,
-            isPrimary: true
-        ),
+            isPrimary: true),
         Mail(
             profilePicture: nil,
             sender: "SPAM2",
@@ -255,18 +233,17 @@ class InboxMailsViewModel: ObservableObject {
             Any bile, blood, or mucus attached to the string is examined under the microscope. This is done to look for cells and
             parasites or parasite eggs.
             """,
-            isSpam: true
-        )
+            isSpam: true),
     ]
 
     @Published private var model = createInboxMails()
 
     private static func createInboxMails() -> InboxMails {
-        return InboxMails(preview)
+        InboxMails(preview)
     }
 
     var mails: [Mail] {
-        return model.mails
+        model.mails
     }
 
     var unreads: Int {

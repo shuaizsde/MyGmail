@@ -1,9 +1,4 @@
-//
-//  MyGmailTableView.swift
-//  MyGmail
-//
-//  Created by Shuai Zhang on 5/8/23.
-//
+/* * Copyright 2023 Simon Zhang. All rights reserved. */
 
 import SwiftUI
 
@@ -40,9 +35,8 @@ struct InboxTableView: View {
                                             viewModel.archive(mail)
                                             viewModel.read(mail)
                                         }
-                                    }, label: { GmailIcons.swipeDownIcon }
-                                )
-                                .tint(.green)
+                                    }, label: { GmailIcons.swipeDownIcon })
+                                    .tint(.green)
                             }
                     }
                 }
@@ -55,8 +49,7 @@ struct InboxTableView: View {
                 )
                 .searchable(
                     text: $searchString,
-                    prompt: GmailStrings.searchbarPlaceHolder
-                )
+                    prompt: GmailStrings.searchbarPlaceHolder)
 
                 composeButton()
             }
@@ -65,7 +58,8 @@ struct InboxTableView: View {
 }
 
 extension InboxTableView {
-    @ViewBuilder func composeButton() -> some View {
+    @ViewBuilder
+    func composeButton() -> some View {
         CustomNavigationLink(destination: ComposeMailView()) {
             Capsule()
                 .foregroundColor(.white)
@@ -78,8 +72,7 @@ extension InboxTableView {
                             .scaledToFit()
                             .frame(
                                 width: GmailSize.defaultDouble,
-                                height: GmailSize.defaultTripple
-                            )
+                                height: GmailSize.defaultTripple)
 
                         Text(GmailStrings.composeButton).bold()
                     }
@@ -89,43 +82,40 @@ extension InboxTableView {
         }
         .position(
             x: composeButtonOffsetX,
-            y: composeButtonOffsetY
-        )
+            y: composeButtonOffsetY)
     }
 
     // MARK: Inbox Mail Cell
 
-    @ViewBuilder func createInboxMailCell(for cell: InboxMailsViewModel.Mail) -> some View {
+    @ViewBuilder
+    func createInboxMailCell(for cell: InboxMailsViewModel.Mail) -> some View {
         ZStack {
             // Hide chevron visibility
             CustomNavigationLink(
                 destination: EmailBodyView(mail: cell, viewModel: viewModel),
-                label: { EmptyView() }
-            )
-            .opacity(0.0)
+                label: { EmptyView() })
+                .opacity(0.0)
 
             InboxTableItemView(
                 mail: cell,
                 starOnTapped: { viewModel.star(cell) },
-                chevronOnTapped: { viewModel.important(cell) }
-            )
-            .frame(height: 50)
+                chevronOnTapped: { viewModel.important(cell) })
+                .frame(height: 50)
         }
     }
 
     private func swipeToDisplayMenu() -> _EndedGesture<DragGesture> {
         DragGesture(
             minimumDistance: 20,
-            coordinateSpace: .global
-        )
-        .onEnded { value in
-            let horizontalAmount = value.translation.width as CGFloat
-            let verticalAmount = value.translation.height as CGFloat
+            coordinateSpace: .global)
+            .onEnded { value in
+                let horizontalAmount = value.translation.width as CGFloat
+                let verticalAmount = value.translation.height as CGFloat
 
-            if abs(horizontalAmount) > abs(verticalAmount), horizontalAmount > 0 {
-                slideInMenuService.isPresented.toggle()
+                if abs(horizontalAmount) > abs(verticalAmount), horizontalAmount > 0 {
+                    slideInMenuService.isPresented.toggle()
+                }
             }
-        }
     }
 }
 

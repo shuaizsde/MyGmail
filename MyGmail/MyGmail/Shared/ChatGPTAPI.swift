@@ -1,14 +1,8 @@
-//
-//  ChatGPTAPI.swift
-//  XCAChatGPT
-//
-//  Created by Shuai Zhang on 05/23/23.
-//
+/* * Copyright 2023 Simon Zhang. All rights reserved. */
 
 import Foundation
 
 class ChatGPTAPI: @unchecked Sendable {
-
     private let systemMessage: Message
     private let temperature: Double
     private let model: String
@@ -39,14 +33,14 @@ class ChatGPTAPI: @unchecked Sendable {
     private var headers: [String: String] {
         [
             "Content-Type": "application/json",
-            "Authorization": "Bearer \(apiKey)"
+            "Authorization": "Bearer \(apiKey)",
         ]
     }
 
     init(apiKey: String, model: String = "gpt-3.5-turbo", systemPrompt: String = "You are a helpful assistant", temperature: Double = 0.5) {
         self.apiKey = apiKey
         self.model = model
-        self.systemMessage = .init(role: "system", content: systemPrompt)
+        systemMessage = .init(role: "system", content: systemPrompt)
         self.temperature = temperature
     }
 
@@ -61,14 +55,17 @@ class ChatGPTAPI: @unchecked Sendable {
     }
 
     private func jsonBody(text: String, stream: Bool = true) throws -> Data {
-        let request = Request(model: model, temperature: temperature,
-                              messages: generateMessages(from: text), stream: stream)
+        let request = Request(
+            model: model,
+            temperature: temperature,
+            messages: generateMessages(from: text),
+            stream: stream)
         return try JSONEncoder().encode(request)
     }
 
     private func appendToHistoryList(userText: String, responseText: String) {
-        self.historyList.append(.init(role: "user", content: userText))
-        self.historyList.append(.init(role: "assistant", content: responseText))
+        historyList.append(.init(role: "user", content: userText))
+        historyList.append(.init(role: "assistant", content: responseText))
     }
 
     func sendMessageStream(text: String) async throws -> AsyncThrowingStream<String, Error> {
@@ -104,7 +101,8 @@ class ChatGPTAPI: @unchecked Sendable {
                 if line.hasPrefix("data: "),
                    let data = line.dropFirst(6).data(using: .utf8),
                    let response = try? self.jsonDecoder.decode(StreamCompletionResponse.self, from: data),
-                   let text = response.choices.first?.delta.content {
+                   let text = response.choices.first?.delta.content
+                {
                     responseText += text
                     return text
                 }
@@ -133,9 +131,9 @@ class ChatGPTAPI: @unchecked Sendable {
         }
 
         do {
-            let completionResponse = try self.jsonDecoder.decode(CompletionResponse.self, from: data)
+            let completionResponse = try jsonDecoder.decode(CompletionResponse.self, from: data)
             let responseText = completionResponse.choices.first?.message.content ?? ""
-            self.appendToHistoryList(userText: text, responseText: responseText)
+            appendToHistoryList(userText: text, responseText: responseText)
             return responseText
         } catch {
             throw error
@@ -143,15 +141,14 @@ class ChatGPTAPI: @unchecked Sendable {
     }
 
     func deleteHistoryList() {
-        self.historyList.removeAll()
+        historyList.removeAll()
     }
 }
 
 extension String: CustomNSError {
-
     public var errorUserInfo: [String: Any] {
         [
-            NSLocalizedDescriptionKey: self
+            NSLocalizedDescriptionKey: self,
         ]
     }
 }

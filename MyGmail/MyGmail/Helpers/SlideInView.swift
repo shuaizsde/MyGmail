@@ -1,9 +1,4 @@
-//
-//  SlideInView.swift
-//  MyGmail
-//
-//  Created by Shuai Zhang on 5/9/23.
-//
+/* * Copyright 2023 Simon Zhang. All rights reserved. */
 
 import SwiftUI
 
@@ -51,12 +46,14 @@ public struct SlideInView<Content: View, Container: View>: View {
     ///   - options: options; default is `SlideInViewOptions` defaults
     ///   - content: the slide in view content
     ///   - container: the container the slide in view will be presented on top of
-    public init(isActive: Binding<Bool>,
-                edge: Edge = .leading,
-                paddingPercentage: CGFloat = 0.35,
-                options: SlideInViewOptions = SlideInViewOptions(),
-                content: @escaping () -> Content,
-                container: @escaping () -> Container) {
+    public init(
+        isActive: Binding<Bool>,
+        edge: Edge = .leading,
+        paddingPercentage: CGFloat = 0.35,
+        options: SlideInViewOptions = SlideInViewOptions(),
+        content: @escaping () -> Content,
+        container: @escaping () -> Container)
+    {
         _isActive = isActive
         self.edge = edge
         self.paddingPercentage = paddingPercentage
@@ -85,8 +82,7 @@ public struct SlideInView<Content: View, Container: View>: View {
                             .transition(
                                 .asymmetric(
                                     insertion: .move(edge: edge),
-                                    removal: .move(edge: edge)
-                                )
+                                    removal: .move(edge: edge))
                             )
                             .gesture(DragGesture(minimumDistance: 20, coordinateSpace: .global)
                                 .onEnded { value in
@@ -112,7 +108,6 @@ public struct SlideInView<Content: View, Container: View>: View {
                                             }
                                         }
                                     }
-
                                 })
                     }
                 }
@@ -153,10 +148,12 @@ public struct SlideInViewOptions {
     public var shouldDismissUponSwipe: Bool
     public var shouldDismissUponExternalTap: Bool
 
-    public init(paddingColor: Color = Color(.label),
-                paddingColorOpacity: CGFloat = 0.1,
-                shouldDismissUponSwipe: Bool = true,
-                shouldDismissUponExternalTap: Bool = true) {
+    public init(
+        paddingColor: Color = Color(.label),
+        paddingColorOpacity: CGFloat = 0.1,
+        shouldDismissUponSwipe: Bool = true,
+        shouldDismissUponExternalTap: Bool = true)
+    {
         self.paddingColor = paddingColor
         self.paddingColorOpacity = paddingColorOpacity
         self.shouldDismissUponSwipe = shouldDismissUponSwipe

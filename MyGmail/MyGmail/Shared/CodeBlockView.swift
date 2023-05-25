@@ -1,19 +1,13 @@
-//
-//  CodeBlockView.swift
-//  XCAChatGPT
-//
-//  Created by Shuai Zhang on 05/23/23.
-//
+/* * Copyright 2023 Simon Zhang. All rights reserved. */
 
-import SwiftUI
 import Markdown
+import SwiftUI
 
 enum HighlighterConstants {
     static let color = Color(red: 38/255, green: 38/255, blue: 38/255)
 }
 
 struct CodeBlockView: View {
-
     let parserResult: ParserResult
     @State var isCopied = false
 
@@ -79,7 +73,6 @@ struct CodeBlockView: View {
 }
 
 struct CodeBlockView_Previews: PreviewProvider {
-
     static var markdownString = """
     ```swift
     let api = ChatGPTAPI(apiKey: "API_KEY")

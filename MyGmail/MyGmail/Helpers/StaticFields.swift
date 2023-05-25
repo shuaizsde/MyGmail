@@ -1,9 +1,4 @@
-//
-//  GmailSize.swift
-//  MyGmail
-//
-//  Created by Shuai Zhang on 5/15/23.
-//
+/* * Copyright 2023 Simon Zhang. All rights reserved. */
 
 import Foundation
 import SwiftUI
@@ -59,8 +54,8 @@ enum GmailIcons {
     static let replyIcon = Image(systemName: "return.left")
     static let forwardIcon = Image(systemName: "return.right")
 
-    static let menuIcon_archived = Image(systemName: "square.and.arrow.down")
-    static let person_archived = Image(systemName: "person.fill")
+    static let menuIconArchived = Image(systemName: "square.and.arrow.down")
+    static let personArchived = Image(systemName: "person.fill")
 }
 
 enum GmailStrings {

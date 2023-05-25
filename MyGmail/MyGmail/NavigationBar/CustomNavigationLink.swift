@@ -1,9 +1,4 @@
-//
-//  CustomNavigationLink.swift
-//  MyGmail
-//
-//  Created by Shuai Zhang on 5/14/23.
-//
+/* * Copyright 2023 Simon Zhang. All rights reserved. */
 
 import SwiftUI
 
@@ -24,8 +19,7 @@ struct CustomNavigationLink<Label: View, Destination: View>: View {
 
             label: {
                 label
-            }
-        )
+            })
     }
 }
 
@@ -33,9 +27,10 @@ struct CustomNavigationLink_Previews: PreviewProvider {
     static var previews: some View {
         CustomNavView {
             CustomNavigationLink(
-                destination: Text("Destination")) {
-                    Text("Click ME")
-                }
+                destination: Text("Destination"))
+            {
+                Text("Click ME")
+            }
         }
     }
 }

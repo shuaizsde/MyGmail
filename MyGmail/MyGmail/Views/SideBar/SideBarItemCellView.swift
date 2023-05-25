@@ -1,9 +1,4 @@
-//
-//  SideBarItemCellView.swift
-//  MyGmail
-//
-//  Created by Shuai Zhang on 5/15/23.
-//
+/* * Copyright 2023 Simon Zhang. All rights reserved. */
 
 import SwiftUI
 
@@ -30,8 +25,7 @@ struct SideBarItemCellView: View {
                 .foregroundColor(GmailColor.green)
                 .frame(
                     width: 48,
-                    height: 18
-                )
+                    height: 18)
                 .overlay(
                     Text(count >= 10 ? "\(count)" : "\(count) New")
                         .font(GmailFont.defaultFont)
@@ -39,15 +33,15 @@ struct SideBarItemCellView: View {
                 )
                 .opacity(count == 0 ? 0 : 1)
         }
-        // Text Color 
+        // Text Color
         .foregroundColor(cell.isSelected ? GmailColor.red : GmailColor.textGray)
         // Background Color
         .background {
             RoundedRectangle(cornerRadius: 20)
-              .fill(isPressed ? GmailColor.red : Color.white)
-              .opacity(0.1)
-              .frame(width: 300, height: 44)
-              .offset(CGSize(width: -20, height: 0))
+                .fill(isPressed ? GmailColor.red : Color.white)
+                .opacity(0.1)
+                .frame(width: 300, height: 44)
+                .offset(CGSize(width: -20, height: 0))
         }
         // Action
         .onTapGesture {
@@ -65,7 +59,6 @@ struct SideBarItemCellView: View {
                 withAnimation {
                     isPressed = false
                 }
-            }
-        )
+            })
     }
 }

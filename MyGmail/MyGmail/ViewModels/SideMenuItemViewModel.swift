@@ -1,9 +1,4 @@
-//
-//  MyGmailSideMenuItems.swift
-//  MyGmail
-//
-//  Created by Shuai Zhang on 5/13/23.
-//
+/* * Copyright 2023 Simon Zhang. All rights reserved. */
 
 import SwiftUI
 
@@ -17,7 +12,7 @@ class SideMenuItemViewModel: ObservableObject {
     }
 
     var cells: [CellItem] {
-        return model.cells
+        model.cells
     }
 
     func select(_ cell: CellItem) {

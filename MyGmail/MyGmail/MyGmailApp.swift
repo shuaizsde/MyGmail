@@ -1,9 +1,4 @@
-//
-//  MyGmailApp.swift
-//  MyGmail
-//
-//  Created by Shuai Zhang on 5/8/23.
-//
+/* * Copyright 2023 Simon Zhang. All rights reserved. */
 
 import SwiftUI
 
@@ -29,17 +24,16 @@ struct MyGmailApp: App {
                     options:
                     SlideInViewOptions(
                         paddingColor: .gray,
-                        paddingColorOpacity: 0.8
-                    )
-                ) {
-                    SideBarMenuView(
-                        model: SideMenuItemViewModel(filterService: filterService)
-                    )
-                    .environmentObject(slideInMenuService)
-                    .environmentObject(showToolBarService)
-                    .environmentObject(inboxViewModel)
-                    .environmentObject(vm)
-                }
+                        paddingColorOpacity: 0.8))
+            {
+                SideBarMenuView(
+                    model: SideMenuItemViewModel(filterService: filterService)
+                )
+                .environmentObject(slideInMenuService)
+                .environmentObject(showToolBarService)
+                .environmentObject(inboxViewModel)
+                .environmentObject(vm)
+            }
         }
     }
 }

@@ -1,9 +1,4 @@
-//
-//  MessageRowView.swift
-//  XCAChatGPT
-//
-//  Created by Shuai Zhang on 05/23/23.
-//
+/* * Copyright 2023 Simon Zhang. All rights reserved. */
 
 import SwiftUI
 #if os(iOS)
@@ -11,7 +6,6 @@ import Markdown
 #endif
 
 struct MessageRowView: View {
-
     @Environment(\.colorScheme) private var colorScheme
     let message: MessageRow
     let retryCallback: (MessageRow) -> Void
@@ -71,7 +65,6 @@ struct MessageRowView: View {
             } placeholder: {
                 ProgressView()
             }
-
         } else {
             Image(image)
                 .resizable()
@@ -90,9 +83,9 @@ struct MessageRowView: View {
                     #else
                     Text(text)
                         .multilineTextAlignment(.leading)
-                        #if os(iOS) || os(macOS)
+                    #if os(iOS) || os(macOS)
                         .textSelection(.enabled)
-                        #endif
+                    #endif
                     #endif
                 }
             }
@@ -118,7 +111,6 @@ struct MessageRowView: View {
                 DotLoadingView()
                     .frame(width: 60, height: 30)
                 #endif
-
             }
         }
     }
@@ -132,15 +124,15 @@ struct MessageRowView: View {
                         .padding(.bottom, 24)
                     #else
                     Text(parsed.attributedString)
-                        #if os(iOS) || os(macOS)
+                    #if os(iOS) || os(macOS)
                         .textSelection(.enabled)
-                        #endif
+                    #endif
                     #endif
                 } else {
                     Text(parsed.attributedString)
-                        #if os(iOS) || os(macOS)
+                    #if os(iOS) || os(macOS)
                         .textSelection(.enabled)
-                        #endif
+                    #endif
                 }
             }
         }
@@ -178,11 +170,9 @@ struct MessageRowView: View {
         }
     }
     #endif
-
 }
 
 struct MessageRowView_Previews: PreviewProvider {
-
     static let message = MessageRow(
         isInteractingWithChatGPT: true, sendImage: "profile",
         send: .rawText("What is SwiftUI?"),
@@ -200,13 +190,10 @@ struct MessageRowView_Previews: PreviewProvider {
         NavigationStack {
             ScrollView {
                 MessageRowView(message: message, retryCallback: { _ in
-
                 })
 
                 MessageRowView(message: message2, retryCallback: { _ in
-
                 })
-
             }
             .previewLayout(.sizeThatFits)
         }

@@ -1,9 +1,4 @@
-//
-//  ComposeMailView.swift
-//  MyGmail
-//
-//  Created by Shuai Zhang on 5/13/23.
-//
+/* * Copyright 2023 Simon Zhang. All rights reserved. */
 
 import AVKit
 import SwiftUI
@@ -59,13 +54,12 @@ struct ComposeMailView: View {
                     .foregroundColor(Color.gray)
                 Text(vm.messages.last?.responseText ?? "")
                     .onTapGesture {
-                        withAnimation(.spring()){
+                        withAnimation(.spring()) {
                             content = vm.messages.last?.responseText ?? ""
                             vm.messages.removeAll()
                         }
                     }.padding(vm.messages.last?.responseText?.isEmpty ?? true ? 0 : 10)
                     .background(RoundedRectangle(cornerRadius: 10).fill(Color.gray).opacity(0.8))
-                
             }.padding()
         }
         .onAppear(
@@ -85,31 +79,29 @@ struct ComposeMailView: View {
                 await vm.sendTapped()
             }
             showText = vm.messages.last?.responseText ?? ""
-
         }, label: { Image(systemName: "wand.and.stars")
-                .font(GmailFont.defaultLargeProfile)
-                .foregroundColor(.white)
-                .background(
-                    Circle().fill(
-                        LinearGradient(
-                            gradient: 
-                                .init(colors: 
-                                        [Color.red.opacity(0.5),
-                                         Color.blue,
-                                         Color.yellow.opacity(0.5)]
-                                     ), 
-                            startPoint: .top, 
-                            endPoint: .bottom
-                        )
-                    )
-                ) 
-                .shadow(color: Color(.gray).opacity(0.8), radius: 5, x: 5, y: 5)
+            .font(GmailFont.defaultLargeProfile)
+            .foregroundColor(.white)
+            .background(
+                Circle().fill(
+                    LinearGradient(
+                        gradient:
+                        .init(colors:
+                            [Color.red.opacity(0.5),
+                             Color.blue,
+                             Color.yellow.opacity(0.5) ]
+                        ),
+                        startPoint: .top,
+                        endPoint: .bottom)
+                )
+            )
+            .shadow(color: Color(.gray).opacity(0.8), radius: 5, x: 5, y: 5)
         })
     }
-    
 }
 extension View {
-    @ViewBuilder public func hidden(_ shouldHide: Bool) -> some View {
+    @ViewBuilder
+    public func hidden(_ shouldHide: Bool) -> some View {
         switch shouldHide {
         case true: hidden()
         case false: self

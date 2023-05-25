@@ -1,9 +1,4 @@
-//
-//  InboxMails.swift
-//  MyGmail
-//
-//  Created by Shuai Zhang on 5/8/23.
-//
+/* * Copyright 2023 Simon Zhang. All rights reserved. */
 
 import Foundation
 import SwiftUI
@@ -68,7 +63,6 @@ extension Color {
         Color(
             red: Double.random(in: 0 ... 1),
             green: Double.random(in: 0.2 ... 1),
-            blue: Double.random(in: 0.3 ... 1)
-        )
+            blue: Double.random(in: 0.3 ... 1))
     }
 }

@@ -1,14 +1,8 @@
-//
-//  DotLoadingView.swift
-//  XCAChatGPT
-//
-//  Created by Shuai Zhang on 05/23/23.
-//
+/* * Copyright 2023 Simon Zhang. All rights reserved. */
 
 import SwiftUI
 
 struct DotLoadingView: View {
-
     @State private var showCircle1 = false
     @State private var showCircle2 = false
     @State private var showCircle3 = false

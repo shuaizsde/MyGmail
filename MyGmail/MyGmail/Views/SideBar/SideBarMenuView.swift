@@ -1,9 +1,4 @@
-//
-//  MyGmailSideMenuView.swift
-//  MyGmail
-//
-//  Created by Shuai Zhang on 5/9/23.
-//
+/* * Copyright 2023 Simon Zhang. All rights reserved. */
 
 import SwiftUI
 
@@ -44,22 +39,23 @@ struct SideBarMenuView: View {
 }
 
 extension SideBarMenuView {
-    @ViewBuilder private func gmailLogoHeader() -> some View {
+    @ViewBuilder
+    private func gmailLogoHeader() -> some View {
         HStack {
             GmailIcons.gmailIcon
                 .resizable()
                 .scaledToFit()
                 .frame(
                     width: GmailSize.defaultTripple,
-                    height: GmailSize.defaultTripple
-                )
+                    height: GmailSize.defaultTripple)
             Text("My Gmail")
                 .font(GmailFont.defaultTriple)
                 .foregroundColor(.gray)
         }
     }
 
-    @ViewBuilder private func sectionSeperator() -> some View {
+    @ViewBuilder
+    private func sectionSeperator() -> some View {
         Rectangle()
             .frame(height: 1)
             .foregroundColor(.gray)
@@ -68,13 +64,13 @@ extension SideBarMenuView {
             .listRowSeparator(.hidden)
     }
 
-    @ViewBuilder private func createSection(with model: SideMenuItemViewModel, filter: (CellItem) -> Bool) -> some View {
+    @ViewBuilder
+    private func createSection(with model: SideMenuItemViewModel, filter: (CellItem) -> Bool) -> some View {
         Section {
             ForEach(model.cells.filter(filter), id: \.id) {
                 SideBarItemCellView(
                     mailViewModel: mailViewModel,
-                    cell: $0
-                ) { tapOnCell($0) }
+                    cell: $0) { tapOnCell($0) }
             }
             .listRowSeparator(.hidden)
         }

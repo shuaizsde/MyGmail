@@ -1,14 +1,9 @@
-//
-//  MarkdownAttributedStringParser.swift
-//  XCAChatGPT
-//
-//  Created by Shuai Zhang on 05/23/23.
-//
+/* * Copyright 2023 Simon Zhang. All rights reserved. */
 
 import Foundation
-import UIKit
-import Markdown
 import Highlighter
+import Markdown
+import UIKit
 
 /// Based on the source code from Christian Selig
 /// https://github.com/christianselig/Markdownosaur/blob/main/Sources/Markdownosaur/Markdownosaur.swift
@@ -26,7 +21,7 @@ public struct MarkdownAttributedStringParser: MarkupVisitor {
     public init() {}
 
     public mutating func attributedString(from document: Document) -> NSAttributedString {
-        return visit(document)
+        visit(document)
     }
 
     mutating func parserResults(from document: Document) -> [ParserResult] {
@@ -67,7 +62,7 @@ public struct MarkdownAttributedStringParser: MarkupVisitor {
     }
 
     mutating public func visitText(_ text: Text) -> NSAttributedString {
-        return NSAttributedString(string: text.plainText, attributes: [.font: UIFont.systemFont(ofSize: baseFontSize, weight: .regular)])
+        NSAttributedString(string: text.plainText, attributes: [.font: UIFont.systemFont(ofSize: baseFontSize, weight: .regular)])
     }
 
     mutating public func visitEmphasis(_ emphasis: Emphasis) -> NSAttributedString {
@@ -139,7 +134,7 @@ public struct MarkdownAttributedStringParser: MarkupVisitor {
     }
 
     mutating public func visitInlineCode(_ inlineCode: InlineCode) -> NSAttributedString {
-        return NSAttributedString(string: inlineCode.code, attributes: [.font: UIFont.monospacedSystemFont(ofSize: baseFontSize - 1.0, weight: .regular), .foregroundColor: UIColor.systemPink])
+        NSAttributedString(string: inlineCode.code, attributes: [.font: UIFont.monospacedSystemFont(ofSize: baseFontSize - 1.0, weight: .regular), .foregroundColor: UIColor.systemPink])
     }
 
     public func visitCodeBlock(_ codeBlock: CodeBlock) -> NSAttributedString {
@@ -183,7 +178,7 @@ public struct MarkdownAttributedStringParser: MarkupVisitor {
 
             listItemParagraphStyle.tabStops = [
                 NSTextTab(textAlignment: .right, location: firstTabLocation),
-                NSTextTab(textAlignment: .left, location: secondTabLocation)
+                NSTextTab(textAlignment: .left, location: secondTabLocation),
             ]
 
             listItemParagraphStyle.headIndent = secondTabLocation
@@ -244,7 +239,7 @@ public struct MarkdownAttributedStringParser: MarkupVisitor {
 
             listItemParagraphStyle.tabStops = [
                 NSTextTab(textAlignment: .right, location: firstTabLocation),
-                NSTextTab(textAlignment: .left, location: secondTabLocation)
+                NSTextTab(textAlignment: .left, location: secondTabLocation),
             ]
 
             listItemParagraphStyle.headIndent = secondTabLocation
@@ -441,10 +436,10 @@ extension Markup {
 
 extension NSAttributedString {
     static func singleNewline(withFontSize fontSize: CGFloat) -> NSAttributedString {
-        return NSAttributedString(string: "\n", attributes: [.font: UIFont.systemFont(ofSize: fontSize, weight: .regular)])
+        NSAttributedString(string: "\n", attributes: [.font: UIFont.systemFont(ofSize: fontSize, weight: .regular)])
     }
 
     static func doubleNewline(withFontSize fontSize: CGFloat) -> NSAttributedString {
-        return NSAttributedString(string: "\n\n", attributes: [.font: UIFont.systemFont(ofSize: fontSize, weight: .regular)])
+        NSAttributedString(string: "\n\n", attributes: [.font: UIFont.systemFont(ofSize: fontSize, weight: .regular)])
     }
 }

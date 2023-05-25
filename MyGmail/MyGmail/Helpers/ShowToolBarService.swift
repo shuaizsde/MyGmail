@@ -1,9 +1,4 @@
-//
-//  ShowToolBarService.swift
-//  MyGmail
-//
-//  Created by Shuai Zhang on 5/14/23.
-//
+/* * Copyright 2023 Simon Zhang. All rights reserved. */
 
 import Foundation
 import SwiftUI

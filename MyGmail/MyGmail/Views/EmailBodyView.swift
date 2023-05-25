@@ -1,9 +1,4 @@
-//
-//  EmailBodyView.swift
-//  MyGmail
-//
-//  Created by Shuai Zhang on 5/8/23.
-//
+/* * Copyright 2023 Simon Zhang. All rights reserved. */
 
 import SwiftUI
 
@@ -75,7 +70,6 @@ extension EmailBodyView {
             })
             .font(GmailFont.defaultFont2)
             .foregroundColor(mail.isStarred ? .yellow : GmailColor.gray)
-
         }.opacity(0.7)
     }
 
@@ -94,8 +88,7 @@ extension EmailBodyView {
                         .resizable()
                         .frame(
                             width: 8,
-                            height: 5
-                        )
+                            height: 5)
                 }.font(.caption2)
             }
             Spacer()
@@ -106,7 +99,6 @@ extension EmailBodyView {
 
             Button(action: {}, label: { GmailIcons.ellipsisIcon })
                 .font(GmailFont.defaultFont2)
-
         }.foregroundColor(GmailColor.gray)
     }
 
@@ -115,18 +107,17 @@ extension EmailBodyView {
             replyForwardButton(
                 text: GmailStrings.replyText,
                 icon: GmailIcons.replyIcon,
-                action: nil
-            )
+                action: nil)
             Spacer()
             replyForwardButton(
                 text: GmailStrings.forwardText,
                 icon: GmailIcons.forwardIcon,
-                action: nil
-            )
+                action: nil)
         }
     }
 
-    @ViewBuilder func replyForwardButton(text: String, icon: Image, action: (() -> Void)?) -> some View {
+    @ViewBuilder
+    func replyForwardButton(text: String, icon: Image, action: (() -> Void)?) -> some View {
         Button(
             action: action ?? {},
             label: {
@@ -144,11 +135,11 @@ extension EmailBodyView {
                         .fontWeight(.bold)
                         .foregroundColor(GmailColor.gray)
                     )
-            }
-        )
+            })
     }
 
-    @ViewBuilder func profilePictureThumbnail(with mail: InboxMails.Mail?) -> some View {
+    @ViewBuilder
+    func profilePictureThumbnail(with mail: InboxMails.Mail?) -> some View {
         if let profilePictureName = mail?.profilePicture {
             Image(profilePictureName)
                 .resizable()
@@ -163,8 +154,7 @@ extension EmailBodyView {
                 .fill(mail?.defaultColor ?? .white)
                 .frame(
                     width: thumbnailWidth,
-                    height: thumbnailWidth
-                )
+                    height: thumbnailWidth)
                 .overlay {
                     Text("\(placeHolder)")
                         .font(GmailFont.defaultTriple)
