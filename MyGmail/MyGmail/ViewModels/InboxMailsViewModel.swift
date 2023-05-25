@@ -19,10 +19,6 @@ class InboxMailsViewModel: ObservableObject {
             Javascript. Experienced in producing complex projects with programming, designing, management skills. A committed
             team player who consistently delivers results.
 
-            WORK EXPERIENCE
-            Whatsapp, Meta
-            Whatsapp Communities, Software Engineer IC4 MountainView,CA | July2022-current
-
             ...
             """,
             isUnread: false,
@@ -31,7 +27,7 @@ class InboxMailsViewModel: ObservableObject {
             isImportant: true),
         Mail(
             profilePicture: "cecillia",
-            sender: "Cecilia D'Costa",
+            sender: "XX D'Costa",
             time: "10:15 AM",
             subject: "Re: Team Match Update",
             content: """
