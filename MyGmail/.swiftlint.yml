@@ -1,0 +1,37 @@
+disabled_rules:
+    #- control_statement
+  - cyclomatic_complexity
+  - file_length
+    #- function_body_length
+    #- function_parameter_count
+  - line_length
+    #- nesting
+      #- trailing_whitespace
+    #- type_body_length
+  - type_name
+    #- identifier_name
+    #- weak_delegate
+  - force_unwrapping
+  - force_cast
+
+opt_in_rules:
+  - force_unwrapping
+  - implicitly_unwrapped_optional
+  - unneeded_parentheses_in_closure_argument
+  - vertical_whitespace_closing_braces
+  - vertical_whitespace_opening_braces
+
+  
+implicitly_unwrapped_optional:
+  severity: error
+
+trailing_comma:
+  mandatory_comma: true
+
+excluded:
+  - Pods
+  - ___PACKAGENAME___/CoreDataAndModels/private
+  - ___PACKAGENAME___/Scripts
+  - ___PACKAGENAME___/Resources
+  - R.generated.swift
+  - vendor # If running on Travis CI, a "vendor" directory will be added that may have Swift files that should not be linted.
