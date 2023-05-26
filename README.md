@@ -1,5 +1,7 @@
 # GptMail
 GptMail is an autonomous demo email application that adopts the appearance of Gmail while integrating GPT-4 functionalities. The primary objective of the project is to demonstrate the creator's proficiency in establishing a comprehensive mobile app architecture and implementing features with precise UI design specifications within a limited timeframe. Developed within just 2 weeks, GptMail successfully incorporates crucial functionalities such as Inbox, SideMenu, Compose Email, Unread Alerts, and notably, Email Assistant. By integrating the OpenAI API, the creator enables users to effortlessly rewrite emails by simply clicking a dedicated assistant button in the compose view, leveraging the content from the sender and their own responses.
+### Email Assistant
+[https://github.com/zhang86036055/MyGmail/assets/77553874/5b911915-749b-40ff-a741-27baa86a9658](https://github.com/zhang86036055/MyGmail/assets/77553874/5b911915-749b-40ff-a741-27baa86a9658)
 
 ### 05/16 Update: Implemented tapBar and SideMenu buttonOnTap Animations as gmail does:
 https://github.com/zhang86036055/MyGmail/assets/77553874/2d6a76bf-fd25-4abd-8f55-12179c557acf
