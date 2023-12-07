@@ -1,5 +1,5 @@
 /* * Copyright 2023 Simon Zhang. All rights reserved. */
-
+// TODO: Start to fix some issue
 import SwiftUI
 
 struct Home: View {
